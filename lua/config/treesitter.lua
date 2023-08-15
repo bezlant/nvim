@@ -24,6 +24,7 @@ treesitter_configs.setup({
 	tree_setter = {
 		enable = true,
 	},
+	ensure_installed = { "html" },
 })
 
 require("treesitter-context").setup({
