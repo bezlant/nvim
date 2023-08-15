@@ -144,7 +144,10 @@ return packer.startup(function(use)
 			"nvim-treesitter/nvim-treesitter",
 		},
 		config = function()
-			require("nvim-devdocs").setup()
+			require("nvim-devdocs").setup({
+				previewer_cmd = "glow",
+				cmd_args = { "-s", "dark", "-w", "80" },
+			})
 		end,
 	})
 	-- Autoconfigure after cloning packer.nvim
