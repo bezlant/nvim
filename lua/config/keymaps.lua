@@ -102,6 +102,13 @@ map(
 	opts
 )
 
+map(
+	"n",
+	"<leader>f",
+	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy({ previewer = false, layout_config = { height = 0.2 }}))<cr>",
+	opts
+)
+
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
 map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", opts)
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
