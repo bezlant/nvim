@@ -103,7 +103,6 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 	})
 	use({ "nvim-treesitter/nvim-treesitter-context" }) -- Top line where am I at
-	use({ "filNaj/tree-setter" })
 
 	-- misc
 	use({ "nvim-telescope/telescope.nvim" }) -- Are you ready for a journey?
@@ -129,7 +128,10 @@ return packer.startup(function(use)
 	use({ "windwp/nvim-ts-autotag" })
 	use({ "gpanders/editorconfig.nvim" })
 	use({ "benfowler/telescope-luasnip.nvim" })
-	use({ "jose-elias-alvarez/typescript.nvim" })
+	use({
+		"pmizio/typescript-tools.nvim",
+		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	})
 	use({ "lewis6991/gitsigns.nvim" })
 	use({ "cpea2506/relative-toggle.nvim" })
 	use({ "nvim-telescope/telescope-media-files.nvim" })

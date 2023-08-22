@@ -1,22 +1,59 @@
-local handlers = require('config.lsp.handlers')
+local handlers = require("config.lsp.handlers")
 
-require('typescript').setup({
-	disable_commands = false,
-	debug = false,
-	go_to_source_definition = {
-		fallback = true,
-	},
-	server = {
-		on_attach = handlers.on_attach,
-		capabilities = handlers.capabilities,
-		settings = {
-			init_options = {
-				preferences = {
-					disableSuggestions = false,
-					quotePreference = 'auto',
-					importModuleSpecifier = 'non-relative',
-				},
-			},
+require("typescript-tools").setup({
+	on_attach = handlers.on_attach,
+	capabilities = handlers.capabilities,
+	settings = {
+		separate_diagnostic_server = true,
+		publish_diagnostic_on = "insert_leave",
+		expose_as_code_action = { "fix_all", "add_missing_imports", "remove_unused" },
+		tsserver_format_options = {
+			insertSpaceAfterCommaDelimiter = true,
+			insertSpaceAfterConstructor = false,
+			insertSpaceAfterSemicolonInForStatements = true,
+			insertSpaceBeforeAndAfterBinaryOperators = true,
+			insertSpaceAfterKeywordsInControlFlowStatements = true,
+			insertSpaceAfterFunctionKeywordForAnonymousFunctions = true,
+			insertSpaceBeforeFunctionParenthesis = false,
+			insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis = false,
+			insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets = false,
+			insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces = true,
+			insertSpaceAfterOpeningAndBeforeClosingEmptyBraces = true,
+			insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces = false,
+			insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces = true,
+			insertSpaceAfterTypeAssertion = false,
+			placeOpenBraceOnNewLineForFunctions = false,
+			placeOpenBraceOnNewLineForControlBlocks = false,
+			semicolons = "ignore",
+			indentSwitchCase = true,
 		},
+		tsserver_file_preferences = {
+			quotePreference = "auto",
+			importModuleSpecifierEnding = "auto",
+			jsxAttributeCompletionStyle = "auto",
+			allowTextChangesInNewFiles = true,
+			providePrefixAndSuffixTextForRename = true,
+			allowRenameOfImportPath = true,
+			includeAutomaticOptionalChainCompletions = true,
+			provideRefactorNotApplicableReason = true,
+			generateReturnInDocTemplate = true,
+			includeCompletionsForImportStatements = true,
+			includeCompletionsWithSnippetText = true,
+			includeCompletionsWithClassMemberSnippets = true,
+			includeCompletionsWithObjectLiteralMethodSnippets = true,
+			useLabelDetailsInCompletionEntries = true,
+			allowIncompleteCompletions = true,
+			displayPartsForJSDoc = true,
+			disableLineTextInReferences = true,
+			includeInlayParameterNameHints = "none",
+			includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+			includeInlayFunctionParameterTypeHints = false,
+			includeInlayVariableTypeHints = false,
+			includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+			includeInlayPropertyDeclarationTypeHints = false,
+			includeInlayFunctionLikeReturnTypeHints = false,
+			includeInlayEnumMemberValueHints = false,
+		},
+		complete_function_calls = true,
 	},
 })
