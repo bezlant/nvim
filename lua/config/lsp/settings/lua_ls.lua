@@ -1,26 +1,26 @@
 return {
-	settings = {
-		Lua = {
-			runtime = {
-				version = 'LuaJIT',
-				path = vim.split(package.path, ';'),
-			},
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+        path = vim.split(package.path, ';'),
+      },
 
-			hint = {
-				enable = true,
-			},
+      hint = {
+        enable = true,
+      },
 
-			diagnostics = {
-				enable = true,
-				globals = { 'vim' },
-			},
+      diagnostics = {
+        enable = true,
+        globals = { 'vim' },
+      },
 
-			workspace = {
-				library = {
-					[vim.fn.expand('$VIMRUNTIME/lua')] = true,
-					[vim.fn.stdpath('config') .. '/lua'] = true,
-				},
-			},
-		},
-	},
+      workspace = {
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.stdpath('config') .. '/lua'] = true,
+        },
+      },
+    },
+  },
 }

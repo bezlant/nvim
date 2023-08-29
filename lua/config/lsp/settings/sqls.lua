@@ -1,11 +1,11 @@
 return {
-	settings = {
-		sqls = {
-			connections = {
-				{
-					driver = 'postgresql',
-				},
-			},
-		},
-	},
+  settings = {
+    sqls = {
+      connections = {
+        {
+          driver = 'postgresql',
+        },
+      },
+    },
+  },
 }

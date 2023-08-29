@@ -1,10 +1,10 @@
 return {
-	settings = {
-		stylelintplus = {
-			autoFixOnSave = true,
-			autoFixOnFormat = true,
-			validateOnSave = true,
-			validateOnType = false,
-		},
-	},
+  settings = {
+    stylelintplus = {
+      autoFixOnSave = true,
+      autoFixOnFormat = true,
+      validateOnSave = true,
+      validateOnType = false,
+    },
+  },
 }

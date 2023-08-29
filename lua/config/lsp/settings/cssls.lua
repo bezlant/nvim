@@ -1,10 +1,10 @@
 return {
-	settings = {
-		css = {
-			validate = false,
-			lint = {
-				unknownAtRules = 'ignore',
-			},
-		},
-	},
+  settings = {
+    css = {
+      validate = false,
+      lint = {
+        unknownAtRules = 'ignore',
+      },
+    },
+  },
 }
