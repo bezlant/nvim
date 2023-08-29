@@ -23,7 +23,7 @@ nvimtree.setup({
 		},
 	},
 	update_focused_file = {
-		update_cwd = true,
+		enable = true,
 	},
 	renderer = {
 		add_trailing = false,
