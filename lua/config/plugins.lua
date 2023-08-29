@@ -8,8 +8,6 @@ local builtin_plugs = {
 	"getscriptPlugin",
 	"vimball",
 	"vimballPlugin",
-	"matchit",
-	"matchparen",
 	"2html_plugin",
 	"logiPat",
 	"rrhelper",
