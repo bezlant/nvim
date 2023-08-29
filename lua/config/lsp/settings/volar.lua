@@ -1,12 +1,10 @@
 return {
-	setup = {
-		filetypes = {
-			'typescript',
-			'javascript',
-			'javascriptreact',
-			'typescriptreact',
-			'vue',
-			'json',
-		},
+	filetypes = {
+		"typescript",
+		"javascript",
+		"javascriptreact",
+		"typescriptreact",
+		"vue",
+		"json",
 	},
 }

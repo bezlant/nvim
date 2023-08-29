@@ -29,13 +29,13 @@ local servers = {
 	"html",
 	"jsonls",
 	"lua_ls",
-	-- 'stylelint_lsp',
+	"stylelint_lsp",
 	-- 'tailwindcss',
 	-- 'prismals',
 	"gopls",
 	"golangci_lint_ls",
 	-- "sqls",
-	"volar",
+	-- "volar",
 }
 
 lsp_installer.setup({
@@ -57,7 +57,6 @@ for _, server in pairs(servers) do
 	}
 
 	server = vim.split(server, "@")[1]
-
 	local has_custom_opts, custom_opts = pcall(require, "config.lsp.settings." .. server)
 
 	if has_custom_opts then
