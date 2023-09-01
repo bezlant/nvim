@@ -72,7 +72,7 @@ return packer.startup(function(use)
 
   -- colors & themes
   use({ 'Mofiqul/dracula.nvim' })
-  use({ 'kyazdani42/nvim-web-devicons' })
+  use({ 'kyazdani42/nvim-web-devicons', tag = 'nerd-v2-compat' })
   use({ 'nvim-lualine/lualine.nvim' })
 
   -- autocompletion
