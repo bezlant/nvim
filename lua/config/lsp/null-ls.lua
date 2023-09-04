@@ -10,21 +10,21 @@ null_ls.setup({
       extra_args = { '--indent-type', 'spaces', '--indent-width', '2', '--quote-style', 'AutoPreferSingle' },
     }),
     formatting.shfmt,
-    formatting.goimports,
-    formatting.sqlfluff.with({
-      extra_args = { '--dialect', 'postgres' },
-    }),
-    diagnostics.sqlfluff.with({
-      extra_args = { '--dialect', 'postgres' },
-    }),
+    -- formatting.goimports,
+    -- formatting.sqlfluff.with({
+    --   extra_args = { '--dialect', 'postgres' },
+    -- }),
+    -- diagnostics.sqlfluff.with({
+    --   extra_args = { '--dialect', 'postgres' },
+    -- }),
     diagnostics.shellcheck,
-    diagnostics.cppcheck.with({
-      method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
-      extra_args = {
-        '--enable=style,performance,portability,warning',
-        '--std=c++',
-      },
-    }),
+    -- diagnostics.cppcheck.with({
+    --   method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+    --   extra_args = {
+    --     '--enable=style,performance,portability,warning',
+    --     '--std=c++',
+    --   },
+    -- }),
   },
   on_attach = function(client, bufnr)
     if client.supports_method('textDocument/formatting') then
