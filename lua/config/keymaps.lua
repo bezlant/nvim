@@ -1,158 +1,150 @@
-local status_ok, utils = pcall(require, 'config.utils')
-if not status_ok then
-  vim.notify('Utils not found, check if the file exits in config/utils!')
-  return
+local silent = { silent = true }
+local map = function(mode, lhs, rhs)
+  vim.keymap.set(mode, lhs, rhs, silent)
 end
 
--- map(mode, key, command, options)
-local map = utils.map
-local opts = { noremap = true }
-
--- Leader
-vim.g.mapleader = ','
-
 -- Disable arrow keys
-map({ 'n', 'i', 'v' }, '<Up>', '<Nop>', opts)
-map({ 'n', 'i', 'v' }, '<S-Up>', '<Nop>', opts)
-map({ 'n', 'i', 'v' }, '<Down>', '<Nop>', opts)
-map({ 'n', 'i', 'v' }, '<S-Down>', '<Nop>', opts)
-map({ 'n', 'i', 'v' }, '<Left>', '<Nop>', opts)
-map({ 'n', 'i', 'v' }, '<S-Left>', '<Nop>', opts)
-map({ 'n', 'i', 'v' }, '<Right>', '<Nop>', opts)
-map({ 'n', 'i', 'v' }, '<S-Right>', '<Nop>', opts)
+map({ 'n', 'i', 'v' }, '<Up>', '<Nop>')
+map({ 'n', 'i', 'v' }, '<S-Up>', '<Nop>')
+map({ 'n', 'i', 'v' }, '<Down>', '<Nop>')
+map({ 'n', 'i', 'v' }, '<S-Down>', '<Nop>')
+map({ 'n', 'i', 'v' }, '<Left>', '<Nop>')
+map({ 'n', 'i', 'v' }, '<S-Left>', '<Nop>')
+map({ 'n', 'i', 'v' }, '<Right>', '<Nop>')
+map({ 'n', 'i', 'v' }, '<S-Right>', '<Nop>')
 
 -- Easier pane navigation
-map('n', '<C-h>', '<C-w>h', opts)
-map('n', '<C-j>', '<C-w>j', opts)
-map('n', '<C-k>', '<C-w>k', opts)
-map('n', '<C-l>', '<C-w>l', opts)
+map('n', '<C-h>', '<C-w>h')
+map('n', '<C-j>', '<C-w>j')
+map('n', '<C-k>', '<C-w>k')
+map('n', '<C-l>', '<C-w>l')
 
 -- Quick escape
-map('i', 'jk', '<ESC>', opts)
+map('i', 'jk', '<ESC>')
 
 -- Visual --
 -- Moving text
-map('v', '<A-j>', "<cmd>m '>+1<CR>gv=gv", opts)
-map('v', '<A-k>', "<cmd>m '<-2<CR>gv=gv", opts)
+map('v', '<A-j>', "<cmd>m '>+1<CR>gv=gv")
+map('v', '<A-k>', "<cmd>m '<-2<CR>gv=gv")
 
 -- Visual block
-map('x', 'J', ":move '>+1<CR>gv-gv", opts)
-map('x', 'K', ":move '<-2<CR>gv-gv", opts)
-map('x', '<A-j>', "<cmd>m '>+1<CR>gv=gv", opts)
-map('x', '<A-k>', "<cmd>m '<-2<CR>gv=gv", opts)
+map('x', 'J', ":move '>+1<CR>gv-gv")
+map('x', 'K', ":move '<-2<CR>gv-gv")
+map('x', '<M-j>', "<cmd>m '>+1<CR>gv=gv")
+map('x', '<M-k>', "<cmd>m '<-2<CR>gv=gv")
 
 -- Map global register to '|'
-map({ 'n', 'v' }, '"|', '"+', opts)
+map({ 'n', 'v' }, '"|', '"+')
 
--- Bbye & Buffers
-map('n', '<leader>bd', '<cmd>Bdelete! %<CR>', opts)
-map('n', '<leader>h', '<cmd>bprevious<cr>zz', opts)
-map('n', '<leader>l', '<cmd>bnext<cr>zz', opts)
-map('n', '<leader>ba', '<cmd>bufdo :Bdelete<CR>', opts)
-map('n', '<leader>bo', '<cmd>%bd|e#|bd#<CR>', opts)
+-- Buffers
+map('n', 'H', '<cmd>bprevious<cr>zz')
+map('n', 'L', '<cmd>bnext<cr>zz')
+map('n', '<leader>bd', '<cmd>bdelete! %<CR>')
+map('n', '<leader>ba', '<cmd>bufdo :bdelete<CR>')
+map('n', '<leader>bo', '<cmd>%bd|e#|bd#<CR>')
 
 -- Tabs
-map('n', '<leader>tn', '<cmd>tabnew<cr>', opts)
-map('n', '<leader>to', '<cmd>tabonly<cr>', opts)
-map('n', '<leader>tc', '<cmd>tabclose<cr>', opts)
-map('n', '<leader>tm', '<cmd>tabmove<cr>', opts)
-map('n', '<leader>t<leader>', '<cmd>tabnext<cr>zz', opts)
+map('n', '<leader>tn', '<cmd>tabnew<cr>')
+map('n', '<leader>to', '<cmd>tabonly<cr>')
+map('n', '<leader>tc', '<cmd>tabclose<cr>')
+map('n', '<leader>tm', '<cmd>tabmove<cr>')
+map('n', '<leader>t<leader>', '<cmd>tabnext<cr>zz')
 
 -- Custom
 -- Save on leader + w
-map('n', '<leader>w', '<cmd>w<CR>', opts)
+map('n', '<leader>w', '<cmd>w<CR>')
 
 -- Highligts off
-map('n', '<leader><CR>', '<cmd>noh<CR>', opts)
+map('n', '<esc><esc>', '<cmd>noh<CR>')
 
 -- Jump to the first non blanck character
-map('n', '0', '^', opts)
-
--- Stop yanking the damn '\n' (Yanky.nvim does it by default)
--- map("n", "Y", "yg$", opts)
+map('n', '0', '^')
 
 -- Scrolling improved (Neoscroll fixes this)
-map('n', '<C-d>', '<C-d>zz', opts)
-map('n', '<C-u>', '<C-u>zz', opts)
+map('n', '<C-d>', '<C-d>zz')
+map('n', '<C-u>', '<C-u>zz')
 
 -- Easy yank to the system clipboard
-map({ 'n', 'v' }, '<leader>y', '"+y', opts)
-map({ 'n', 'v' }, '<leader>yp', ':let @+=@%<cr>', opts)
+map({ 'n', 'v' }, '<leader>y', '"+y')
+map({ 'n', 'v' }, '<leader>yp', ':let @+=@%<cr>')
 
 -- Easy paste from the system clipboard
-map({ 'n', 'v' }, '<leader>p', '"+p', opts)
-map({ 'n', 'v' }, '<leader>P', '"+P', opts)
+map({ 'n', 'v' }, '<leader>p', '"+p')
+map({ 'n', 'v' }, '<leader>P', '"+P')
 
 -- You need this
-map('n', '<leader>x', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', opts)
+map('n', '<leader>x', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
 
 -- Search improved
-map('n', 'n', 'nzzzv', opts)
-map('n', 'N', 'Nzzzv', opts)
+map('n', 'n', 'nzzzv')
+map('n', 'N', 'Nzzzv')
 
 -- Get to the current folder
-map('n', '<leader>cd', '<cmd>cd %:p:h<cr><cmd>:pwd<cr>', opts)
+map('n', '<leader>cd', '<cmd>cd %:p:h<cr><cmd>:pwd<cr>')
 
 -- Plugins config
 -- Telescope
 map(
   'n',
   '<C-f>',
-  "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy({ previewer = false, layout_config = { height = 0.2 }}))<cr>",
-  opts
+  "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy({ previewer = false, layout_config = { height = 0.2 }}))<cr>"
 )
 
 map(
   'n',
   '<leader>f',
-  "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy({ previewer = false, layout_config = { height = 0.2 }}))<cr>",
-  opts
+  "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy({ previewer = false, layout_config = { height = 0.2 }}))<cr>"
 )
 
-map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
-map('n', '<leader>ff', '<cmd>Telescope find_files hidden=true<cr>', opts)
-map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', opts)
-map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)
-map('n', '<leader>fm', '<cmd>Telescope man_pages<cr>', opts)
-map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>', opts)
-map('n', '<leader>ft', '<cmd>TodoTelescope<cr>', opts)
-map('n', '<leader>fs', '<cmd>Telescope luasnip<cr>', opts)
-map('n', '<leader>fy', '<cmd>Telescope yank_history<cr>', opts)
-map('n', '<leader>fo', '<cmd>Telescope vim_options<cr>', opts)
-map('n', '<leader>fi', '<cmd>Telescope media_files<cr>', opts)
+map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+map('n', '<leader>ff', '<cmd>Telescope find_files hidden=true<cr>')
+map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
+map('n', '<leader>fm', '<cmd>Telescope man_pages<cr>')
+map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>')
+map('n', '<leader>ft', '<cmd>TodoTelescope<cr>')
+map('n', '<leader>fs', '<cmd>Telescope luasnip<cr>')
+map('n', '<leader>fy', '<cmd>Telescope yank_history<cr>')
+map('n', '<leader>fo', '<cmd>Telescope vim_options<cr>')
+map('n', '<leader>fi', '<cmd>Telescope media_files<cr>')
 
 -- NvimTree
-map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', opts)
+map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
 
 -- Vimgrep, grep, quickfix list, jump list cycle
-map('n', '<leader>o', '<cmd>copen<CR>', opts)
-map('n', '<leader>cn', '<cmd>cnext<CR>', opts)
-map('n', '<leader>cp', '<cmd>cprev<CR>', opts)
-
--- Bufferline shortcuts
-map('n', '<leader>1', "<cmd>lua require('bufferline').go_to_buffer(1, true)<cr>", opts)
-map('n', '<leader>2', "<cmd>lua require('bufferline').go_to_buffer(2, true)<cr>", opts)
-map('n', '<leader>3', "<cmd>lua require('bufferline').go_to_buffer(3, true)<cr>", opts)
-map('n', '<leader>4', "<cmd>lua require('bufferline').go_to_buffer(4, true)<cr>", opts)
-map('n', '<leader>5', "<cmd>lua require('bufferline').go_to_buffer(5, true)<cr>", opts)
-map('n', '<leader>6', "<cmd>lua require('bufferline').go_to_buffer(6, true)<cr>", opts)
-map('n', '<leader>7', "<cmd>lua require('bufferline').go_to_buffer(7, true)<cr>", opts)
-map('n', '<leader>8', "<cmd>lua require('bufferline').go_to_buffer(8, true)<cr>", opts)
-map('n', '<leader>9', "<cmd>lua require('bufferline').go_to_buffer(9, true)<cr>", opts)
-map('n', '<leader>$', "<cmd>lua require('bufferline').go_to_buffer(-1, true)<cr>", opts)
+map('n', '<lecder>o', '<cmd>copen<CR>')
+map('n', '<lecder>c', '<cmd>cclose<CR>')
+map('n', '<leader>cn', '<cmd>cnext<CR>')
+map('n', '<leader>cp', '<cmd>cprev<CR>')
 
 -- Yanky
-map('x', 'y', '<Plug>(YankyYank)', {})
-map('n', 'y', '<Plug>(YankyYank)', {})
-map('n', 'y', '<Plug>(YankyYank)', {})
-map('n', 'p', '<Plug>(YankyPutAfter)', {})
-map('n', 'p', '<Plug>(YankyPutAfter)', {})
-map('n', 'P', '<Plug>(YankyPutBefore)', {})
-map('x', 'p', '<Plug>(YankyPutAfter)', {})
-map('x', 'P', '<Plug>(YankyPutBefore)', {})
-map('n', 'gp', '<Plug>(YankyGPutAfter)', {})
-map('n', 'gP', '<Plug>(YankyGPutBefore)', {})
-map('x', 'gp', '<Plug>(YankyGPutAfter)', {})
-map('x', 'gP', '<Plug>(YankyGPutBefore)', {})
-map('n', '<c-p>', '<Plug>(YankyCycleForward)', {})
-map('n', '<c-n>', '<Plug>(YankyCycleBackward)', {})
+map('x', 'y', '<Plug>(YankyYank)')
+map('n', 'y', '<Plug>(YankyYank)')
+map('n', 'y', '<Plug>(YankyYank)')
+map('n', 'p', '<Plug>(YankyPutAfter)')
+map('n', 'p', '<Plug>(YankyPutAfter)')
+map('n', 'P', '<Plug>(YankyPutBefore)')
+map('x', 'p', '<Plug>(YankyPutAfter)')
+map('x', 'P', '<Plug>(YankyPutBefore)')
+map('n', 'gp', '<Plug>(YankyGPutAfter)')
+map('n', 'gP', '<Plug>(YankyGPutBefore)')
+map('x', 'gp', '<Plug>(YankyGPutAfter)')
+map('x', 'gP', '<Plug>(YankyGPutBefore)')
+map('n', '<c-p>', '<Plug>(YankyCycleForward)')
+map('n', '<c-n>', '<Plug>(YankyCycleBackward)')
+
+-- Lazy
+map('n', '<leader>L', '<cmd>:Lazy<cr>')
+
+-- Switch & Speeddating
+-- Manually invoke speeddating in case switch.vim didn't work
+map("n", "<C-a>", ":if !switch#Switch() <bar> call speeddating#increment(v:count1) <bar> endif<CR>")
+map("n", "<C-x>", ":if !switch#Switch({'reverse': 1}) <bar> call speeddating#increment(-v:count1) <bar> endif<CR>")
+
+
+map("n", "K", function()
+  local winid = require("ufo").peekFoldedLinesUnderCursor()
+  if not winid then
+    vim.lsp.buf.hover()
+  end
+end)
