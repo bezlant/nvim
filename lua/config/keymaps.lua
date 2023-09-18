@@ -65,6 +65,7 @@ map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-u>', '<C-u>zz')
 
 -- Easy yank to the system clipboard
+map({ 'n', 'v' }, '<leader>Y', '"+Y')
 map({ 'n', 'v' }, '<leader>y', '"+y')
 map({ 'n', 'v' }, '<leader>yp', ':let @+=@%<cr>')
 

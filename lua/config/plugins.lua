@@ -26,6 +26,7 @@ return {
     end,
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
+      "windwp/nvim-ts-autotag",
     },
   },
 
@@ -81,7 +82,7 @@ return {
 
   {
     "hrsh7th/nvim-cmp",
-    event = { "InsertEnter", "CmdlineEnter" },
+    lazy = false,
     config = function()
       require("plugins.nvim-cmp")
     end,
@@ -411,5 +412,10 @@ return {
   {
     'cpea2506/relative-toggle.nvim',
     opts = {}
-  }
+  },
+
+  {
+    "nathom/filetype.nvim",
+    opts = {}
+  },
 }

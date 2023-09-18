@@ -117,7 +117,6 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
     ["<CR>"] = cmp.mapping.confirm({
-      -- this is the important line for Copilot
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     }),
@@ -186,7 +185,7 @@ cmp.setup({
       })(entry, vim_item)
 
       item_with_kind.menu = source_mapping[entry.source.name]
-      item_with_kind.menu = (vim.trim(vim_item.menu) or '') .. ' '
+      item_with_kind.menu = (vim_item.menu or '') .. ' '
       item_with_kind.abbr = ' ' .. string.sub(item_with_kind.abbr, 1, item_with_kind.maxwidth)
 
       local completion_context = get_lsp_completion_context(entry.completion_item, entry.source)
