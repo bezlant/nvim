@@ -34,4 +34,4 @@ vim.api.nvim_create_autocmd('FileType', { pattern = { 'man' }, command = [[ nnor
 -- Fix that god damn formatoptions (for some reason have to do it on every BufEnter)
 -- Prevent annoying comment continuation when inserting a new line with 'O'
 vim.api.nvim_create_autocmd("BufEnter",
-  { callback = function() vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" } end, })
+  { callback = function() vim.opt.formatoptions:remove { "c", "r", "o" } end, })
