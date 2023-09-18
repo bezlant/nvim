@@ -162,6 +162,7 @@ return {
     config = function()
       require('treesj').setup({
         use_default_keymaps = false,
+        max_join_length = 680,
       })
     end
   },
@@ -281,7 +282,16 @@ return {
     "rcarriga/nvim-notify",
     config = function()
       require("notify").setup({
-        background_colour = "#000000",
+        timeout = 2000,
+        fps     = 60,
+        stages  = 'static',
+        icons   = {
+          ERROR = " ",
+          WARN = " ",
+          INFO = " ",
+          DEBUG = " ",
+          TRACE = "✎ ",
+        },
       })
     end,
     init = function()
