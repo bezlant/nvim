@@ -51,13 +51,17 @@ require('telescope').setup {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
 
-        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-        ["<ESC>"] = actions.close,
+        ["<C-d>"] = actions.results_scrolling_down,
+        ["<C-u>"] = actions.results_scrolling_up,
 
+        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+        ["<ESC><ESC>"] = actions.close,
       },
       n = {
         ["<C-s>"] = actions.cycle_previewers_next,
         ["<C-a>"] = actions.cycle_previewers_prev,
+
+        ["<ESC>"] = actions.close,
       }
     }
   },
@@ -69,4 +73,3 @@ require('telescope').setup {
     }
   }
 }
-return M
