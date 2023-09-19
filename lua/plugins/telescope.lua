@@ -58,8 +58,8 @@ require('telescope').setup {
         ["<ESC><ESC>"] = actions.close,
       },
       n = {
-        ["<C-s>"] = actions.cycle_previewers_next,
-        ["<C-a>"] = actions.cycle_previewers_prev,
+        ["<C-d>"] = actions.results_scrolling_down,
+        ["<C-u>"] = actions.results_scrolling_up,
 
         ["<ESC>"] = actions.close,
       }
