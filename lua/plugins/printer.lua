@@ -1,5 +1,6 @@
 require('printer').setup({
-  behavior = "insert_below",
+  keymap     = "gP",
+  behavior   = "insert_below",
   formatters = {
     lua = function(inside, variable)
       return string.format('print("%s: " .. %s)', inside, variable)
