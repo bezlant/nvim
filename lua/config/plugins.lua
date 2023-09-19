@@ -27,6 +27,9 @@ return {
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
       "windwp/nvim-ts-autotag",
+      "nvim-treesitter/nvim-treesitter-context",
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      "RRethy/nvim-treesitter-textsubjects",
     },
   },
 
@@ -79,6 +82,14 @@ return {
   },
 
   { "onsails/lspkind-nvim" },
+
+  {
+    "folke/trouble.nvim",
+    cmd = { "TroubleToggle", "Trouble" },
+    config = function()
+      require("plugins.trouble")
+    end,
+  },
 
   {
     "hrsh7th/nvim-cmp",
