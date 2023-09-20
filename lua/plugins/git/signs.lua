@@ -38,7 +38,7 @@ require('gitsigns').setup {
     },
 
   },
-  signcolumn                   = true, -- Toggle with `:Gitsigns toggle_signs`
+  signcolumn                   = true,  -- Toggle with `:Gitsigns toggle_signs`
   numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
   linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff                    = false, -- Toggle with `:Gitsigns toggle_word_diff`
@@ -94,13 +94,13 @@ require('gitsigns').setup {
     end, { expr = true })
 
     -- Actions
-    map({ 'n', 'v' }, '<leader>ghs', gs.stage_hunk)
-    map({ 'n', 'v' }, '<leader>ghr', gs.reset_hunk)
+    map({ 'n', 'v' }, '<leader>ghs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
+    map({ 'n', 'v' }, '<leader>ghr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
     map('n', '<leader>ghS', gs.stage_buffer)
     map('n', '<leader>ghu', gs.undo_stage_hunk)
     map('n', '<leader>ghR', gs.reset_buffer)
     map('n', '<leader>ghp', gs.preview_hunk)
-    map('n', '<leader>ghd', gs.diffthis)
+    map('n', '<leader>ghd', function() gs.diffthis('~') end)
     map('n', '<leader>ght', gs.toggle_deleted)
     map('n', '<leader>ghb', gs.toggle_current_line_blame)
 
