@@ -1,10 +1,14 @@
 local actions    = require('telescope.actions')
-local previewers = require('telescope.previewers')
 local builtin    = require('telescope.builtin')
+local previewers = require('telescope.previewers')
 local sorters    = require('telescope.sorters')
+local telescope  = require("telescope")
+
+local trouble    = require("trouble.providers.telescope")
 local icons      = require('config.constants').icons
 
-require('telescope').load_extension('fzf')
+
+telescope.load_extension('fzf')
 
 local git_icons = {
   added = icons.gitAdd,
@@ -16,7 +20,7 @@ local git_icons = {
   untracked = "?",
 }
 
-require('telescope').setup {
+telescope.setup {
   defaults = {
     border            = true,
     hl_result_eol     = true,
@@ -55,11 +59,17 @@ require('telescope').setup {
         ["<C-u>"] = actions.results_scrolling_up,
 
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+        ["<C-t>"] = trouble.open_with_trouble,
+
         ["<ESC><ESC>"] = actions.close,
+
       },
       n = {
         ["<C-d>"] = actions.results_scrolling_down,
         ["<C-u>"] = actions.results_scrolling_up,
+
+        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+        ["<C-t>"] = trouble.open_with_trouble,
 
         ["<ESC>"] = actions.close,
       }
