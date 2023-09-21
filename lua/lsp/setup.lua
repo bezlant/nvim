@@ -45,7 +45,11 @@ local handlers = {
   ),
 }
 
-local function on_attach(_, bufnr)
+local function on_attach(client, bufnr)
+  if client.supports_method("textDocument/formatting") then
+    require("lsp.functions").enable_format_on_save()
+  end
+
   local map = function(key, command)
     vim.keymap.set('n', key, command, { buffer = bufnr })
   end

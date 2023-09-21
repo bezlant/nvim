@@ -87,24 +87,25 @@ map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>ff', '<cmd>Telescope find_files hidden=true<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
-map('n', '<leader>fm', '<cmd>Telescope man_pages<cr>')
-map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>')
-map('n', '<leader>ft', '<cmd>TodoTelescope<cr>')
-map('n', '<leader>fs', '<cmd>Telescope luasnip<cr>')
-map('n', '<leader>fy', '<cmd>Telescope yank_history<cr>')
-map('n', '<leader>fo', '<cmd>Telescope vim_options<cr>')
 map('n', '<leader>fi', '<cmd>Telescope media_files<cr>')
+map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>')
+map('n', '<leader>fm', '<cmd>Telescope man_pages<cr>')
+map('n', '<leader>fo', '<cmd>Telescope vim_options<cr>')
 map('n', '<leader>fr', '<cmd>Telescope resume<cr>')
+map('n', '<leader>fs', '<cmd>Telescope luasnip<cr>')
+map('n', '<leader>ft', '<cmd>TodoTelescope<cr>')
+map('n', '<leader>fy', '<cmd>Telescope yank_history<cr>')
 
 -- NvimTree
 map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
 
 -- Vimgrep, grep, quickfix list, jump list cycle
 map('n', '<leader>t', '<cmd>TroubleToggle<CR>')
-map('n', '<leader>tw', '<cmd>TroubleToggle workspace_diagnostics<CR>')
-map('n', '<leader>td', '<cmd>TroubleToggle document_diagnostics<CR>')
+map('n', '<leader>tw', '<cmd>Trouble workspace_diagnostics<CR>')
+map('n', '<leader>td', '<cmd>Trouble document_diagnostics<CR>')
 map('n', '<leader>tn', '<cmd>lua require("trouble").next({skip_groups = true, jump = true})<CR>')
 map('n', '<leader>tp', '<cmd>lua require("trouble").previous({skip_groups = true, jump = true})<CR>')
+map('n', '<leader>tp', '<cmd>Trouble quickfix<CR>')
 
 -- Yanky
 map('x', 'y', '<Plug>(YankyYank)')

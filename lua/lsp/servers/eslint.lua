@@ -5,6 +5,10 @@ local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+
+  if client.supports_method("textDocument/formatting") then
+    require("lsp.functions").enable_format_on_save()
+  end
 end
 
 M.on_attach = on_attach;

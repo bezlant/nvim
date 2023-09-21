@@ -26,9 +26,9 @@ local handlers = {
 
 require("typescript-tools").setup({
   on_attach = function(_, bufnr)
-    -- if vim.fn.has("nvim-0.10") then
-    --   vim.lsp.inlay_hint(bufnr, true)
-    -- end
+    if constants.hints and vim.fn.has("nvim-0.10") then
+      vim.lsp.inlay_hint(bufnr, true)
+    end
   end,
   handlers = handlers,
   settings = {

@@ -10,6 +10,7 @@ local M = {
   },
 
   virtual_text = false,
+  hints = false,
 
   icons = {
     abc                 = "  ",

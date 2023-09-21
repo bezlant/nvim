@@ -24,6 +24,4 @@ end
 
 vim.api.nvim_create_user_command("LspToggleAutoFormat", 'lua require("lsp.functions").toggle_format_on_save()', {})
 
-M.toggle_format_on_save();
-
 return M
