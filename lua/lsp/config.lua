@@ -7,9 +7,19 @@ vim.diagnostic.config({
   signs = true,
   underline = false,
   update_in_insert = false,
-  virtual_text = {
-    prefix = constants.icons.circle,
-  },
+  virtual_text = { prefix = constants.icons.circle },
+})
+
+vim.api.nvim_create_autocmd({ "BufNew", "InsertEnter" }, {
+  callback = function(args)
+    vim.diagnostic.disable(args.buf)
+  end
+})
+
+vim.api.nvim_create_autocmd({ "BufWrite" }, {
+  callback = function(args)
+    vim.diagnostic.enable(args.buf)
+  end
 })
 
 -- UI
