@@ -22,16 +22,9 @@ map('n', '<C-l>', '<C-w>l')
 -- Quick escape
 map('i', 'jk', '<ESC>')
 
--- Visual --
 -- Moving text
-map('v', '<A-j>', "<cmd>m '>+1<CR>gv=gv")
-map('v', '<A-k>', "<cmd>m '<-2<CR>gv=gv")
-
--- Visual block
 map('x', 'J', ":move '>+1<CR>gv-gv")
 map('x', 'K', ":move '<-2<CR>gv-gv")
-map('x', '<M-j>', "<cmd>m '>+1<CR>gv=gv")
-map('x', '<M-k>', "<cmd>m '<-2<CR>gv=gv")
 
 -- Map global register to '|'
 map({ 'n', 'v' }, '"|', '"+')
@@ -42,13 +35,6 @@ map('n', 'L', '<cmd>bnext<cr>zz')
 map('n', '<leader>bd', '<cmd>bdelete! %<CR>')
 map('n', '<leader>ba', '<cmd>bufdo :bdelete<CR>')
 map('n', '<leader>bo', '<cmd>%bd|e#|bd#<CR>')
-
--- Tabs
-map('n', '<leader>tn', '<cmd>tabnew<cr>')
-map('n', '<leader>to', '<cmd>tabonly<cr>')
-map('n', '<leader>tc', '<cmd>tabclose<cr>')
-map('n', '<leader>tm', '<cmd>tabmove<cr>')
-map('n', '<leader>t<leader>', '<cmd>tabnext<cr>zz')
 
 -- Custom
 -- Save on leader + w
@@ -108,15 +94,17 @@ map('n', '<leader>fs', '<cmd>Telescope luasnip<cr>')
 map('n', '<leader>fy', '<cmd>Telescope yank_history<cr>')
 map('n', '<leader>fo', '<cmd>Telescope vim_options<cr>')
 map('n', '<leader>fi', '<cmd>Telescope media_files<cr>')
+map('n', '<leader>fr', '<cmd>Telescope resume<cr>')
 
 -- NvimTree
 map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
 
 -- Vimgrep, grep, quickfix list, jump list cycle
-map('n', '<lecder>o', '<cmd>copen<CR>')
-map('n', '<lecder>c', '<cmd>cclose<CR>')
-map('n', '<leader>cn', '<cmd>cnext<CR>')
-map('n', '<leader>cp', '<cmd>cprev<CR>')
+map('n', '<leader>t', '<cmd>TroubleToggle<CR>')
+map('n', '<leader>tw', '<cmd>TroubleToggle workspace_diagnostics<CR>')
+map('n', '<leader>td', '<cmd>TroubleToggle document_diagnostics<CR>')
+map('n', '<leader>tn', '<cmd>lua require("trouble").next({skip_groups = true, jump = true})<CR>')
+map('n', '<leader>tp', '<cmd>lua require("trouble").previous({skip_groups = true, jump = true})<CR>')
 
 -- Yanky
 map('x', 'y', '<Plug>(YankyYank)')
