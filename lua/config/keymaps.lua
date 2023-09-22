@@ -13,6 +13,10 @@ map({ 'n', 'i', 'v' }, '<S-Left>', '<Nop>')
 map({ 'n', 'i', 'v' }, '<Right>', '<Nop>')
 map({ 'n', 'i', 'v' }, '<S-Right>', '<Nop>')
 
+-- C-p & C-n to work as arrow keys
+map({ 'n', 'i', 'v' }, '<C-p>', '<Up>')
+map({ 'n', 'i', 'v' }, '<C-n> ', '<Down>')
+
 -- Easier pane navigation
 map('n', '<C-h>', '<C-w>h')
 map('n', '<C-j>', '<C-w>j')
