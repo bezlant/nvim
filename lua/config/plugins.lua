@@ -26,7 +26,6 @@ return {
     end,
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
-      "windwp/nvim-ts-autotag",
       "nvim-treesitter/nvim-treesitter-context",
       "nvim-treesitter/nvim-treesitter-textobjects",
       "RRethy/nvim-treesitter-textsubjects",
@@ -425,4 +424,12 @@ return {
     'cpea2506/relative-toggle.nvim',
     opts = {}
   },
+
+  {
+    "folke/zen-mode.nvim",
+    dependencies = { "folke/twilight.nvim" },
+    config = function()
+      require('plugins.zen')
+    end,
+  }
 }

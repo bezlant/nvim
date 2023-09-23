@@ -107,7 +107,7 @@ lspconfig.vuels.setup({
   settings = require("lsp.servers.vuels").settings,
 })
 
-for _, server in ipairs({ 'cssmodules_ls', 'marksman', 'stylelint_lsp', "bashls", "html", }) do
+for _, server in ipairs({ 'cssmodules_ls', 'marksman', 'stylelint_lsp', "bashls", "html", "yamlls" }) do
   lspconfig[server].setup({
     on_attach = on_attach,
     capabilities = capabilities,
