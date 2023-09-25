@@ -10,17 +10,21 @@ vim.diagnostic.config({
   virtual_text = { prefix = constants.icons.circle },
 })
 
-vim.api.nvim_create_autocmd({ "BufNew", "InsertEnter" }, {
-  callback = function(args)
-    vim.diagnostic.disable(args.buf)
-  end
-})
+local diagnostics_on_save = function()
+  vim.api.nvim_create_autocmd({ "BufNew", "InsertEnter" }, {
+    callback = function(args)
+      vim.diagnostic.disable(args.buf)
+    end
+  })
 
-vim.api.nvim_create_autocmd({ "BufWrite" }, {
-  callback = function(args)
-    vim.diagnostic.enable(args.buf)
-  end
-})
+  vim.api.nvim_create_autocmd({ "BufWrite" }, {
+    callback = function(args)
+      vim.diagnostic.enable(args.buf)
+    end
+  })
+end
+
+-- diagnostics_on_save()
 
 -- UI
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }

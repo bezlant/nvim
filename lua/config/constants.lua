@@ -9,7 +9,7 @@ local M = {
     scope = 'line',
   },
 
-  virtual_text = false,
+  virtual_text = true,
   hints = false,
 
   icons = {
