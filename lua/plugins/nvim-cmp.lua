@@ -199,13 +199,17 @@ cmp.setup({
 
   sources = {
     {
-      name = "nvim_lsp",
+      name = "copilot",
       priority = 10,
+      max_item_count = 3,
+    },
+    {
+      name = "nvim_lsp",
+      priority = 9,
       -- Limits LSP results to specific types based on line context (FIelds, Methods, Variables)
       entry_filter = limit_lsp_types,
     },
     { name = "npm",     priority = 9 },
-    { name = "copilot", priority = 9 },
     { name = "luasnip", priority = 7 },
     {
       name = "buffer",

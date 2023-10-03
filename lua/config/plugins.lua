@@ -356,7 +356,7 @@ return {
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("plugins.indent")
     end,
@@ -431,5 +431,5 @@ return {
     config = function()
       require('plugins.zen')
     end,
-  }
+  },
 }

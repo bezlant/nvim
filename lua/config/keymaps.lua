@@ -142,3 +142,5 @@ map("n", "K", function()
     vim.lsp.buf.hover()
   end
 end)
+
+map("n", "<leader>z", '<cmd>ZenMode<cr>')
