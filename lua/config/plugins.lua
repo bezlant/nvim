@@ -41,8 +41,9 @@ return {
     dependencies = {
       { "nvim-lua/popup.nvim" },
       { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    },
+      { "nvim-telescope/telescope-fzf-native.nvim",    build = "make" },
+      { "nvim-telescope/telescope-live-grep-args.nvim" },
+    }
   },
 
   {
@@ -397,6 +398,22 @@ return {
     config = function()
       require("plugins.git.signs")
     end,
+  },
+
+  {
+    "akinsho/git-conflict.nvim",
+    lazy = false,
+    version = "*",
+    config = function()
+      require("plugins.git.conflict")
+    end,
+    keys = {
+      { "<Leader>gcb", '<cmd>GitConflictChooseBoth<CR>',   desc = 'choose both' },
+      { "<Leader>gcn", '<cmd>GitConflictNextConflict<CR>', desc = 'move to next conflict' },
+      { "<Leader>gcc", '<cmd>GitConflictChooseOurs<CR>',   desc = 'choose current' },
+      { "<Leader>gcp", '<cmd>GitConflictPrevConflict<CR>', desc = 'move to prev conflict' },
+      { "<Leader>gci", '<cmd>GitConflictChooseTheirs<CR>', desc = 'choose incoming' },
+    }
   },
 
   {

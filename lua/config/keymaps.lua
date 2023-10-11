@@ -3,6 +3,9 @@ local map = function(mode, lhs, rhs)
   vim.keymap.set(mode, lhs, rhs, silent)
 end
 
+-- I mess this up too often
+map('c', 'Q', 'q')
+
 -- Disable arrow keys
 map({ 'n', 'i', 'v' }, '<Up>', '<Nop>')
 map({ 'n', 'i', 'v' }, '<S-Up>', '<Nop>')
@@ -89,7 +92,7 @@ map(
 
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>ff', '<cmd>Telescope find_files hidden=true<cr>')
-map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+map("n", "<leader>fg", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 map('n', '<leader>fi', '<cmd>Telescope media_files<cr>')
 map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>')
