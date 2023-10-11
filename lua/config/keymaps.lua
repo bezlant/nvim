@@ -109,7 +109,7 @@ map('n', '<leader>tw', '<cmd>Trouble workspace_diagnostics<CR>')
 map('n', '<leader>td', '<cmd>Trouble document_diagnostics<CR>')
 map('n', '<leader>tn', '<cmd>lua require("trouble").next({skip_groups = true, jump = true})<CR>')
 map('n', '<leader>tp', '<cmd>lua require("trouble").previous({skip_groups = true, jump = true})<CR>')
-map('n', '<leader>tp', '<cmd>Trouble quickfix<CR>')
+map('n', '<leader>tq', '<cmd>Trouble quickfix<CR>')
 
 -- Yanky
 map('x', 'y', '<Plug>(YankyYank)')
