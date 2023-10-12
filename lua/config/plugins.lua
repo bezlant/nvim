@@ -48,6 +48,7 @@ return {
 
   {
     "nvim-tree/nvim-tree.lua",
+    lazy = false,
     cmd = {
       "NvimTreeOpen",
       "NvimTreeClose",
