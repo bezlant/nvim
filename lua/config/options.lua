@@ -47,7 +47,6 @@ local options = {
   wildignore     = "*node_modules/**",
   wrap           = true,
   writebackup    = false,
-  langmap        = 'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz',
 }
 
 local globals = {

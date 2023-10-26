@@ -1,6 +1,8 @@
+- [ ] Read help doc of neovim
+- [ ] Go plugin by plugin a read docs & customize
 - [ ] Telescope configurations and tweaks
 - [ ] DAP
 - [ ] Prettier
 - [ ] TailwindCSS
-- [ ] Go plugin by plugin a read docs & customize
-- [ ] Read help doc of neovim
+- [ ] Orgmode
+
