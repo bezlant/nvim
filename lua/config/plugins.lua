@@ -450,4 +450,8 @@ return {
       require('plugins.zen')
     end,
   },
+
+  {
+    "christoomey/vim-tmux-navigator",
+  },
 }

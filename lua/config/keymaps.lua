@@ -20,12 +20,6 @@ map({ 'n', 'i', 'v' }, '<S-Right>', '<Nop>')
 map({ 'n', 'i', 'v' }, '<C-p>', '<Up>')
 map({ 'n', 'i', 'v' }, '<C-n> ', '<Down>')
 
--- Easier pane navigation
-map('n', '<C-h>', '<C-w>h')
-map('n', '<C-j>', '<C-w>j')
-map('n', '<C-k>', '<C-w>k')
-map('n', '<C-l>', '<C-w>l')
-
 -- Quick escape
 map('i', 'jk', '<ESC>')
 
