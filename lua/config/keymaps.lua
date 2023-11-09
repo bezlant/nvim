@@ -20,6 +20,12 @@ map({ 'n', 'i', 'v' }, '<S-Right>', '<Nop>')
 map({ 'n', 'i', 'v' }, '<C-p>', '<Up>')
 map({ 'n', 'i', 'v' }, '<C-n> ', '<Down>')
 
+-- Easier pane navigation
+map('n', '<C-h>', '<cmd>TmuxNavigateLeft<cr>')
+map('n', '<C-j>', '<cmd>TmuxNavigateDown<cr>')
+map('n', '<C-k>', '<cmd>TmuxNavigateUp<cr>')
+map('n', '<C-l>', '<cmd>TmuxNavigateRight<cr>')
+
 -- Quick escape
 map('i', 'jk', '<ESC>')
 

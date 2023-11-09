@@ -50,6 +50,7 @@ local options = {
 }
 
 local globals = {
+  tmux_navigator_no_mappings = 1,
   mapleader = ' ',
   speeddating_no_mappings = 1, --- Disable default mappings for speeddating
 }
