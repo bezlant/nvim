@@ -52,7 +52,8 @@ local options = {
 local globals = {
   tmux_navigator_no_mappings = 1,
   mapleader = ' ',
-  speeddating_no_mappings = 1, --- Disable default mappings for speeddating
+  speeddating_no_mappings = 1,
+  skip_ts_context_commentstring_module = true
 }
 
 vim.opt.shortmess:append('c');
