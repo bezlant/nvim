@@ -115,20 +115,13 @@ map('n', '<leader>tp', '<cmd>lua require("trouble").previous({skip_groups = true
 map('n', '<leader>tq', '<cmd>Trouble quickfix<CR>')
 
 -- Yanky
-map('x', 'y', '<Plug>(YankyYank)')
-map('n', 'y', '<Plug>(YankyYank)')
-map('n', 'y', '<Plug>(YankyYank)')
-map('n', 'p', '<Plug>(YankyPutAfter)')
-map('n', 'p', '<Plug>(YankyPutAfter)')
-map('n', 'P', '<Plug>(YankyPutBefore)')
-map('x', 'p', '<Plug>(YankyPutAfter)')
-map('x', 'P', '<Plug>(YankyPutBefore)')
-map('n', 'gp', '<Plug>(YankyGPutAfter)')
-map('n', 'gP', '<Plug>(YankyGPutBefore)')
-map('x', 'gp', '<Plug>(YankyGPutAfter)')
-map('x', 'gP', '<Plug>(YankyGPutBefore)')
-map('n', '<c-p>', '<Plug>(YankyCycleForward)')
-map('n', '<c-n>', '<Plug>(YankyCycleBackward)')
+map({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+map({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+map({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+map({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+
+map("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
+map("n", "<c-n>", "<Plug>(YankyNextEntry)")
 
 -- Lazy
 map('n', '<leader>L', '<cmd>:Lazy<cr>')
