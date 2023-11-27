@@ -151,7 +151,10 @@ return {
   {
     "dmmulroy/tsc.nvim",
     cmd = { "TSC" },
-    config = true,
+    opts = {
+      watch = true,
+      auto_start_watch_mode = true,
+    }
   },
 
   {
