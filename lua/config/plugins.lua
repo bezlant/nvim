@@ -405,9 +405,22 @@ return {
   },
 
   {
+    "sindrets/diffview.nvim",
+    lazy = true,
+    enabled = true,
+    event = "BufRead",
+    config = function()
+      require("plugins.git.diffview")
+    end,
+    keys = {
+      { "<Leader>gd", "<cmd>lua require('plugins.git.diffview').toggle_file_history()<CR>", desc = "diff file" },
+      { "<Leader>gs", "<cmd>lua require('plugins.git.diffview').toggle_status()<CR>",       desc = "status" }
+    },
+  },
+
+  {
     "akinsho/git-conflict.nvim",
     lazy = false,
-    version = "*",
     config = function()
       require("plugins.git.conflict")
     end,
