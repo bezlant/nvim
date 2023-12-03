@@ -1,5 +1,4 @@
 local actions    = require('telescope.actions')
-local builtin    = require('telescope.builtin')
 local previewers = require('telescope.previewers')
 local sorters    = require('telescope.sorters')
 local telescope  = require("telescope")
@@ -7,6 +6,7 @@ local telescope  = require("telescope")
 local trouble    = require("trouble.providers.telescope")
 local icons      = require('config.constants').icons
 
+telescope.load_extension('macros')
 telescope.load_extension("live_grep_args")
 telescope.load_extension('fzf')
 

@@ -96,12 +96,12 @@ map("n", "<leader>fg", "<cmd>lua require('telescope').extensions.live_grep_args.
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 map('n', '<leader>fi', '<cmd>Telescope media_files<cr>')
 map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>')
-map('n', '<leader>fm', '<cmd>Telescope man_pages<cr>')
 map('n', '<leader>fo', '<cmd>Telescope vim_options<cr>')
 map('n', '<leader>fr', '<cmd>Telescope resume<cr>')
 map('n', '<leader>fs', '<cmd>Telescope luasnip<cr>')
 map('n', '<leader>ft', '<cmd>TodoTelescope<cr>')
 map('n', '<leader>fy', '<cmd>Telescope yank_history<cr>')
+map('n', '<leader>fm', '<cmd>Telescope macros<cr>')
 
 -- NvimTree
 map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
