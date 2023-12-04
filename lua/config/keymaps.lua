@@ -81,17 +81,17 @@ map('n', '<leader>cd', '<cmd>cd %:p:h<cr><cmd>:pwd<cr>')
 map(
   'n',
   '<C-f>',
-  "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy({ previewer = false, layout_config = { height = 0.2 }}))<cr>"
+  "<cmd> Telescope find_files<cr>"
 )
 
 map(
   'n',
   '<leader>f',
-  "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy({ previewer = false, layout_config = { height = 0.2 }}))<cr>"
+  "<cmd> Telescope find_files<cr>"
 )
 
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
-map('n', '<leader>ff', '<cmd>Telescope find_files hidden=true<cr>')
+map('n', '<leader>ff', '<cmd>Telescope find_files {hidden=true, no_ignore=true}<cr>')
 map("n", "<leader>fg", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 map('n', '<leader>fi', '<cmd>Telescope media_files<cr>')
