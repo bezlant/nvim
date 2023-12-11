@@ -41,7 +41,14 @@ local handlers = {
   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = constants.border.border }),
   ["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
-    { virtual_text = constants.virtual_text }
+    {
+      underline = true,
+      virtual_text = {
+        spacin = 5,
+        severity_limit = 'Warning',
+      },
+      update_in_insert = true
+    }
   ),
 }
 

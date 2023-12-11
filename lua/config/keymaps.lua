@@ -140,3 +140,7 @@ map("n", "K", function()
 end)
 
 map("n", "<leader>z", '<cmd>ZenMode<cr>')
+
+
+map("n", "<leader>tr", require("neotest").run.run)
+map("n", "<leader>ta", require("neotest").run.attach)

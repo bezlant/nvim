@@ -26,6 +26,7 @@ return {
     end,
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
+      "windwp/nvim-ts-autotag",
       "nvim-treesitter/nvim-treesitter-context",
       "nvim-treesitter/nvim-treesitter-textobjects",
       "RRethy/nvim-treesitter-textsubjects",
@@ -431,6 +432,19 @@ return {
       { "<Leader>gcp", '<cmd>GitConflictPrevConflict<CR>', desc = 'move to prev conflict' },
       { "<Leader>gci", '<cmd>GitConflictChooseTheirs<CR>', desc = 'choose incoming' },
     }
+  },
+
+  {
+    "rcarriga/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "thenbe/neotest-playwright",
+      "antoinemadec/FixCursorHold.nvim"
+    },
+    config = function()
+      require("plugins.neotest")
+    end,
   },
 
   {
