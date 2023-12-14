@@ -58,7 +58,7 @@ return {
       "NvimTreeFindFileToggle",
     },
     keys = {
-      { "<leader>e", "<cmd>lua require('nvim-tree.api').tree.toggle()<CR>" },
+      { "<leader>e", "<cmd>lua require('nvim-tree.api').tree.toggle()<CR>", desc = 'toggle tree' },
     },
     config = function()
       require("plugins.tree")
@@ -79,7 +79,7 @@ return {
     "williamboman/mason.nvim",
     cmd = "Mason",
     keys = {
-      { "<leader>M", "<cmd>Mason<cr>" },
+      { "<leader>M", "<cmd>Mason<cr>", desc = 'mason ui' },
     },
   },
 
@@ -173,7 +173,7 @@ return {
     lazy = true,
     cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
     keys = {
-      { "gJ", "<cmd>TSJToggle<CR>" },
+      { "gJ", "<cmd>TSJToggle<CR>", desc = 'toggle formatting' },
     },
     config = function()
       require('treesj').setup({
@@ -445,6 +445,10 @@ return {
     config = function()
       require("plugins.neotest")
     end,
+    keys = {
+      { "<leader>tr", '<cmd>lua require("neotest").run.run()<cr>',    desc = 'run tests' },
+      { "<leader>ta", '<cmd>lua require("neotest").run.attach()<cr>', desc = 'attach to tests' }
+    },
   },
 
   {

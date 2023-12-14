@@ -94,7 +94,6 @@ map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>ff', '<cmd>Telescope find_files {hidden=true, no_ignore=true}<cr>')
 map("n", "<leader>fg", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
-map('n', '<leader>fi', '<cmd>Telescope media_files<cr>')
 map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>')
 map('n', '<leader>fo', '<cmd>Telescope vim_options<cr>')
 map('n', '<leader>fr', '<cmd>Telescope resume<cr>')
@@ -140,7 +139,3 @@ map("n", "K", function()
 end)
 
 map("n", "<leader>z", '<cmd>ZenMode<cr>')
-
-
-map("n", "<leader>tr", require("neotest").run.run)
-map("n", "<leader>ta", require("neotest").run.attach)
