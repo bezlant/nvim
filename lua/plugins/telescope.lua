@@ -6,7 +6,6 @@ local telescope  = require("telescope")
 local trouble    = require("trouble.providers.telescope")
 local icons      = require('config.constants').icons
 
-telescope.load_extension('macros')
 telescope.load_extension("live_grep_args")
 telescope.load_extension('fzf')
 

@@ -19,8 +19,6 @@ local location = {
   padding = 0,
 }
 
-local macro_status = require('NeoComposer.ui').status_recording
-
 local spaces = function()
   return 'spaces: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth')
 end
@@ -37,7 +35,7 @@ require('lualine').setup({
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch' },
-    lualine_c = { { 'filename', path = 1 }, macro_status },
+    lualine_c = { { 'filename', path = 1 } },
     lualine_x = { diff, spaces, 'encoding', filetype, 'fileformat' },
     lualine_z = { 'progress' },
     lualine_y = { location },

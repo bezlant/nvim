@@ -492,10 +492,4 @@ return {
   {
     "b0o/schemastore.nvim"
   },
-
-  {
-    "ecthelionvi/NeoComposer.nvim",
-    dependencies = { "kkharji/sqlite.lua" },
-    opts = {}
-  },
 }
