@@ -114,7 +114,15 @@ lspconfig.vuels.setup({
   settings = require("lsp.servers.vuels").settings,
 })
 
-for _, server in ipairs({ 'cssmodules_ls', 'marksman', 'stylelint_lsp', "bashls", "html", "yamlls" }) do
+lspconfig.stylelint_lsp.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  handlers = handlers,
+  filetypes = require("lsp.servers.stylelint").filetypes,
+  settings = require("lsp.servers.stylelint").settings,
+})
+
+for _, server in ipairs({ 'cssmodules_ls', 'marksman', "bashls", "html", "yamlls" }) do
   lspconfig[server].setup({
     on_attach = on_attach,
     capabilities = capabilities,
@@ -125,7 +133,7 @@ end
 require("ufo").setup({
   fold_virt_text_handler = ufo_config_handler,
   open_fold_hl_timeout = 0,
-  close_fold_kinds = { "imports" },
+  close_fold_kinds_for_ft = { "imports" },
   preview = {
     win_config = {
       border = { '', '─', '', '', '', '─', '', '' },
