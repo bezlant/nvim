@@ -7,6 +7,7 @@ function M.enable_format_on_save()
       local root_dir = vim.fn.getcwd()
       local eslintrc_json = root_dir .. "/.eslintrc.json"
       local eslintrc_js = root_dir .. "/.eslintrc.js"
+      local eslintrc = root_dir .. "/.eslintrc"
 
       -- Check if eslint LSP is active
       local active_clients = vim.lsp.buf_get_clients()
@@ -19,7 +20,9 @@ function M.enable_format_on_save()
         end
       end
 
-      if eslint_is_active and (vim.fn.filereadable(eslintrc_json) == 1 or vim.fn.filereadable(eslintrc_js) == 1) then
+      local found_eslint_config = vim.fn.filereadable(eslintrc) == 1 or vim.fn.filereadable(eslintrc_json) == 1 or vim.fn.filereadable(eslintrc_js) == 1
+
+      if eslint_is_active and found_eslint_config then
         vim.cmd("EslintFixAll")
       else
         vim.lsp.buf.format()

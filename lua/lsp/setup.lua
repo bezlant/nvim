@@ -53,10 +53,6 @@ local handlers = {
 }
 
 local function on_attach(client, bufnr)
-  if client.supports_method("textDocument/formatting") then
-    require("lsp.functions").enable_format_on_save()
-  end
-
   local map = function(key, command)
     vim.keymap.set('n', key, command, { buffer = bufnr })
   end
@@ -132,8 +128,9 @@ end
 
 require("ufo").setup({
   fold_virt_text_handler = ufo_config_handler,
-  open_fold_hl_timeout = 0,
-  close_fold_kinds_for_ft = { "imports" },
+  close_fold_kinds_for_ft = {
+    default = {"imports", "comment"},
+  },
   preview = {
     win_config = {
       border = { '', '─', '', '', '', '─', '', '' },
@@ -147,4 +144,6 @@ require("ufo").setup({
       jumpBot = ']'
     }
   },
+
+  open_fold_hl_timeout = 0,
 })
