@@ -1,8 +1,0 @@
-- [ ] Use LazyVim as base
-- [ ] Read help doc of neovim
-- [ ] Go plugin by plugin a read docs & customize
-- [ ] Telescope configurations and tweaks
-- [ ] DAP
-- [ ] Prettier
-- [ ] TailwindCSS
-- [ ] Orgmode
