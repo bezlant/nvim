@@ -3,7 +3,7 @@ local previewers = require('telescope.previewers')
 local sorters    = require('telescope.sorters')
 local telescope  = require("telescope")
 
-local trouble    = require("trouble.providers.telescope")
+local trouble    = require("trouble.sources.telescope")
 local icons      = require('config.constants').icons
 
 telescope.load_extension("live_grep_args")
@@ -58,7 +58,7 @@ telescope.setup {
         ["<C-u>"] = actions.results_scrolling_up,
 
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-        ["<C-t>"] = trouble.open_with_trouble,
+        ["<C-t>"] = trouble.open,
 
         ["<ESC><ESC>"] = actions.close,
 
@@ -68,7 +68,7 @@ telescope.setup {
         ["<C-u>"] = actions.results_scrolling_up,
 
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-        ["<C-t>"] = trouble.open_with_trouble,
+        ["<C-t>"] = trouble.open,
 
         ["<ESC>"] = actions.close,
       }
