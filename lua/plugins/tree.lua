@@ -116,6 +116,12 @@ require("nvim-tree").setup({
   hijack_cursor = true,
   sync_root_with_cwd = true,
 
+  git = {
+    enable = true,
+    ignore = true,
+    timeout = 1000,
+  },
+
   view = {
     width = 45,
     adaptive_size = false,
