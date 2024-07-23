@@ -77,6 +77,7 @@ return {
     },
     servers = nil,
   },
+
   {
     "williamboman/mason.nvim",
     cmd = "Mason",
