@@ -102,12 +102,12 @@ lspconfig.lua_ls.setup({
   settings = require("lsp.servers.lua_ls").settings,
 })
 
-lspconfig.vuels.setup({
-  filetypes = require("lsp.servers.vuels").filetypes,
+lspconfig.volar.setup({
+  filetypes = require("lsp.servers.volar").filetypes,
   handlers = handlers,
-  init_options = require("lsp.servers.vuels").init_options,
-  on_attach = require("lsp.servers.vuels").on_attach,
-  settings = require("lsp.servers.vuels").settings,
+  init_options = require("lsp.servers.volar").init_options,
+  on_attach = require("lsp.servers.volar").on_attach,
+  settings = require("lsp.servers.volar").settings,
 })
 
 lspconfig.stylelint_lsp.setup({
