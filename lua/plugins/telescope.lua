@@ -21,6 +21,7 @@ local git_icons = {
 
 telescope.setup {
   defaults = {
+    file_ignore_patterns = { "node_modules" },
     border            = true,
     hl_result_eol     = true,
     multi_icon        = '',
@@ -76,6 +77,7 @@ telescope.setup {
   },
   extensions = {
     fzf = {
+      fuzzy = true,
       override_generic_sorter = false,
       override_file_sorter = true,
       case_mode = "smart_case",

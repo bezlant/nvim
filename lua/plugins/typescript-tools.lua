@@ -50,10 +50,12 @@ require("typescript-tools").setup({
     tsserver_file_preferences = {
       includeInlayParameterNameHints = "all",
       includeCompletionsForModuleExports = true,
+      importModuleSpecifierPreference = "non-relative",
       quotePreference = "auto",
     },
     tsserver_format_options = {
       insertSpaceAfterOpeningAndBeforeClosingEmptyBraces = false,
     },
   },
+
 })
