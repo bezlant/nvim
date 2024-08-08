@@ -11,12 +11,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" },
 -- Autoread buffer on an external change
 vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter' }, { command = 'checktime' })
 
--- Enable spell checking for certain file types
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "*.txt", "*.md", "*.tex" },
-  command = "setlocal spell"
-})
-
 -- Show `` in specific files
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "*.txt", "*.md", "*.json" },
