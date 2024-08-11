@@ -197,12 +197,20 @@ return {
 
 
   {
-    "akinsho/nvim-toggleterm.lua",
-    lazy = false,
-    branch = "main",
-    config = function()
-      require("plugins.toggleterm")
-    end,
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    keys = {
+      { "<leader>g", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    }
   },
 
   { "tpope/vim-repeat",       lazy = false },
