@@ -1,4 +1,4 @@
-require 'nvim-autopairs'.setup({
+require('nvim-autopairs').setup({
   check_ts = true,
   ts_config = {
     lua = { 'string' },
@@ -10,6 +10,17 @@ require 'nvim-autopairs'.setup({
 local Rule = require 'nvim-autopairs.rule'
 local cond = require 'nvim-autopairs.conds'
 local npairs = require 'nvim-autopairs'
+
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp = require('cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done({ map_char = { tex = '' } })
+)
+
+for _,i in ipairs(npairs.config.rules) do
+  i.key_map=nil
+end
 
 local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' } }
 npairs.add_rules {
@@ -64,8 +75,3 @@ for _, punct in pairs { ",", ";" } do
         :use_key(punct)
   }
 end
-
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-local cmp = require('cmp')
-
-cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))

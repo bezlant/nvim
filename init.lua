@@ -1,5 +1,6 @@
 -- huge is over 100KB
 local is_huge_file = function(bufnr)
+
 	bufnr = bufnr or 0
 	local max_filesize = 100 * 1024 -- 100 KB
 	local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))

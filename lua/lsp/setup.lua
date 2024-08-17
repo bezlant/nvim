@@ -44,7 +44,7 @@ local handlers = {
     {
       underline = true,
       virtual_text = {
-        spacin = 5,
+        spacing = 5,
         severity = { min = vim.diagnostic.severity.WARN },
       },
       update_in_insert = true
