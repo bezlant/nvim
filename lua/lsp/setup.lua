@@ -52,7 +52,7 @@ local handlers = {
   ),
 }
 
-local function on_attach(client, bufnr)
+local function on_attach(_, bufnr)
   local map = function(key, command)
     vim.keymap.set('n', key, command, { buffer = bufnr })
   end

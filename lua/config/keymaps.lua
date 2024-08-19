@@ -105,9 +105,8 @@ map('n', '<leader>fy', '<cmd>Telescope yank_history<cr>')
 map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
 
 -- Vimgrep, grep, quickfix list, jump list cycle
-map('n', '<leader>t', '<cmd>TroubleToggle<CR>')
-map('n', '<leader>tw', '<cmd>Trouble workspace_diagnostics<CR>')
-map('n', '<leader>td', '<cmd>Trouble document_diagnostics<CR>')
+map('n', '<leader>t', '<cmd>Trouble<CR>')
+map('n', '<leader>tw', '<cmd>Telescope diagnostics wrap_results=true<CR>')
 map('n', '<leader>tn', '<cmd>lua require("trouble").next({skip_groups = true, jump = true})<CR>')
 map('n', '<leader>tp', '<cmd>lua require("trouble").previous({skip_groups = true, jump = true})<CR>')
 map('n', '<leader>tq', '<cmd>Trouble quickfix<CR>')

@@ -26,9 +26,7 @@ local handlers = {
 
 require("typescript-tools").setup({
   on_attach = function(_, bufnr)
-    if constants.hints and vim.fn.has("nvim-0.10") then
-      vim.lsp.inlay_hint.enable(true, { bufnr })
-    end
+    vim.lsp.inlay_hint.enable(true, { bufnr })
 
     local map = function(key, command)
       vim.keymap.set('n', key, command, { buffer = bufnr })
@@ -57,5 +55,4 @@ require("typescript-tools").setup({
       insertSpaceAfterOpeningAndBeforeClosingEmptyBraces = false,
     },
   },
-
 })

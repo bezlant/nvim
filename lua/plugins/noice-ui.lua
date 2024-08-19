@@ -1,9 +1,10 @@
 require("noice").setup({
   messages = { enabled = true },
+
   lsp = {
     override = {
       ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      ["vim.lsp.util.stylize_markdown"] = true,
+      ["vim.lsp.util.stylize_markdown"] = false,
       ["cmp.entry.get_documentation"] = true,
     },
     progress = {
@@ -13,6 +14,14 @@ require("noice").setup({
       enabled = false,
     },
   },
+
+  routes = {
+    {
+      view = "notify",
+      filter = { event = "msg_showmode" },
+    },
+  },
+
   presets = {
     bottom_search = false,        -- use a classic bottom cmdline for search
     command_palette = true,       -- position the cmdline and popupmenu together

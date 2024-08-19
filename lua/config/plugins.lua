@@ -376,12 +376,22 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
     config = function()
-      require("plugins.noice")
+      require("plugins.noice-ui")
     end,
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     }
+  },
+
+
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    dependencies = "MunifTanjim/nui.nvim",
+    config = function()
+      require("plugins.dressing")
+    end
   },
 
   {
@@ -508,6 +518,10 @@ return {
     'MeanderingProgrammer/markdown.nvim',
     main = "render-markdown",
     opts = {},
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons',
+    },
+  },
   }
 }
