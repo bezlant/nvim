@@ -523,5 +523,22 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
   },
+
+  {
+    "artemave/workspace-diagnostics.nvim",
+    config = function()
+      require("workspace-diagnostics").setup({
+        workspace_files = function()
+          local gitPath = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+          local workspace_files = vim.fn.split(
+            vim.fn.system("git ls-files " .. gitPath .. "/packages/products-module"),
+            "\n"
+          )
+
+          return workspace_files
+        end,
+        debug = true,
+      })
+    end,
   }
 }
