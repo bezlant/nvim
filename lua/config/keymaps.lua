@@ -100,6 +100,7 @@ map('n', '<leader>fr', '<cmd>Telescope resume<cr>')
 map('n', '<leader>fs', '<cmd>Telescope luasnip<cr>')
 map('n', '<leader>ft', '<cmd>TodoTelescope<cr>')
 map('n', '<leader>fy', '<cmd>Telescope yank_history<cr>')
+map('n', '<leader>fi', '<cmd>lua require("nvim-github-codesearch").prompt()<cr>')
 
 -- NvimTree
 map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')

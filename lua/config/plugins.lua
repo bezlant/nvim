@@ -525,9 +525,10 @@ return {
   },
 
   {
-    'mfussenegger/nvim-lint',
+    'napisani/nvim-github-codesearch',
+    build = 'make',
     config = function ()
-      require('plugins.linting')
+      require('plugins.github-codesearch')
     end
-  }
+  },
 }

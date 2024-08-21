@@ -16,7 +16,7 @@ M.settings = {
   },
 }
 
-M.on_attach = function(client, bufnr)
+M.on_attach = function(client, _)
   client.server_capabilities.documentFormattingProvider = true
   client.server_capabilities.documentRangeFormattingProvider = true
 end
