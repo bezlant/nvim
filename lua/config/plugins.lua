@@ -302,7 +302,7 @@ return {
     "rcarriga/nvim-notify",
     config = function()
       require("notify").setup({
-        timeout = 2000,
+        timeout = 3000,
         fps     = 60,
         stages  = 'static',
         icons   = {
@@ -525,20 +525,9 @@ return {
   },
 
   {
-    "artemave/workspace-diagnostics.nvim",
-    config = function()
-      require("workspace-diagnostics").setup({
-        workspace_files = function()
-          local gitPath = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
-          local workspace_files = vim.fn.split(
-            vim.fn.system("git ls-files " .. gitPath .. "/packages/products-module"),
-            "\n"
-          )
-
-          return workspace_files
-        end,
-        debug = true,
-      })
-    end,
+    'mfussenegger/nvim-lint',
+    config = function ()
+      require('plugins.linting')
+    end
   }
 }
