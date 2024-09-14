@@ -427,52 +427,6 @@ return {
   },
 
   {
-    "sindrets/diffview.nvim",
-    lazy = true,
-    enabled = true,
-    event = "BufRead",
-    config = function()
-      require("plugins.git.diffview")
-    end,
-    keys = {
-      { "<Leader>gd", "<cmd>lua require('plugins.git.diffview').toggle_file_history()<CR>", desc = "diff file" },
-      { "<Leader>gs", "<cmd>lua require('plugins.git.diffview').toggle_status()<CR>",       desc = "status" }
-    },
-  },
-
-  {
-    "akinsho/git-conflict.nvim",
-    lazy = false,
-    config = function()
-      require("plugins.git.conflict")
-    end,
-    keys = {
-      { "<Leader>gcb", '<cmd>GitConflictChooseBoth<CR>',   desc = 'choose both' },
-      { "<Leader>gcn", '<cmd>GitConflictNextConflict<CR>', desc = 'move to next conflict' },
-      { "<Leader>gcc", '<cmd>GitConflictChooseOurs<CR>',   desc = 'choose current' },
-      { "<Leader>gcp", '<cmd>GitConflictPrevConflict<CR>', desc = 'move to prev conflict' },
-      { "<Leader>gci", '<cmd>GitConflictChooseTheirs<CR>', desc = 'choose incoming' },
-    }
-  },
-
-  {
-    "rcarriga/neotest",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "thenbe/neotest-playwright",
-      "antoinemadec/FixCursorHold.nvim"
-    },
-    config = function()
-      require("plugins.neotest")
-    end,
-    keys = {
-      { "<leader>tr", '<cmd>lua require("neotest").run.run()<cr>',    desc = 'run tests' },
-      { "<leader>ta", '<cmd>lua require("neotest").run.attach()<cr>', desc = 'attach to tests' }
-    },
-  },
-
-  {
     'gbprod/yanky.nvim',
     event = 'BufEnter',
     config = function()
@@ -528,7 +482,10 @@ return {
     'napisani/nvim-github-codesearch',
     build = 'make',
     config = function ()
-      require('plugins.github-codesearch')
+      require("nvim-github-codesearch").setup({
+        github_auth_token = os.getenv("GIT_AUTH_TOKEN"),
+        use_telescope = true
+      })
     end
   },
 }
