@@ -50,24 +50,6 @@ return {
   },
 
   {
-    "nvim-tree/nvim-tree.lua",
-    lazy = false,
-    cmd = {
-      "NvimTreeOpen",
-      "NvimTreeClose",
-      "NvimTreeToggle",
-      "NvimTreeFindFile",
-      "NvimTreeFindFileToggle",
-    },
-    keys = {
-      { "<leader>e", "<cmd>lua require('nvim-tree.api').tree.toggle()<CR>", desc = 'toggle tree' },
-    },
-    config = function()
-      require("plugins.tree")
-    end,
-  },
-
-  {
     "neovim/nvim-lspconfig",
     lazy = false,
     dependencies = {
@@ -159,16 +141,6 @@ return {
       watch = true,
       auto_start_watch_mode = true,
     }
-  },
-
-  {
-    "antosha417/nvim-lsp-file-operations",
-    event = "LspAttach",
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-tree/nvim-tree.lua" },
-    },
-    config = true
   },
 
   {
@@ -488,4 +460,10 @@ return {
       })
     end
   },
+
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = { "nvim-tree/nvim-web-devicons" }
+  }
 }

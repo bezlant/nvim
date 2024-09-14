@@ -102,9 +102,6 @@ map('n', '<leader>ft', '<cmd>TodoTelescope<cr>')
 map('n', '<leader>fy', '<cmd>Telescope yank_history<cr>')
 map('n', '<leader>fi', '<cmd>lua require("nvim-github-codesearch").prompt()<cr>')
 
--- NvimTree
-map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
-
 -- Vimgrep, grep, quickfix list, jump list cycle
 map('n', '<leader>t', '<cmd>Trouble<CR>')
 map('n', '<leader>tw', '<cmd>Telescope diagnostics wrap_results=true<CR>')
@@ -138,3 +135,5 @@ map("n", "K", function()
 end)
 
 map("n", "<leader>z", '<cmd>ZenMode<cr>')
+
+map("n", "-", "<CMD>Oil<CR>")
