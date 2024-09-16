@@ -14,10 +14,10 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("config.plugins", {
-  -- spec = {
-  --   { import = "plugins" }
-  -- },
+require("lazy").setup({
+  spec = {
+    { import = "plugins" },
+  },
 
   checker = {
     enabled = true,
@@ -25,7 +25,9 @@ require("lazy").setup("config.plugins", {
   },
 
   install = { colorscheme = { "dracula" } },
+
   concurrency = 5,
+
   performance = {
     cache = {
       enabled = true,
@@ -33,28 +35,12 @@ require("lazy").setup("config.plugins", {
     rtp = {
       disabled_plugins = {
         "gzip",
-        "tar",
+        "rplugin",
         "tarPlugin",
-        "zip",
-        "zipPlugin",
-        "getscript",
-        "getscriptPlugin",
-        "vimball",
-        "vimballPlugin",
-        "2html_plugin",
-        "logiPat",
-        "rrhelper",
-        "netrw",
-        "netrwPlugin",
-        "netrwSettings",
-        "netrwFileHandlers",
-        "tutor",
         "tohtml",
+        "tutor",
+        "zipPlugin",
       },
     },
-  },
-  debug = false,
-  ui = {
-    border = require("config.constants").border.border,
   },
 })

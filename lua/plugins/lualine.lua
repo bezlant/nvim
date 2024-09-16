@@ -25,27 +25,31 @@ end
 
 local noice = require("noice")
 
-require("lualine").setup({
-  options = {
-    globalstatus = true,
-    icons_enabled = true,
-    theme = "dracula-nvim",
-    component_separators = { left = "", right = "" },
-    section_separators = { left = "", right = "" },
-    always_divide_middle = true,
-  },
-  sections = {
-    lualine_a = { "mode" },
-    lualine_b = {
-      {
-        noice.api.statusline.mode.get,
-        cond = noice.api.statusline.mode.has,
-        color = { fg = "#ff9e64" },
-      },
+return {
+  "nvim-lualine/lualine.nvim",
+  event = { "VimEnter", "InsertEnter", "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
+  opts = {
+    options = {
+      globalstatus = true,
+      icons_enabled = true,
+      theme = "dracula-nvim",
+      component_separators = { left = "", right = "" },
+      section_separators = { left = "", right = "" },
+      always_divide_middle = true,
     },
-    lualine_c = { { "filename", path = 1 } },
-    lualine_x = { diff, spaces, "encoding", filetype, "fileformat" },
-    lualine_z = { "progress" },
-    lualine_y = { location },
+    sections = {
+      lualine_a = { "mode" },
+      lualine_b = {
+        {
+          noice.api.statusline.mode.get,
+          cond = noice.api.statusline.mode.has,
+          color = { fg = "#ff9e64" },
+        },
+      },
+      lualine_c = { { "filename", path = 1 } },
+      lualine_x = { diff, spaces, "encoding", filetype, "fileformat" },
+      lualine_z = { "progress" },
+      lualine_y = { location },
+    },
   },
-})
+}

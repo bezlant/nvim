@@ -24,35 +24,47 @@ local handlers = {
   end,
 }
 
-require("typescript-tools").setup({
-  on_attach = function(_, bufnr)
-    vim.lsp.inlay_hint.enable(true, { bufnr })
-
-    local map = function(key, command)
-      vim.keymap.set("n", key, command, { buffer = bufnr })
-    end
-
-    map("<leader>v", vim.lsp.buf.signature_help)
-    map("gd", vim.lsp.buf.definition)
-    map("gr", "<cmd>Telescope lsp_references<cr>")
-    map("gi", "<cmd>Telescope lsp_implementations<cr>")
-    map("]g", vim.diagnostic.goto_next)
-    map("[g", vim.diagnostic.goto_prev)
-    map("<leader>r", vim.lsp.buf.rename)
-    map("<leader>a", vim.lsp.buf.code_action)
-  end,
-  handlers = handlers,
-  settings = {
-    complete_function_calls = true,
-    separate_diagnostic_server = true,
-    tsserver_file_preferences = {
-      includeInlayParameterNameHints = "all",
-      includeCompletionsForModuleExports = true,
-      importModuleSpecifierPreference = "non-relative",
-      quotePreference = "auto",
-    },
-    tsserver_format_options = {
-      insertSpaceAfterOpeningAndBeforeClosingEmptyBraces = false,
-    },
+return {
+  "pmizio/typescript-tools.nvim",
+  event = { "BufReadPre", "BufNewFile" },
+  ft = { "typescript", "typescriptreact" },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "neovim/nvim-lspconfig",
   },
-})
+
+  config = function()
+    require("typescript-tools").setup({
+      on_attach = function(_, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr })
+
+        local map = function(key, command)
+          vim.keymap.set("n", key, command, { buffer = bufnr })
+        end
+
+        map("<leader>v", vim.lsp.buf.signature_help)
+        map("gd", vim.lsp.buf.definition)
+        map("gr", "<cmd>Telescope lsp_references<cr>")
+        map("gi", "<cmd>Telescope lsp_implementations<cr>")
+        map("]g", vim.diagnostic.goto_next)
+        map("[g", vim.diagnostic.goto_prev)
+        map("<leader>r", vim.lsp.buf.rename)
+        map("<leader>a", vim.lsp.buf.code_action)
+      end,
+      handlers = handlers,
+      settings = {
+        complete_function_calls = true,
+        separate_diagnostic_server = true,
+        tsserver_file_preferences = {
+          includeInlayParameterNameHints = "all",
+          includeCompletionsForModuleExports = true,
+          importModuleSpecifierPreference = "non-relative",
+          quotePreference = "auto",
+        },
+        tsserver_format_options = {
+          insertSpaceAfterOpeningAndBeforeClosingEmptyBraces = false,
+        },
+      },
+    })
+  end,
+}

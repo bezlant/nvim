@@ -1,19 +1,23 @@
-require("zen-mode").setup({
-  window = {
-    backdrop = 1,
-    width = 120,
-    height = 1,
-  },
-  plugins = {
-    options = {
-      enabled = false,
+return {
+  "folke/zen-mode.nvim",
+  dependencies = { "folke/twilight.nvim" },
+  opts = {
+    window = {
+      backdrop = 1,
+      width = 120,
+      height = 1,
     },
-    twilight = { enabled = false },
-    gitsigns = { enabled = false },
-    tmux = { enabled = false },
-    wezterm = {
-      enabled = true,
-      font = "+2",
+    plugins = {
+      options = {
+        enabled = false,
+      },
+      twilight = { enabled = false },
+      gitsigns = { enabled = false },
+      tmux = { enabled = false },
+      wezterm = {
+        enabled = true,
+        font = "+2",
+      },
     },
   },
-})
+}
