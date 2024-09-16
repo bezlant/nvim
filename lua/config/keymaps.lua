@@ -53,7 +53,7 @@ map('n', '<esc><esc>', '<cmd>noh<CR>')
 -- Jump to the first non blanck character
 map('n', '0', '^')
 
--- Scrolling improved (Neoscroll fixes this)
+-- Scrolling improved 
 map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-u>', '<C-u>zz')
 
@@ -97,9 +97,9 @@ map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>')
 map('n', '<leader>fo', '<cmd>Telescope vim_options<cr>')
 map('n', '<leader>fr', '<cmd>Telescope resume<cr>')
-map('n', '<leader>fs', '<cmd>Telescope luasnip<cr>')
 map('n', '<leader>ft', '<cmd>TodoTelescope<cr>')
 map('n', '<leader>fy', '<cmd>Telescope yank_history<cr>')
+map("n", "<leader>fs", '<cmd>Telescope git_status<cr>')
 map('n', '<leader>fi', '<cmd>lua require("nvim-github-codesearch").prompt()<cr>')
 
 -- Vimgrep, grep, quickfix list, jump list cycle
