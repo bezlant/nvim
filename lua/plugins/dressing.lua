@@ -129,17 +129,16 @@ require("dressing").setup({
 
     -- see :help dressing_get_config
     get_config = function(opts)
-      if opts.kind == 'codeaction' then
+      if opts.kind == "codeaction" then
         return {
-          backend = 'builtin',
+          backend = "builtin",
           nui = {
-            relative = 'cursor',
+            relative = "cursor",
             max_width = 80,
             min_height = 2,
-          }
+          },
         }
       end
-    end
+    end,
   },
-
 })

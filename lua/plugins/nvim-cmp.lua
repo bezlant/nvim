@@ -1,16 +1,16 @@
 local lspkind = require("lspkind")
 local types = require("cmp.types")
 
-local cmp = require('cmp')
-local luasnip = require('luasnip')
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
-local copilot_cmp_comparators = require('copilot_cmp.comparators')
+local copilot_cmp_comparators = require("copilot_cmp.comparators")
 
-require('luasnip/loaders/from_vscode').lazy_load()
+require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
-  local col = vim.fn.col('.') - 1
-  return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
+  local col = vim.fn.col(".") - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
 local function deprioritize_snippet(entry1, entry2)
@@ -31,9 +31,9 @@ local function limit_lsp_types(entry, ctx)
 
   if char_before_cursor == "." and char_after_dot:match("[a-zA-Z]") then
     if
-        kind == types.lsp.CompletionItemKind.Method
-        or kind == types.lsp.CompletionItemKind.Field
-        or kind == types.lsp.CompletionItemKind.Property
+      kind == types.lsp.CompletionItemKind.Method
+      or kind == types.lsp.CompletionItemKind.Field
+      or kind == types.lsp.CompletionItemKind.Property
     then
       return true
     else
@@ -75,7 +75,7 @@ local function get_lsp_completion_context(completion, source)
   end
 end
 
-local icons          = require('config.constants').icons
+local icons = require("config.constants").icons
 
 local source_mapping = {
   npm = icons.terminal .. "NPM",
@@ -92,7 +92,7 @@ local source_mapping = {
   zsh = icons.terminal .. "ZSH",
 }
 
-local buffer_option  = {
+local buffer_option = {
   -- Complete from all visible buffers (splits)
   get_bufnrs = function()
     local bufs = {}
@@ -110,10 +110,10 @@ cmp.setup({
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-k>'] = cmp.mapping.select_prev_item(),
-    ['<C-j>'] = cmp.mapping.select_next_item(),
-    ['<leader>q'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<C-e>'] = cmp.mapping({
+    ["<C-k>"] = cmp.mapping.select_prev_item(),
+    ["<C-j>"] = cmp.mapping.select_next_item(),
+    ["<leader>q"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+    ["<C-e>"] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
@@ -139,7 +139,7 @@ cmp.setup({
       "i",
       "s",
     }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -148,8 +148,8 @@ cmp.setup({
         fallback()
       end
     end, {
-      'i',
-      's',
+      "i",
+      "s",
     }),
     ["<C-l>"] = cmp.mapping(function(fallback)
       if luasnip.expandable() then
@@ -176,7 +176,7 @@ cmp.setup({
   }),
 
   formatting = {
-    fields = { 'kind', 'abbr', 'menu' },
+    fields = { "kind", "abbr", "menu" },
 
     format = function(entry, vim_item)
       local item_with_kind = lspkind.cmp_format({
@@ -186,8 +186,8 @@ cmp.setup({
       })(entry, vim_item)
 
       item_with_kind.menu = source_mapping[entry.source.name]
-      item_with_kind.menu = (vim_item.menu or '') .. ' '
-      item_with_kind.abbr = ' ' .. string.sub(item_with_kind.abbr, 1, item_with_kind.maxwidth)
+      item_with_kind.menu = (vim_item.menu or "") .. " "
+      item_with_kind.abbr = " " .. string.sub(item_with_kind.abbr, 1, item_with_kind.maxwidth)
 
       local completion_context = get_lsp_completion_context(entry.completion_item, entry.source)
       if completion_context ~= nil and completion_context ~= "" then
@@ -210,7 +210,7 @@ cmp.setup({
       -- Limits LSP results to specific types based on line context (FIelds, Methods, Variables)
       entry_filter = limit_lsp_types,
     },
-    { name = "npm",     priority = 9 },
+    { name = "npm", priority = 9 },
     { name = "luasnip", priority = 7 },
     {
       name = "buffer",
@@ -220,8 +220,8 @@ cmp.setup({
       option = buffer_option,
     },
     { name = "nvim_lua", priority = 5 },
-    { name = "path",     priority = 4 },
-    { name = "calc",     priority = 3 },
+    { name = "path", priority = 4 },
+    { name = "calc", priority = 3 },
   },
 
   sorting = {
@@ -259,21 +259,21 @@ cmp.setup({
 
   performance = {
     max_view_entries = 100,
-  }
-})
-
-cmp.setup.cmdline({ '/', '?' }, {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' },
   },
 })
 
-cmp.setup.cmdline(':', {
+cmp.setup.cmdline({ "/", "?" }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = "buffer" },
+  },
+})
+
+cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = 'path' },
+    { name = "path" },
   }, {
-    { name = 'cmdline' },
+    { name = "cmdline" },
   }),
 })

@@ -21,7 +21,10 @@ function M.enable_format_on_save()
         end
       end
 
-      local found_eslint_config = vim.fn.filereadable(eslintrc) == 1 or vim.fn.filereadable(eslintrc_json) == 1 or vim.fn.filereadable(eslintrc_js) == 1 or vim.fn.filereadable(eslint_config_mjs) == 1
+      local found_eslint_config = vim.fn.filereadable(eslintrc) == 1
+        or vim.fn.filereadable(eslintrc_json) == 1
+        or vim.fn.filereadable(eslintrc_js) == 1
+        or vim.fn.filereadable(eslint_config_mjs) == 1
 
       if eslint_is_active and found_eslint_config then
         vim.cmd("EslintFixAll")

@@ -1,5 +1,5 @@
 -- Diagnostic config
-local constants = require('config.constants')
+local constants = require("config.constants")
 
 vim.diagnostic.config({
   float = constants.border,
@@ -10,7 +10,6 @@ vim.diagnostic.config({
   virtual_text = { prefix = constants.icons.circle },
 })
 
-
 -- UI
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
@@ -19,9 +18,9 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
-local lspui_ok, lspui = pcall(require, 'lspconfig.ui.windows')
+local lspui_ok, lspui = pcall(require, "lspconfig.ui.windows")
 if not lspui_ok then
   return
 end
 
-lspui.default_options.border = constants.border.border or 'rounded'
+lspui.default_options.border = constants.border.border or "rounded"

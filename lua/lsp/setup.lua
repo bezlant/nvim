@@ -7,7 +7,7 @@ if not mason_ok or not mason_lsp_ok then
   return
 end
 
-local constants = require('config.constants')
+local constants = require("config.constants")
 
 mason.setup({
   ui = {
@@ -16,9 +16,9 @@ mason.setup({
 })
 
 mason_lsp.setup({
-  'cssmodules_ls',
-  'marksman',
-  'stylelint_lsp',
+  "cssmodules_ls",
+  "marksman",
+  "stylelint_lsp",
   "bashls",
   "cssls",
   "eslint",
@@ -39,32 +39,29 @@ local handlers = {
     border = constants.border.border,
   }),
   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = constants.border.border }),
-  ["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-      underline = true,
-      virtual_text = {
-        spacing = 5,
-        severity = { min = vim.diagnostic.severity.WARN },
-      },
-      update_in_insert = true
-    }
-  ),
+  ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    virtual_text = {
+      spacing = 5,
+      severity = { min = vim.diagnostic.severity.WARN },
+    },
+    update_in_insert = true,
+  }),
 }
 
 local function on_attach(_, bufnr)
   local map = function(key, command)
-    vim.keymap.set('n', key, command, { buffer = bufnr })
+    vim.keymap.set("n", key, command, { buffer = bufnr })
   end
 
-  map('<leader>v', vim.lsp.buf.signature_help)
-  map('gd', vim.lsp.buf.definition)
-  map('gr', '<cmd>Telescope lsp_references<cr>')
-  map('gi', '<cmd>Telescope lsp_implementations<cr>')
-  map(']g', vim.diagnostic.goto_next)
-  map('[g', vim.diagnostic.goto_prev)
-  map('<leader>r', vim.lsp.buf.rename)
-  map('<leader>a', vim.lsp.buf.code_action)
+  map("<leader>v", vim.lsp.buf.signature_help)
+  map("gd", vim.lsp.buf.definition)
+  map("gr", "<cmd>Telescope lsp_references<cr>")
+  map("gi", "<cmd>Telescope lsp_implementations<cr>")
+  map("]g", vim.diagnostic.goto_next)
+  map("[g", vim.diagnostic.goto_prev)
+  map("<leader>r", vim.lsp.buf.rename)
+  map("<leader>a", vim.lsp.buf.code_action)
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -118,7 +115,7 @@ lspconfig.stylelint_lsp.setup({
   settings = require("lsp.servers.stylelint").settings,
 })
 
-for _, server in ipairs({ 'cssmodules_ls', 'marksman', "bashls", "html", "yamlls" }) do
+for _, server in ipairs({ "cssmodules_ls", "marksman", "bashls", "html", "yamlls" }) do
   lspconfig[server].setup({
     on_attach = on_attach,
     capabilities = capabilities,
@@ -129,20 +126,20 @@ end
 require("ufo").setup({
   fold_virt_text_handler = ufo_config_handler,
   close_fold_kinds_for_ft = {
-    default = {"imports", "comment"},
+    default = { "imports", "comment" },
   },
   preview = {
     win_config = {
-      border = { '', '─', '', '', '', '─', '', '' },
-      winhighlight = 'Normal:Folded',
-      winblend = 0
+      border = { "", "─", "", "", "", "─", "", "" },
+      winhighlight = "Normal:Folded",
+      winblend = 0,
     },
     mappings = {
-      scrollU = '<C-u>',
-      scrollD = '<C-d>',
-      jumpTop = '[',
-      jumpBot = ']'
-    }
+      scrollU = "<C-u>",
+      scrollD = "<C-d>",
+      jumpTop = "[",
+      jumpBot = "]",
+    },
   },
 
   open_fold_hl_timeout = 0,

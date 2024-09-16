@@ -1,4 +1,4 @@
-require('yanky').setup({
+require("yanky").setup({
   highlight = {
     timer = 150,
   },

@@ -1,4 +1,4 @@
-local colors = require('dracula').colors();
+local colors = require("dracula").colors()
 
 local highlights = {
   CmpItemAbbr = { fg = colors.fg, bg = "NONE" },

@@ -1,11 +1,11 @@
 return {
   {
-    'Mofiqul/dracula.nvim',
+    "Mofiqul/dracula.nvim",
     lazy = false,
     priority = 1000,
     config = function()
       vim.cmd([[colorscheme dracula]])
-      require('config.colorscheme');
+      require("config.colorscheme")
     end,
   },
 
@@ -14,9 +14,7 @@ return {
   {
     "nvim-tree/nvim-web-devicons",
     config = function()
-      require("nvim-web-devicons").setup(
-        { default = true }
-      )
+      require("nvim-web-devicons").setup({ default = true })
     end,
   },
 
@@ -44,9 +42,9 @@ return {
     dependencies = {
       { "nvim-lua/popup.nvim" },
       { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope-fzf-native.nvim",    build = "make" },
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       { "nvim-telescope/telescope-live-grep-args.nvim" },
-    }
+    },
   },
 
   {
@@ -64,7 +62,7 @@ return {
     "williamboman/mason.nvim",
     cmd = "Mason",
     keys = {
-      { "<leader>M", "<cmd>Mason<cr>", desc = 'mason ui' },
+      { "<leader>M", "<cmd>Mason<cr>", desc = "mason ui" },
     },
   },
 
@@ -140,7 +138,7 @@ return {
     opts = {
       watch = true,
       auto_start_watch_mode = true,
-    }
+    },
   },
 
   {
@@ -148,14 +146,14 @@ return {
     lazy = true,
     cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
     keys = {
-      { "gJ", "<cmd>TSJToggle<CR>", desc = 'toggle formatting' },
+      { "gJ", "<cmd>TSJToggle<CR>", desc = "toggle formatting" },
     },
     config = function()
-      require('treesj').setup({
+      require("treesj").setup({
         use_default_keymaps = false,
         max_join_length = 240,
       })
-    end
+    end,
   },
 
   {
@@ -170,7 +168,7 @@ return {
   {
     "kdheepak/lazygit.nvim",
     config = function()
-      if vim.fn.has('nvim') and vim.fn.executable('nvr') then
+      if vim.fn.has("nvim") and vim.fn.executable("nvr") then
         vim.env.GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
       end
     end,
@@ -185,12 +183,12 @@ return {
       "nvim-lua/plenary.nvim",
     },
     keys = {
-      { "<leader>g", "<cmd>LazyGit<cr>", desc = "LazyGit" }
-    }
+      { "<leader>g", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
   },
 
-  { "tpope/vim-repeat",       lazy = false },
-  { "tpope/vim-speeddating",  lazy = false },
+  { "tpope/vim-repeat", lazy = false },
+  { "tpope/vim-speeddating", lazy = false },
   { "AndrewRadev/switch.vim", lazy = false },
 
   {
@@ -241,33 +239,33 @@ return {
       require("plugins.bufferline")
     end,
     keys = {
-      { "<Leader>1",   "<cmd>BufferLineGoToBuffer 1<CR>" },
-      { "<Leader>2",   "<cmd>BufferLineGoToBuffer 2<CR>" },
-      { "<Leader>3",   "<cmd>BufferLineGoToBuffer 3<CR>" },
-      { "<Leader>4",   "<cmd>BufferLineGoToBuffer 4<CR>" },
-      { "<Leader>5",   "<cmd>BufferLineGoToBuffer 5<CR>" },
-      { "<Leader>6",   "<cmd>BufferLineGoToBuffer 6<CR>" },
-      { "<Leader>7",   "<cmd>BufferLineGoToBuffer 7<CR>" },
-      { "<Leader>8",   "<cmd>BufferLineGoToBuffer 8<CR>" },
-      { "<Leader>9",   "<cmd>BufferLineGoToBuffer 9<CR>" },
-      { "<M-1>",       "<cmd>BufferLineGoToBuffer 1<CR>" },
-      { "<M-2>",       "<cmd>BufferLineGoToBuffer 2<CR>" },
-      { "<M-3>",       "<cmd>BufferLineGoToBuffer 3<CR>" },
-      { "<M-4>",       "<cmd>BufferLineGoToBuffer 4<CR>" },
-      { "<M-5>",       "<cmd>BufferLineGoToBuffer 5<CR>" },
-      { "<M-6>",       "<cmd>BufferLineGoToBuffer 6<CR>" },
-      { "<M-7>",       "<cmd>BufferLineGoToBuffer 7<CR>" },
-      { "<M-8>",       "<cmd>BufferLineGoToBuffer 8<CR>" },
-      { "<M-9>",       "<cmd>BufferLineGoToBuffer 9<CR>" },
-      { "<Leader>bb",  "<cmd>BufferLineMovePrev<CR>" },
-      { "<Leader>bl",  "<cmd>BufferLineCloseLeft<CR>" },
-      { "<Leader>bn",  "<cmd>BufferLineMoveNext<CR>" },
-      { "<Leader>bp",  "<cmd>BufferLinePick<CR>" },
-      { "<Leader>bP",  "<cmd>BufferLineTogglePin<CR>" },
+      { "<Leader>1", "<cmd>BufferLineGoToBuffer 1<CR>" },
+      { "<Leader>2", "<cmd>BufferLineGoToBuffer 2<CR>" },
+      { "<Leader>3", "<cmd>BufferLineGoToBuffer 3<CR>" },
+      { "<Leader>4", "<cmd>BufferLineGoToBuffer 4<CR>" },
+      { "<Leader>5", "<cmd>BufferLineGoToBuffer 5<CR>" },
+      { "<Leader>6", "<cmd>BufferLineGoToBuffer 6<CR>" },
+      { "<Leader>7", "<cmd>BufferLineGoToBuffer 7<CR>" },
+      { "<Leader>8", "<cmd>BufferLineGoToBuffer 8<CR>" },
+      { "<Leader>9", "<cmd>BufferLineGoToBuffer 9<CR>" },
+      { "<M-1>", "<cmd>BufferLineGoToBuffer 1<CR>" },
+      { "<M-2>", "<cmd>BufferLineGoToBuffer 2<CR>" },
+      { "<M-3>", "<cmd>BufferLineGoToBuffer 3<CR>" },
+      { "<M-4>", "<cmd>BufferLineGoToBuffer 4<CR>" },
+      { "<M-5>", "<cmd>BufferLineGoToBuffer 5<CR>" },
+      { "<M-6>", "<cmd>BufferLineGoToBuffer 6<CR>" },
+      { "<M-7>", "<cmd>BufferLineGoToBuffer 7<CR>" },
+      { "<M-8>", "<cmd>BufferLineGoToBuffer 8<CR>" },
+      { "<M-9>", "<cmd>BufferLineGoToBuffer 9<CR>" },
+      { "<Leader>bb", "<cmd>BufferLineMovePrev<CR>" },
+      { "<Leader>bl", "<cmd>BufferLineCloseLeft<CR>" },
+      { "<Leader>bn", "<cmd>BufferLineMoveNext<CR>" },
+      { "<Leader>bp", "<cmd>BufferLinePick<CR>" },
+      { "<Leader>bP", "<cmd>BufferLineTogglePin<CR>" },
       { "<Leader>bsd", "<cmd>BufferLineSortByDirectory<CR>" },
       { "<Leader>bse", "<cmd>BufferLineSortByExtension<CR>" },
       { "<Leader>bsr", "<cmd>BufferLineSortByRelativeDirectory<CR>" },
-    }
+    },
   },
 
   {
@@ -275,9 +273,9 @@ return {
     config = function()
       require("notify").setup({
         timeout = 3000,
-        fps     = 60,
-        stages  = 'static',
-        icons   = {
+        fps = 60,
+        stages = "static",
+        icons = {
           ERROR = " ",
           WARN = " ",
           INFO = " ",
@@ -311,13 +309,13 @@ return {
 
   {
     "kevinhwang91/nvim-ufo",
-    event = 'VeryLazy',
+    event = "VeryLazy",
     dependencies = "kevinhwang91/promise-async",
     config = function()
       vim.keymap.set("n", "zR", require("ufo").openAllFolds)
       vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-      vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
-      vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith)
+      vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
+      vim.keymap.set("n", "zm", require("ufo").closeFoldsWith)
     end,
   },
 
@@ -353,9 +351,8 @@ return {
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
-    }
+    },
   },
-
 
   {
     "stevearc/dressing.nvim",
@@ -363,12 +360,12 @@ return {
     dependencies = "MunifTanjim/nui.nvim",
     config = function()
       require("plugins.dressing")
-    end
+    end,
   },
 
   {
-    'altermo/ultimate-autopair.nvim',
-    event = { 'InsertEnter', 'CmdlineEnter' },
+    "altermo/ultimate-autopair.nvim",
+    event = { "InsertEnter", "CmdlineEnter" },
     opts = {},
   },
 
@@ -399,36 +396,36 @@ return {
   },
 
   {
-    'gbprod/yanky.nvim',
-    event = 'BufEnter',
+    "gbprod/yanky.nvim",
+    event = "BufEnter",
     config = function()
       require("plugins.yanky")
     end,
   },
 
   {
-    'nvim-lualine/lualine.nvim',
-    event = { 'VimEnter', 'InsertEnter', 'BufReadPre', 'BufAdd', 'BufNew', 'BufReadPost' },
+    "nvim-lualine/lualine.nvim",
+    event = { "VimEnter", "InsertEnter", "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
     config = function()
-      require('plugins.lualine')
-    end
+      require("plugins.lualine")
+    end,
   },
 
   {
-    'wakatime/vim-wakatime',
+    "wakatime/vim-wakatime",
     lazy = false,
   },
 
   {
-    'cpea2506/relative-toggle.nvim',
-    opts = {}
+    "cpea2506/relative-toggle.nvim",
+    opts = {},
   },
 
   {
     "folke/zen-mode.nvim",
     dependencies = { "folke/twilight.nvim" },
     config = function()
-      require('plugins.zen')
+      require("plugins.zen")
     end,
   },
 
@@ -437,44 +434,81 @@ return {
   },
 
   {
-    "b0o/schemastore.nvim"
+    "b0o/schemastore.nvim",
   },
 
   {
-    'MeanderingProgrammer/markdown.nvim',
+    "MeanderingProgrammer/markdown.nvim",
     main = "render-markdown",
     opts = {},
     dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons',
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
     },
   },
 
   {
-    'napisani/nvim-github-codesearch',
-    build = 'make',
-    config = function ()
+    "napisani/nvim-github-codesearch",
+    build = "make",
+    config = function()
       require("nvim-github-codesearch").setup({
         github_auth_token = os.getenv("GIT_AUTH_TOKEN"),
-        use_telescope = true
+        use_telescope = true,
       })
-    end
+    end,
   },
 
   {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
+    ---@module 'oil'
+    ---@type oil.SetupOpts
     opts = {},
-    dependencies = { "nvim-tree/nvim-web-devicons" }
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
   {
-    'stevearc/aerial.nvim',
+    "stevearc/aerial.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require('plugins.aerial');
+      require("plugins.aerial")
     end,
-  }
+  },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+  { -- optional completion source for require statements and module annotations
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      opts.sources = opts.sources or {}
+      table.insert(opts.sources, {
+        name = "lazydev",
+        group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+      })
+    end,
+  },
+
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+      },
+      format_on_save = {
+        lsp_format = "fallback",
+        timeout_ms = 500,
+      },
+    },
+  },
 }

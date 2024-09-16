@@ -1,4 +1,4 @@
-require 'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "tsx",
     "typescript",
@@ -18,7 +18,7 @@ require 'nvim-treesitter.configs'.setup {
     "vim",
     "regex",
     "markdown_inline",
-    "bash"
+    "bash",
   },
 
   sync_install = true,
@@ -32,7 +32,7 @@ require 'nvim-treesitter.configs'.setup {
   },
 
   indent = {
-    enable = true
+    enable = true,
   },
 
   textobjects = {
@@ -79,7 +79,7 @@ require 'nvim-treesitter.configs'.setup {
   textsubjects = {
     enable = true,
     keymaps = {
-      ['<cr>'] = 'textsubjects-smart',
-    }
+      ["<cr>"] = "textsubjects-smart",
+    },
   },
-}
+})

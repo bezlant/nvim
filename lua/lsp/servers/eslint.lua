@@ -4,7 +4,9 @@ local on_attach = function(client, bufnr)
   client.server_capabilities.documentFormattingProvider = true
   client.server_capabilities.documentRangeFormattingProvider = true
 
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  local function buf_set_option(...)
+    vim.api.nvim_buf_set_option(bufnr, ...)
+  end
 
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -13,21 +15,21 @@ local on_attach = function(client, bufnr)
   end
 end
 
-M.on_attach = on_attach;
+M.on_attach = on_attach
 
 M.settings = {
   codeAction = {
     disableRuleComment = {
       enable = true,
-      location = "separateLine"
+      location = "separateLine",
     },
     showDocumentation = {
-      enable = true
-    }
+      enable = true,
+    },
   },
   codeActionOnSave = {
     enable = false,
-    mode = "all"
+    mode = "all",
   },
   format = true,
   nodePath = "",
@@ -39,8 +41,8 @@ M.settings = {
   useESLintClass = false,
   validate = "on",
   workingDirectory = {
-    mode = "location"
-  }
+    mode = "location",
+  },
 }
 
 return M

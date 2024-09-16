@@ -1,4 +1,4 @@
-local constants = require('config.constants')
+local constants = require("config.constants")
 local baseDefinitionHandler = vim.lsp.handlers["textDocument/definition"]
 
 local filter = require("lsp.utils.filter").filter
@@ -29,17 +29,17 @@ require("typescript-tools").setup({
     vim.lsp.inlay_hint.enable(true, { bufnr })
 
     local map = function(key, command)
-      vim.keymap.set('n', key, command, { buffer = bufnr })
+      vim.keymap.set("n", key, command, { buffer = bufnr })
     end
 
-    map('<leader>v', vim.lsp.buf.signature_help)
-    map('gd', vim.lsp.buf.definition)
-    map('gr', '<cmd>Telescope lsp_references<cr>')
-    map('gi', '<cmd>Telescope lsp_implementations<cr>')
-    map(']g', vim.diagnostic.goto_next)
-    map('[g', vim.diagnostic.goto_prev)
-    map('<leader>r', vim.lsp.buf.rename)
-    map('<leader>a', vim.lsp.buf.code_action)
+    map("<leader>v", vim.lsp.buf.signature_help)
+    map("gd", vim.lsp.buf.definition)
+    map("gr", "<cmd>Telescope lsp_references<cr>")
+    map("gi", "<cmd>Telescope lsp_implementations<cr>")
+    map("]g", vim.diagnostic.goto_next)
+    map("[g", vim.diagnostic.goto_prev)
+    map("<leader>r", vim.lsp.buf.rename)
+    map("<leader>a", vim.lsp.buf.code_action)
   end,
   handlers = handlers,
   settings = {
