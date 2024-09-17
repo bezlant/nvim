@@ -120,13 +120,21 @@ map("n", "<leader>L", "<cmd>:Lazy<cr>")
 map("n", "<C-a>", ":if !switch#Switch() <bar> call speeddating#increment(v:count1) <bar> endif<CR>")
 map("n", "<C-x>", ":if !switch#Switch({'reverse': 1}) <bar> call speeddating#increment(-v:count1) <bar> endif<CR>")
 
+map("n", "<leader>z", "<cmd>ZenMode<cr>")
+
+map("n", "-", "<CMD>Oil<CR>")
+
+map("n", "<leader>v", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+map("n", "gr", "<cmd>Telescope lsp_references<cr>")
+map("n", "gi", "<cmd>Telescope lsp_implementations<cr>")
+map("n", "]g", "<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded', max_width = 100 }})<CR>")
+map("n", "[g", "<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded', max_width = 100 }})<CR>")
+map("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>")
+map("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 map("n", "K", function()
   local winid = require("ufo").peekFoldedLinesUnderCursor()
   if not winid then
     vim.lsp.buf.hover()
   end
 end)
-
-map("n", "<leader>z", "<cmd>ZenMode<cr>")
-
-map("n", "-", "<CMD>Oil<CR>")

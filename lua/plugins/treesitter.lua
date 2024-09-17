@@ -10,6 +10,7 @@ return {
     },
 
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "tsx",
@@ -30,10 +31,6 @@ return {
         },
 
         sync_install = true,
-
-        autotag = {
-          enable = true,
-        },
 
         highlight = {
           enable = true,
@@ -97,12 +94,14 @@ return {
   {
     "windwp/nvim-ts-autotag",
     event = "BufReadPre",
-    opts = {
-      opts = {
-        enable_close = true,
-        enable_rename = true,
-        enable_close_on_slash = true,
-      },
-    },
+    config = function()
+      require("nvim-ts-autotag").setup({
+        opts = {
+          enable_close = true, -- Auto close tags
+          enable_rename = true, -- Auto rename pairs of tags
+          enable_close_on_slash = false, -- Auto close on trailing </
+        },
+      })
+    end,
   },
 }

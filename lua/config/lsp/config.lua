@@ -23,4 +23,4 @@ if not lspui_ok then
   return
 end
 
-lspui.default_options.border = constants.border.border or "rounded"
+lspui.default_options.border = constants.border.border

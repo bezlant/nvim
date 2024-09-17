@@ -4,15 +4,7 @@ local on_attach = function(client, bufnr)
   client.server_capabilities.documentFormattingProvider = true
   client.server_capabilities.documentRangeFormattingProvider = true
 
-  local function buf_set_option(...)
-    vim.api.nvim_buf_set_option(bufnr, ...)
-  end
-
-  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-  if client.supports_method("textDocument/formatting") then
-    require("lsp.functions").enable_format_on_save()
-  end
+  vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
 end
 
 M.on_attach = on_attach
@@ -28,7 +20,7 @@ M.settings = {
     },
   },
   codeActionOnSave = {
-    enable = false,
+    enable = true,
     mode = "all",
   },
   format = true,
@@ -37,7 +29,7 @@ M.settings = {
   packageManager = "npm",
   quiet = false,
   rulesCustomizations = {},
-  run = "onType",
+  run = "onSave",
   useESLintClass = false,
   validate = "on",
   workingDirectory = {

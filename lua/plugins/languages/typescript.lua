@@ -1,5 +1,14 @@
 return {
   {
+    "yioneko/nvim-vtsls",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "neovim/nvim-lspconfig",
+    },
+  },
+
+  {
     "dmmulroy/tsc.nvim",
     cmd = { "TSC" },
     opts = {
@@ -31,5 +40,10 @@ return {
       use_default_keymaps = false,
       max_join_length = 240,
     },
+  },
+
+  {
+    "dmmulroy/ts-error-translator.nvim",
+    config = true,
   },
 }
