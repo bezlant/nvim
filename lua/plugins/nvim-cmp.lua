@@ -43,10 +43,9 @@ local function limit_lsp_types(entry, ctx)
 end
 
 local has_words_before = function()
-  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+  if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt" then
     return false
   end
-  ---@diagnostic disable-next-line: deprecated
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 end
@@ -109,6 +108,14 @@ return {
       "onsails/lspkind-nvim",
       "saadparwaiz1/cmp_luasnip",
       { "L3MON4D3/LuaSnip", dependencies = "rafamadriz/friendly-snippets" },
+      {
+        "sourcegraph/sg.nvim",
+        dependencies = "nvim-lua/plenary.nvim",
+        config = function()
+          ---@diagnostic disable-next-line: missing-parameter
+          require("sg").setup()
+        end,
+      },
       {
         "zbirenbaum/copilot-cmp",
         config = function()
@@ -197,6 +204,7 @@ return {
           }),
         }),
 
+        ---@diagnostic disable-next-line: missing-fields
         formatting = {
           fields = { "kind", "abbr", "menu" },
 
@@ -279,6 +287,7 @@ return {
           ghost_text = true,
         },
 
+        ---@diagnostic disable-next-line: missing-fields
         performance = {
           max_view_entries = 100,
         },

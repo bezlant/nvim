@@ -20,10 +20,8 @@ local location = {
 }
 
 local spaces = function()
-  return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+  return "spaces: " .. vim.api.nvim_get_option_value("shiftwidth", { buf = 0 })
 end
-
-local noice = require("noice")
 
 return {
   "nvim-lualine/lualine.nvim",
@@ -41,8 +39,10 @@ return {
       lualine_a = { "mode" },
       lualine_b = {
         {
-          noice.api.statusline.mode.get,
-          cond = noice.api.statusline.mode.has,
+          ---@diagnostic disable-next-line: undefined-field
+          require("noice").api.status.mode.get,
+          ---@diagnostic disable-next-line: undefined-field
+          cond = require("noice").api.status.mode.has,
           color = { fg = "#ff9e64" },
         },
       },
