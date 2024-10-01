@@ -9,15 +9,6 @@ return {
   },
 
   {
-    "dmmulroy/tsc.nvim",
-    cmd = { "TSC" },
-    opts = {
-      watch = true,
-      auto_start_watch_mode = true,
-    },
-  },
-
-  {
     "axelvc/template-string.nvim",
     event = "InsertEnter",
     ft = {
@@ -43,7 +34,21 @@ return {
   },
 
   {
-    "dmmulroy/ts-error-translator.nvim",
-    config = true,
+    "dmmulroy/tsc.nvim",
+    cmd = { "TSC" },
+    opts = {
+      watch = true,
+      auto_start_watch_mode = true,
+    },
   },
+
+  {
+    "dmmulroy/ts-error-translator.nvim",
+    ft = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+    config = function()
+      require("ts-error-translator").setup()
+    end,
+  },
+
+  { "artemave/workspace-diagnostics.nvim" },
 }
