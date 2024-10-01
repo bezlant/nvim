@@ -29,6 +29,7 @@ local M = {
     caretRight = "",
     checkSquare = "  ",
     copilot = " ",
+    cody = " 󰚩 ",
     codeium = " ",
     exit = " 󰗼 ",
     chevronRight = "",

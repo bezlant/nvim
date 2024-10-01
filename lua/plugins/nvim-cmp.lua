@@ -72,6 +72,7 @@ local source_mapping = {
   npm = icons.terminal .. "NPM",
   cmp_tabnine = icons.light,
   Copilot = icons.copilot,
+  cody = icons.cody .. "CDY",
   Codeium = icons.codeium,
   nvim_lsp = icons.stack .. "LSP",
   buffer = icons.buffer .. "BUF",
@@ -229,6 +230,10 @@ return {
         },
 
         sources = {
+          {
+            name = "cody",
+            priority = 10,
+          },
           {
             name = "copilot",
             priority = 10,
