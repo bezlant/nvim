@@ -26,7 +26,7 @@ local options = {
   numberwidth = 2,
   pumheight = 10,
   relativenumber = true,
-  scrolloff = 8,
+  scrolloff = 999,
   sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal",
   shiftwidth = 2,
   showmode = false,
@@ -45,7 +45,7 @@ local options = {
   undofile = true,
   updatetime = 50,
   wildignore = "*node_modules/**",
-  wrap = true,
+  wrap = false,
   writebackup = false,
 }
 
