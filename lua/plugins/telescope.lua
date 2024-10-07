@@ -6,7 +6,21 @@ return {
       { "nvim-lua/popup.nvim" },
       { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      { "nvim-telescope/telescope-live-grep-args.nvim" },
+      { "nvim-telescope/telescope-frecency.nvim" },
+      { "tsakirist/telescope-lazy.nvim" },
+      { "fdschmidt93/telescope-egrepify.nvim" },
+      {
+        "napisani/nvim-github-codesearch",
+        build = "make",
+        config = function()
+          ---@diagnostic disable-next-line: missing-fields
+          require("nvim-github-codesearch").setup({
+            ---@diagnostic disable-next-line: missing-fields, assign-type-mismatch
+            github_auth_token = os.getenv("GIT_AUTH_TOKEN"),
+            use_telescope = true,
+          })
+        end,
+      },
     },
 
     config = function()
@@ -17,9 +31,10 @@ return {
 
       local trouble = require("trouble.sources.telescope")
 
-      telescope.load_extension("live_grep_args")
       telescope.load_extension("fzf")
       telescope.load_extension("aerial")
+      telescope.load_extension("frecency")
+      telescope.load_extension("egrepify")
 
       telescope.setup({
         defaults = {
@@ -93,17 +108,6 @@ return {
             case_mode = "smart_case",
           },
         },
-      })
-    end,
-  },
-
-  {
-    "napisani/nvim-github-codesearch",
-    build = "make",
-    config = function()
-      require("nvim-github-codesearch").setup({
-        github_auth_token = os.getenv("GIT_AUTH_TOKEN"),
-        use_telescope = true,
       })
     end,
   },
