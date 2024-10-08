@@ -67,10 +67,29 @@ vim.opt.fillchars:append("foldopen: ")
 vim.opt.fillchars:append("foldsep: ")
 vim.opt.fillchars:append("foldclose:")
 
+
 for opt, value in pairs(options) do
-  vim.o[opt] = value
+  local optInfo = vim.api.nvim_get_option_info2(opt, {}) -- do empty req. to get description
+  assert(optInfo ~= nil and optInfo.name == opt)
+
+  if optInfo.scope ~= 'global' then
+    vim.notify(
+      ("[Options.lua] [WARNING] %s has %s scope. Setting via dangerous vim.opt")
+      :format(opt, optInfo.scope), vim.log.levels.WARN)
+  end
+
+  -- Warning! Fixing this bug may break something
+  do
+    vim.o[opt] = nil    --  unset local (if exists)
+    vim.go[opt] = value -- force value to be global
+  end
 end
 
 for key, value in pairs(globals) do
   vim.g[key] = value
 end
+
+
+-- How to override local option with global:
+vim.opt['formatoptions'] = nil                                             -- first, we must unset local one
+vim.api.nvim_set_option_value('formatoptions', 'j', { scope = 'global', }) -- next, define global
