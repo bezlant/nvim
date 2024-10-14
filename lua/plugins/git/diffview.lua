@@ -8,7 +8,7 @@ return {
     },
     {
       "<leader>gdm",
-      ":DiffviewOpen main..HEAD<CR>",
+      ":DiffviewOpen master..HEAD<CR>",
     },
   },
 
