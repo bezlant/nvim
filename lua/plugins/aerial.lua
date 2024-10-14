@@ -4,8 +4,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "nvim-tree/nvim-web-devicons",
   },
-  opts = {
 
+  opts = {
     layout = {
       default_direction = "prefer_left",
     },
