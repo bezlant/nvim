@@ -7,16 +7,20 @@ return {
   { "nvim-lua/plenary.nvim" },
   { "nvim-tree/nvim-web-devicons" },
 
-  { "tpope/vim-repeat",              lazy = false },
-  { "tpope/vim-speeddating",         lazy = false },
-  { "AndrewRadev/switch.vim",        lazy = false },
+  { "tpope/vim-repeat", lazy = false },
+  { "tpope/vim-speeddating", lazy = false },
+  { "AndrewRadev/switch.vim", lazy = false },
 
   { "christoomey/vim-tmux-navigator" },
-  { "b0o/schemastore.nvim" },
 
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
+    config = true,
+  },
+
+  {
+    "cpea2506/relative-toggle.nvim",
     config = true,
   },
 
@@ -29,20 +33,5 @@ return {
   {
     "wakatime/vim-wakatime",
     lazy = false,
-  },
-
-  {
-    "cpea2506/relative-toggle.nvim",
-    config = true,
-  },
-
-  {
-    "MeanderingProgrammer/markdown.nvim",
-    main = "render-markdown",
-    config = true,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-    },
   },
 }

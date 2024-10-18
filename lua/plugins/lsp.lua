@@ -10,6 +10,8 @@ return {
     servers = nil,
   },
 
+  { "b0o/schemastore.nvim" },
+
   {
     "williamboman/mason.nvim",
     cmd = "Mason",
