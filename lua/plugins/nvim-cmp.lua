@@ -142,7 +142,7 @@ return {
         mapping = cmp.mapping.preset.insert({
           ["<C-k>"] = cmp.mapping.select_prev_item(),
           ["<C-j>"] = cmp.mapping.select_next_item(),
-          ["<leader>q"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+          ["<space>q"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
           ["<C-e>"] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
