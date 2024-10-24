@@ -15,7 +15,24 @@ local handlers = {
 }
 
 local settings = {
+  enableMoveToFileCodeAction = true,
+  autoUseWorkspaceTsdk = true,
+  experimental = {
+    completion = {
+      enableServerSideFuzzyMatch = true,
+    },
+  },
+
   typescript = {
+    updateImportsOnFileMove = { enabled = "always" },
+    suggest = { completeFunctionCalls = true },
+    format = {
+      insertSpaceAfterOpeningAndBeforeClosingEmptyBraces = false,
+    },
+    preferences = {
+      importModuleSpecifier = "non-relative",
+      quoteStyle = "auto",
+    },
     inlayHints = {
       parameterNames = { enabled = "all" },
       parameterTypes = { enabled = false },
@@ -24,17 +41,8 @@ local settings = {
       functionLikeReturnTypes = { enabled = false },
       enumMemberValues = { enabled = true },
     },
-    suggest = {
-      completeFunctionCalls = true,
-    },
-    format = {
-      insertSpaceAfterOpeningAndBeforeClosingEmptyBraces = false,
-    },
-    preferences = {
-      importModuleSpecifier = "non-relative",
-      quoteStyle = "auto",
-    },
   },
+
   javascript = {
     inlayHints = {
       parameterNames = { enabled = "all" },
