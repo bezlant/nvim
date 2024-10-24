@@ -31,17 +31,13 @@ return {
 
       local trouble = require("trouble.sources.telescope")
 
-      telescope.load_extension("fzf")
-      telescope.load_extension("aerial")
-      telescope.load_extension("frecency")
-      telescope.load_extension("egrepify")
-
       telescope.setup({
         defaults = {
           file_ignore_patterns = { "node_modules" },
           border = true,
           hl_result_eol = true,
           multi_icon = "",
+
           vimgrep_arguments = {
             "rg",
             "--color=never",
@@ -51,12 +47,14 @@ return {
             "--column",
             "--smart-case",
           },
+
           layout_config = {
             horizontal = {
               preview_cutoff = 120,
             },
             prompt_position = "top",
           },
+
           file_sorter = sorters.get_fzy_sorter,
           prompt_prefix = "  ",
           color_devicons = true,
@@ -101,14 +99,25 @@ return {
             end,
             show_columns = "both",
           },
+
           fzf = {
             fuzzy = true,
             override_generic_sorter = false,
             override_file_sorter = true,
             case_mode = "smart_case",
           },
+
+          frecency = {
+            db_safe_mode = false,
+            matcher = "fuzzy",
+          },
         },
       })
+
+      telescope.load_extension("fzf")
+      telescope.load_extension("aerial")
+      telescope.load_extension("frecency")
+      telescope.load_extension("egrepify")
     end,
   },
 }
