@@ -20,13 +20,10 @@ vim.api.nvim_create_autocmd(
 )
 
 -- Easily close useless buffers
-vim.api.nvim_create_autocmd(
-  "FileType",
-  {
-    pattern = { "sqls_output", "help", "startuptime", "qf", "lspinfo", "httpRequest" },
-    command = [[ nnoremap <buffer><silent> q :close<CR> ]],
-  }
-)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "sqls_output", "help", "startuptime", "qf", "lspinfo", "httpRequest" },
+  command = [[ nnoremap <buffer><silent> q :close<CR> ]],
+})
 
 vim.api.nvim_create_autocmd("FileType", { pattern = { "man" }, command = [[ nnoremap <buffer><silent> q :quit<CR> ]] })
 
@@ -35,5 +32,12 @@ vim.api.nvim_create_autocmd("FileType", { pattern = { "man" }, command = [[ nnor
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     vim.opt.formatoptions:remove({ "c", "r", "o" })
+  end,
+})
+
+-- autoupdate plugins
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    require("lazy").update({ show = false })
   end,
 })
