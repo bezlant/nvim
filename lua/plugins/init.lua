@@ -43,4 +43,9 @@ return {
       })
     end,
   },
+
+  {
+    "tzachar/highlight-undo.nvim",
+    keys = { { "u" }, { "<C-r>" } },
+  },
 }

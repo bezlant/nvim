@@ -90,7 +90,7 @@ map("n", "<leader>ft", "<cmd>TodoTelescope<cr>")
 
 map("n", "<leader>fr", "<cmd>Telescope resume<cr>")
 
-map("n", "<leader>fi", '<cmd>lua require("nvim-github-codesearch").prompt()<cr>')
+map("n", "<leader>fi", '<cmd>lua require("sg.extensions.telescope").fuzzy_search_results()<CR>')
 map("n", "<leader>fs", "<cmd>Telescope git_status<cr>")
 map("n", "<leader>fc", "<cmd>Telescope git_commits<cr>")
 

@@ -9,18 +9,6 @@ return {
       { "nvim-telescope/telescope-frecency.nvim" },
       { "tsakirist/telescope-lazy.nvim" },
       { "fdschmidt93/telescope-egrepify.nvim" },
-      {
-        "napisani/nvim-github-codesearch",
-        build = "make",
-        config = function()
-          ---@diagnostic disable-next-line: missing-fields
-          require("nvim-github-codesearch").setup({
-            ---@diagnostic disable-next-line: missing-fields, assign-type-mismatch
-            github_auth_token = os.getenv("GIT_AUTH_TOKEN"),
-            use_telescope = true,
-          })
-        end,
-      },
     },
 
     config = function()
