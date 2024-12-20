@@ -143,3 +143,7 @@ map("n", "K", function()
     vim.lsp.buf.hover()
   end
 end)
+
+-- Duplicate a line and comment out the first line
+map("n", "yc", "yy<cmd>normal gcc<CR>p")
+
