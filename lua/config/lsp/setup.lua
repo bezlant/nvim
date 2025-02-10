@@ -28,6 +28,7 @@ mason_lsp.setup({
     "marksman",
     "stylelint_lsp",
     "ts_ls",
+    "gopls",
     "vtsls",
   },
 })
@@ -69,12 +70,13 @@ require("mason-lspconfig").setup_handlers({
 
   ["vtsls"] = function()
     require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+    local vtsls = require("config.lsp.servers.vtsls")
 
     lspconfig.vtsls.setup({
       capabilities = capabilities,
-      handlers = require("config.lsp.servers.vtsls").handlers,
-      on_attach = require("config.lsp.servers.vtsls").on_attach,
-      settings = require("config.lsp.servers.vtsls").settings,
+      handlers = vtsls.handlers,
+      on_attach = vtsls.on_attach,
+      settings = vtsls.settings,
     })
   end,
 
