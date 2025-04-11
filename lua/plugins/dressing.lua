@@ -20,8 +20,6 @@ return {
         -- When true, input will start in insert mode.
         start_in_insert = true,
 
-        -- These are passed to nvim_open_win
-        border = "rounded",
         -- 'editor' and 'win' will default to being centered
         relative = "cursor",
 
@@ -80,7 +78,6 @@ return {
           size = nil,
           relative = "cursor",
           border = {
-            style = "rounded",
             text = {
               top_align = "right",
             },
@@ -97,7 +94,6 @@ return {
         builtin = {
           -- These are passed to nvim_open_win
           wnchor = "SW",
-          border = "rounded",
           -- 'editor' and 'win' will default to being centered
           relative = "cursor",
 

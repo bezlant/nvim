@@ -33,6 +33,8 @@ local function on_attach(_, bufnr)
   vim.lsp.inlay_hint.enable(true, { bufnr })
 end
 
+local capabilities = require("blink.cmp").get_lsp_capabilities()
+
 require("mason-lspconfig").setup_handlers({
   -- The first entry (without a key) will be the default handler
   -- and will be called for each installed server that doesn't have
@@ -40,6 +42,7 @@ require("mason-lspconfig").setup_handlers({
   function(server_name)
     require("lspconfig")[server_name].setup({
       on_attach = on_attach,
+      capabilities = capabilities,
     })
   end,
 
@@ -48,6 +51,7 @@ require("mason-lspconfig").setup_handlers({
       on_attach = function(client)
         client.server_capabilities.definitionProvider = false
       end,
+      capabilities = capabilities,
       cmd = { "/Users/abezlyudniy/cssmodules-language-server/lib/cli.js" },
     })
   end,
@@ -57,6 +61,7 @@ require("mason-lspconfig").setup_handlers({
     local vtsls = require("config.lsp.servers.vtsls")
 
     lspconfig.vtsls.setup({
+      capabilities = capabilities,
       handlers = vtsls.handlers,
       on_attach = vtsls.on_attach,
       settings = vtsls.settings,
@@ -69,6 +74,7 @@ require("mason-lspconfig").setup_handlers({
 
   ["cssls"] = function()
     lspconfig.cssls.setup({
+      capabilities = capabilities,
       on_attach = require("config.lsp.servers.cssls").on_attach,
       settings = require("config.lsp.servers.cssls").settings,
     })
@@ -76,6 +82,7 @@ require("mason-lspconfig").setup_handlers({
 
   ["eslint"] = function()
     lspconfig.eslint.setup({
+      capabilities = capabilities,
       on_attach = require("config.lsp.servers.eslint").on_attach,
       settings = require("config.lsp.servers.eslint").settings,
     })
@@ -83,6 +90,7 @@ require("mason-lspconfig").setup_handlers({
 
   ["jsonls"] = function()
     lspconfig.jsonls.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
       settings = require("config.lsp.servers.jsonls").settings,
     })
@@ -90,6 +98,7 @@ require("mason-lspconfig").setup_handlers({
 
   ["lua_ls"] = function()
     lspconfig.lua_ls.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
       settings = require("config.lsp.servers.lua_ls").settings,
     })
@@ -107,6 +116,7 @@ require("mason-lspconfig").setup_handlers({
   ["stylelint_lsp"] = function()
     lspconfig.stylelint_lsp.setup({
       on_attach = on_attach,
+      capabilities = capabilities,
       filetypes = require("config.lsp.servers.stylelint").filetypes,
       settings = require("config.lsp.servers.stylelint").settings,
     })

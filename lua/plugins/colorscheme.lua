@@ -1,8 +1,17 @@
 return {
   "Mofiqul/dracula.nvim",
+  dependencies = { "echasnovski/mini.hipatterns" },
   lazy = false,
   config = function()
     vim.cmd.colorscheme("dracula")
+
+    local hipatterns = require("mini.hipatterns")
+
+    hipatterns.setup({
+      highlighters = {
+        hex_color = hipatterns.gen_highlighter.hex_color(),
+      },
+    })
 
     local colors = require("dracula").colors()
 
