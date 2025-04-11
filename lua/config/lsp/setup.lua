@@ -7,13 +7,7 @@ if not mason_ok or not mason_lsp_ok then
   return
 end
 
-local constants = require("config.constants")
-
-mason.setup({
-  ui = {
-    border = constants.border.border,
-  },
-})
+mason.setup()
 
 mason_lsp.setup({
   automatic_installation = true,
@@ -35,26 +29,9 @@ mason_lsp.setup({
 
 local lspconfig = require("lspconfig")
 
-local handlers = {
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    silent = true,
-    border = constants.border.border,
-  }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = constants.border.border,
-  }),
-}
-
 local function on_attach(_, bufnr)
   vim.lsp.inlay_hint.enable(true, { bufnr })
 end
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
-}
 
 require("mason-lspconfig").setup_handlers({
   -- The first entry (without a key) will be the default handler
@@ -63,8 +40,15 @@ require("mason-lspconfig").setup_handlers({
   function(server_name)
     require("lspconfig")[server_name].setup({
       on_attach = on_attach,
-      capabilities = capabilities,
-      handlers = handlers,
+    })
+  end,
+
+  ["cssmodules_ls"] = function()
+    lspconfig.cssmodules_ls.setup({
+      on_attach = function(client)
+        client.server_capabilities.definitionProvider = false
+      end,
+      cmd = { "/Users/abezlyudniy/cssmodules-language-server/lib/cli.js" },
     })
   end,
 
@@ -73,7 +57,6 @@ require("mason-lspconfig").setup_handlers({
     local vtsls = require("config.lsp.servers.vtsls")
 
     lspconfig.vtsls.setup({
-      capabilities = capabilities,
       handlers = vtsls.handlers,
       on_attach = vtsls.on_attach,
       settings = vtsls.settings,
@@ -86,8 +69,6 @@ require("mason-lspconfig").setup_handlers({
 
   ["cssls"] = function()
     lspconfig.cssls.setup({
-      capabilities = capabilities,
-      handlers = handlers,
       on_attach = require("config.lsp.servers.cssls").on_attach,
       settings = require("config.lsp.servers.cssls").settings,
     })
@@ -95,8 +76,6 @@ require("mason-lspconfig").setup_handlers({
 
   ["eslint"] = function()
     lspconfig.eslint.setup({
-      capabilities = capabilities,
-      handlers = handlers,
       on_attach = require("config.lsp.servers.eslint").on_attach,
       settings = require("config.lsp.servers.eslint").settings,
     })
@@ -104,8 +83,6 @@ require("mason-lspconfig").setup_handlers({
 
   ["jsonls"] = function()
     lspconfig.jsonls.setup({
-      capabilities = capabilities,
-      handlers = handlers,
       on_attach = on_attach,
       settings = require("config.lsp.servers.jsonls").settings,
     })
@@ -113,8 +90,6 @@ require("mason-lspconfig").setup_handlers({
 
   ["lua_ls"] = function()
     lspconfig.lua_ls.setup({
-      capabilities = capabilities,
-      handlers = handlers,
       on_attach = on_attach,
       settings = require("config.lsp.servers.lua_ls").settings,
     })
@@ -123,7 +98,6 @@ require("mason-lspconfig").setup_handlers({
   ["vuels"] = function()
     lspconfig.vuels.setup({
       filetypes = require("config.lsp.servers.vuels").filetypes,
-      handlers = handlers,
       init_options = require("config.lsp.servers.vuels").init_options,
       on_attach = require("config.lsp.servers.vuels").on_attach,
       settings = require("config.lsp.servers.vuels").settings,
@@ -133,8 +107,6 @@ require("mason-lspconfig").setup_handlers({
   ["stylelint_lsp"] = function()
     lspconfig.stylelint_lsp.setup({
       on_attach = on_attach,
-      capabilities = capabilities,
-      handlers = handlers,
       filetypes = require("config.lsp.servers.stylelint").filetypes,
       settings = require("config.lsp.servers.stylelint").settings,
     })

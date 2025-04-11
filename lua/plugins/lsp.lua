@@ -5,12 +5,12 @@ return {
     dependencies = {
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "hrsh7th/cmp-nvim-lsp",
     },
-    servers = nil,
+    config = function()
+      require("config.lsp.setup")
+      require("config.lsp.config")
+    end,
   },
-
-  { "b0o/schemastore.nvim" },
 
   {
     "williamboman/mason.nvim",
@@ -19,4 +19,6 @@ return {
       { "<leader>M", "<cmd>Mason<cr>", desc = "mason ui" },
     },
   },
+
+  { "b0o/schemastore.nvim" },
 }

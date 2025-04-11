@@ -28,7 +28,6 @@ local options = {
   pumheight = 10,
   relativenumber = true,
   scrolloff = 999,
-  sidescroll = 999,
   sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal",
   shiftwidth = 2,
   showmode = false,
@@ -50,6 +49,7 @@ local options = {
   wildignore = "*node_modules/**",
   wrap = false,
   writebackup = false,
+  winborder = "rounded",
 }
 
 local globals = {

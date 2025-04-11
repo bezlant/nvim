@@ -1,17 +1,4 @@
 local M = {
-  border = {
-    focusable = true,
-    style = "minimal",
-    border = "rounded",
-    source = "always",
-    header = "",
-    prefix = "",
-    scope = "line",
-  },
-
-  virtual_text = true,
-  hints = true,
-
   icons = {
     abc = "  ",
     array = "  ",
