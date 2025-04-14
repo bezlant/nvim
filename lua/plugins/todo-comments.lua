@@ -19,6 +19,13 @@ return {
   },
   keys = {
     {
+      "<leader>ft",
+      function()
+        Snacks.picker.todo_comments()
+      end,
+      desc = "Todo",
+    },
+    {
       "n",
       "]t",
       function()

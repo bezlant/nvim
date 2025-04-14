@@ -39,7 +39,7 @@ map({ "n", "v" }, '"|', '"+')
 -- Buffers
 map("n", "H", "<cmd>bprevious<cr>zz")
 map("n", "L", "<cmd>bnext<cr>zz")
-map("n", "<leader>bd", "<cmd>bdelete! %<CR>")
+map("n", "<leader>bd", ":lua Snacks.bufdelete()<CR>")
 map("n", "<leader>ba", "<cmd>bufdo :bdelete<CR>")
 map("n", "<leader>bo", "<cmd>%bd|e#|bd#<CR>")
 
@@ -78,32 +78,32 @@ map("n", "<leader>cd", "<cmd>cd %:p:h<cr><cmd>:pwd<cr>")
 
 -- Plugins config
 -- Telescope
-map("n", "<C-f>", "<cmd>Telescope frecency workspace=CWD<cr>")
-
-map("n", "<leader>f", "<cmd>Telescope find_files<cr>")
-map("n", "<leader>ff", "<cmd>Telescope find_files {hidden=true, no_ignore=true}<cr>")
-map("n", "<leader>fg", "<cmd>Telescope egrepify<CR>")
-
-map("n", "<leader>fa", "<cmd>Telescope aerial<cr>")
-map("n", "<leader>fl", "<cmd>Telescope lazy<cr>")
-map("n", "<leader>ft", "<cmd>TodoTelescope<cr>")
-
-map("n", "<leader>fr", "<cmd>Telescope resume<cr>")
-
-map("n", "<leader>fi", '<cmd>lua require("sg.extensions.telescope").fuzzy_search_results()<CR>')
-map("n", "<leader>fs", "<cmd>Telescope git_status<cr>")
-map("n", "<leader>fc", "<cmd>Telescope git_commits<cr>")
-
-map("n", "<leader>fy", "<cmd>Telescope yank_history<cr>")
-
-map("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
-map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
-map("n", "<leader>fo", "<cmd>Telescope vim_options<cr>")
-map("n", "<leader>fk", "<cmd>Telescope keymaps<cr>")
+-- map("n", "<C-f>", "<cmd>Telescope frecency workspace=CWD<cr>")
+--
+-- map("n", "<leader>f", "<cmd>Telescope find_files<cr>")
+-- map("n", "<leader>ff", "<cmd>Telescope find_files {hidden=true, no_ignore=true}<cr>")
+-- map("n", "<leader>fg", "<cmd>Telescope egrepify<CR>")
+--
+-- map("n", "<leader>fa", "<cmd>Telescope aerial<cr>")
+-- map("n", "<leader>fl", "<cmd>Telescope lazy<cr>")
+-- map("n", "<leader>ft", "<cmd>TodoTelescope<cr>")
+--
+-- map("n", "<leader>fr", "<cmd>Telescope resume<cr>")
+--
+-- map("n", "<leader>fi", '<cmd>lua require("sg.extensions.telescope").fuzzy_search_results()<CR>')
+-- map("n", "<leader>fs", "<cmd>Telescope git_status<cr>")
+-- map("n", "<leader>fc", "<cmd>Telescope git_commits<cr>")
+--
+-- map("n", "<leader>fy", "<cmd>Telescope yank_history<cr>")
+--
+-- map("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
+-- map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
+-- map("n", "<leader>fo", "<cmd>Telescope vim_options<cr>")
+-- map("n", "<leader>fk", "<cmd>Telescope keymaps<cr>")
 
 -- Vimgrep, grep, quickfix list, jump list cycle
 map("n", "<leader>t", "<cmd>Trouble<CR>")
-map("n", "<leader>tw", "<cmd>Telescope diagnostics wrap_results=true<CR>")
+-- map("n", "<leader>tw", "<cmd>Telescope diagnostics wrap_results=true<CR>")
 map("n", "<leader>tn", '<cmd>lua require("trouble").next({skip_groups = true, jump = true})<CR>')
 map("n", "<leader>tp", '<cmd>lua require("trouble").previous({skip_groups = true, jump = true})<CR>')
 map("n", "<leader>tq", "<cmd>Trouble quickfix<CR>")
@@ -146,4 +146,3 @@ end)
 
 -- Duplicate a line and comment out the first line
 map("n", "yc", "yy<cmd>normal gcc<CR>p")
-
