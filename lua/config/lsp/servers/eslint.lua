@@ -23,10 +23,12 @@ M.settings = {
     enable = true,
     mode = "all",
   },
+  problems = {
+    shortenToSingleLine = false,
+  },
   format = true,
   nodePath = "",
   onIgnoredFiles = "off",
-  packageManager = "npm",
   quiet = false,
   rulesCustomizations = {},
   run = "onSave",

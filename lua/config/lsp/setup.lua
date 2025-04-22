@@ -7,13 +7,7 @@ if not mason_ok or not mason_lsp_ok then
   return
 end
 
-local constants = require("config.constants")
-
-mason.setup({
-  ui = {
-    border = constants.border.border,
-  },
-})
+mason.setup()
 
 mason_lsp.setup({
   automatic_installation = true,
@@ -35,16 +29,6 @@ mason_lsp.setup({
 
 local lspconfig = require("lspconfig")
 
-local handlers = {
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    silent = true,
-    border = constants.border.border,
-  }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = constants.border.border,
-  }),
-}
-
 local function on_attach(_, bufnr)
   vim.lsp.inlay_hint.enable(true, { bufnr })
 end
@@ -65,6 +49,16 @@ require("mason-lspconfig").setup_handlers({
       on_attach = on_attach,
       capabilities = capabilities,
       handlers = handlers,
+    })
+  end,
+
+  ["cssmodules_ls"] = function()
+    lspconfig.cssmodules_ls.setup({
+      on_attach = function(client)
+        client.server_capabilities.definitionProvider = false
+      end,
+      capabilities = capabilities,
+      cmd = { "/Users/abezlyudniy/cssmodules-language-server/lib/cli.js" },
     })
   end,
 

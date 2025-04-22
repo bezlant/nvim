@@ -29,7 +29,7 @@ return {
     },
     opts = {
       use_default_keymaps = false,
-      max_join_length = 240,
+      max_join_length = 360,
     },
   },
 
