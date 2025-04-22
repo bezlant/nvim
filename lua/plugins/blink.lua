@@ -33,6 +33,11 @@ return {
       -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
       keymap = {
         preset = "enter",
+        ["<C-q>"] = {
+          function(cmp)
+            cmp.show()
+          end,
+        },
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
         ["<C-v>"] = { "show_signature", "hide_signature", "fallback" },
