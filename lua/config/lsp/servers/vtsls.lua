@@ -41,11 +41,6 @@ local settings = {
   },
 }
 
-local on_attach = function(_, bufnr)
-  vim.lsp.inlay_hint.enable(true, { bufnr })
-end
-
 M.settings = settings
-M.on_attach = on_attach
 
 return M

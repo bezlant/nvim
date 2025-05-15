@@ -1,16 +1,8 @@
--- Setup installer & lsp configs
-local mason_ok, mason = pcall(require, "mason")
-local mason_lsp_ok, mason_lsp = pcall(require, "mason-lspconfig")
 local ufo_config_handler = require("utils.nvim-ufo").handler
 
-if not mason_ok or not mason_lsp_ok then
-  return
-end
+require("mason").setup()
 
-mason.setup()
-
-mason_lsp.setup({
-  automatic_installation = true,
+require("mason-lspconfig").setup({
   ensure_installed = {
     "bashls",
     "cssls",
@@ -21,17 +13,10 @@ mason_lsp.setup({
     "lua_ls",
     "marksman",
     "stylelint_lsp",
-    "ts_ls",
     "gopls",
     "vtsls",
   },
 })
-
-local lspconfig = require("lspconfig")
-
-local function on_attach(_, bufnr)
-  vim.lsp.inlay_hint.enable(true, { bufnr })
-end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -40,99 +25,63 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
-require("mason-lspconfig").setup_handlers({
-  -- The first entry (without a key) will be the default handler
-  -- and will be called for each installed server that doesn't have
-  -- a dedicated handler.
-  function(server_name)
-    require("lspconfig")[server_name].setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-      handlers = handlers,
-    })
+vim.lsp.config("cssmodules_ls", {
+  capabilities = capabilities,
+  on_attach = function(client)
+    client.server_capabilities.definitionProvider = false
   end,
+  cmd = { "/Users/abezlyudniy/cssmodules-language-server/lib/cli.js" },
+})
 
-  ["cssmodules_ls"] = function()
-    lspconfig.cssmodules_ls.setup({
-      on_attach = function(client)
-        client.server_capabilities.definitionProvider = false
-      end,
-      capabilities = capabilities,
-      cmd = { "/Users/abezlyudniy/cssmodules-language-server/lib/cli.js" },
-    })
-  end,
+require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+local vtsls = require("config.lsp.servers.vtsls")
+vim.lsp.config(
+  "vtsls",
+  vim.tbl_extend("force", {
+    capabilities = capabilities,
+    on_attach = vtsls.on_attach,
+    handlers = vtsls.handlers,
+    settings = vtsls.settings,
+  }, vtsls.extra or {})
+)
 
-  ["vtsls"] = function()
-    require("lspconfig.configs").vtsls = require("vtsls").lspconfig
-    local vtsls = require("config.lsp.servers.vtsls")
+local css = require("config.lsp.servers.cssls")
+vim.lsp.config("cssls", {
+  capabilities = capabilities,
+  on_attach = css.on_attach,
+  settings = css.settings,
+})
 
-    lspconfig.vtsls.setup({
-      capabilities = capabilities,
-      handlers = vtsls.handlers,
-      on_attach = vtsls.on_attach,
-      settings = vtsls.settings,
-    })
-  end,
+local eslint = require("config.lsp.servers.eslint")
+vim.lsp.config("eslint", {
+  capabilities = capabilities,
+  on_attach = eslint.on_attach,
+  settings = eslint.settings,
+})
 
-  ["ts_ls"] = function()
-    -- Skip since we use vtsls
-  end,
+vim.lsp.config("jsonls", {
+  capabilities = capabilities,
+  settings = require("config.lsp.servers.jsonls").settings,
+})
 
-  ["cssls"] = function()
-    lspconfig.cssls.setup({
-      capabilities = capabilities,
-      handlers = handlers,
-      on_attach = require("config.lsp.servers.cssls").on_attach,
-      settings = require("config.lsp.servers.cssls").settings,
-    })
-  end,
+vim.lsp.config("lua_ls", {
+  capabilities = capabilities,
+  settings = require("config.lsp.servers.lua_ls").settings,
+})
 
-  ["eslint"] = function()
-    lspconfig.eslint.setup({
-      capabilities = capabilities,
-      handlers = handlers,
-      on_attach = require("config.lsp.servers.eslint").on_attach,
-      settings = require("config.lsp.servers.eslint").settings,
-    })
-  end,
+local vuels = require("config.lsp.servers.vuels")
+vim.lsp.config("vuels", {
+  filetypes = vuels.filetypes,
+  init_options = vuels.init_options,
+  on_attach = vuels.on_attach,
+  settings = vuels.settings,
+})
 
-  ["jsonls"] = function()
-    lspconfig.jsonls.setup({
-      capabilities = capabilities,
-      handlers = handlers,
-      on_attach = on_attach,
-      settings = require("config.lsp.servers.jsonls").settings,
-    })
-  end,
-
-  ["lua_ls"] = function()
-    lspconfig.lua_ls.setup({
-      capabilities = capabilities,
-      handlers = handlers,
-      on_attach = on_attach,
-      settings = require("config.lsp.servers.lua_ls").settings,
-    })
-  end,
-
-  ["vuels"] = function()
-    lspconfig.vuels.setup({
-      filetypes = require("config.lsp.servers.vuels").filetypes,
-      handlers = handlers,
-      init_options = require("config.lsp.servers.vuels").init_options,
-      on_attach = require("config.lsp.servers.vuels").on_attach,
-      settings = require("config.lsp.servers.vuels").settings,
-    })
-  end,
-
-  ["stylelint_lsp"] = function()
-    lspconfig.stylelint_lsp.setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-      handlers = handlers,
-      filetypes = require("config.lsp.servers.stylelint").filetypes,
-      settings = require("config.lsp.servers.stylelint").settings,
-    })
-  end,
+local stylelint = require("config.lsp.servers.stylelint")
+vim.lsp.config("stylelint_lsp", {
+  capabilities = capabilities,
+  filetypes = stylelint.filetypes,
+  settings = stylelint.settings,
 })
 
 ---@diagnostic disable-next-line: missing-fields
