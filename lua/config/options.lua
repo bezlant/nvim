@@ -58,7 +58,6 @@ local globals = {
   mapleader = " ",
   speeddating_no_mappings = 1,
   skip_ts_context_commentstring_module = true,
-  lazygit_floating_window_use_plenary = 1,
 }
 
 vim.opt.shortmess:append("c")
