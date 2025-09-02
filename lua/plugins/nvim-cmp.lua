@@ -110,14 +110,6 @@ return {
       "saadparwaiz1/cmp_luasnip",
       { "L3MON4D3/LuaSnip", dependencies = "rafamadriz/friendly-snippets" },
       {
-        "sourcegraph/sg.nvim",
-        dependencies = "nvim-lua/plenary.nvim",
-        config = function()
-          ---@diagnostic disable-next-line: missing-parameter
-          require("sg").setup()
-        end,
-      },
-      {
         "zbirenbaum/copilot-cmp",
         config = function()
           require("copilot_cmp").setup()

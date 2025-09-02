@@ -1,14 +1,12 @@
-local M = {}
+vim.lsp.config.stylelint_lsp = {
+  filetypes = { "css", "less", "scss", "sugarss" },
 
-M.filetypes = { "css", "less", "scss", "sugarss" }
-
-M.settings = {
-  stylelintplus = {
-    autoFixOnSave = true,
-    autoFixOnFormat = true,
-    validateOnSave = true,
-    validateOnType = false,
+  settings = {
+    stylelintplus = {
+      autoFixOnSave = true,
+      autoFixOnFormat = true,
+      validateOnSave = true,
+      validateOnType = false,
+    },
   },
 }
-
-return M

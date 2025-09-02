@@ -5,16 +5,18 @@ return {
   config = function()
     require("codecompanion").setup({
       adapters = {
-        openai = function()
-          return require("codecompanion.adapters").extend("openai", {
-            env = {
-              api_key = string.format("cmd:cat %s", os.getenv("HOME") .. "/.config/openai/api.key"),
-            },
-            schema = {
-              model = { default = "gpt-4o-mini" },
-            },
-          })
-        end,
+        http = {
+          openai = function()
+            return require("codecompanion.adapters").extend("openai", {
+              env = {
+                api_key = string.format("cmd:cat %s", os.getenv("HOME") .. "/.config/openai/api.key"),
+              },
+              schema = {
+                model = { default = "gpt-4o-mini" },
+              },
+            })
+          end,
+        },
       },
 
       strategies = {

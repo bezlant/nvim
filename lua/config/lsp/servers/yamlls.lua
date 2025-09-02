@@ -1,5 +1,3 @@
-local M = {}
-
-M.settings = {}
-
-return M
+vim.lsp.config.yamlls = {
+  settings = {},
+}
