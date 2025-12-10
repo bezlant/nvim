@@ -4,6 +4,7 @@ return {
 
   config = function()
     require("codecompanion").setup({
+      ignore_warnings = true,
       adapters = {
         http = {
           openai = function()

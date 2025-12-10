@@ -48,7 +48,8 @@ local options = {
   updatetime = 50,
   virtualedit = "block",
   wildignore = "*node_modules/**",
-  wrap = false,
+  wrap = true,
+  textwidth = 80,
   writebackup = false,
   winborder = "rounded",
 }

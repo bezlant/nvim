@@ -51,4 +51,33 @@ return {
   },
 
   { "artemave/workspace-diagnostics.nvim" },
+
+  {
+    "razak17/tailwind-fold.nvim",
+    opts = {
+      min_chars = 50,
+    },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    ft = { "html", "svelte", "astro", "vue", "typescriptreact" },
+  },
+
+  {
+    "MaximilianLloyd/tw-values.nvim",
+    keys = {
+      { "<Leader>cv", "<CMD>TWValues<CR>", desc = "Tailwind CSS values" },
+    },
+    opts = {
+      show_unknown_classes = true, --
+    },
+  },
+
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    opts = {},
+  },
 }

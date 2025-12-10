@@ -22,6 +22,7 @@ return {
           "stylelint_lsp",
           "gopls",
           "vtsls",
+          "tailwindcss",
         },
       })
 
