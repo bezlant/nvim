@@ -115,6 +115,11 @@ return {
           require("copilot_cmp").setup()
         end,
       },
+      {
+        "altermo/ultimate-autopair.nvim",
+        event = { "InsertEnter", "CmdlineEnter" },
+        opts = {},
+      },
     },
     config = function()
       local lspkind = require("lspkind")

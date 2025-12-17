@@ -5,11 +5,11 @@ return {
   opts = {
     signs = true,
     keywords = {
-      FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE" } },
+      FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG" } },
       TODO = { icon = " ", color = "info" },
       HACK = { icon = " ", color = "warning" },
-      WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-      PERF = { icon = "󰅒 ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+      WARN = { icon = " ", color = "warning", alt = { "WARNING" } },
+      PERF = { icon = "󰅒 ", alt = { "PERFORMANCE", "OPTIMIZE" } },
       NOTE = { icon = "󰍨 ", color = "hint", alt = { "INFO" } },
     },
     highlight = {

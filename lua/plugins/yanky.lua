@@ -3,7 +3,7 @@ return {
   event = "BufEnter",
   opts = {
     highlight = {
-      timer = 150,
+      timer = 100,
     },
     preserve_cursor_position = {
       enabled = true,
