@@ -21,9 +21,9 @@ vim.diagnostic.config({
 
 -- Global defaults for all LSP servers (new native API)
 vim.lsp.config("*", {
-  -- global capabilities (merge with server-specific ones)
+  -- global capabilities: blink.cmp extends native LSP capabilities
   capabilities = (function()
-    local caps = require("cmp_nvim_lsp").default_capabilities()
+    local caps = require("blink.cmp").get_lsp_capabilities()
     caps.textDocument.foldingRange = {
       dynamicRegistration = false,
       lineFoldingOnly = true,
