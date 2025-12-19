@@ -16,13 +16,11 @@ return {
     local colors = require("dracula").colors()
 
     local highlights = {
-      CmpItemAbbr = { fg = colors.fg, bg = "NONE" },
-      CmpItemMenu = { fg = "#C586C0", bg = "NONE" },
-      CmpItemAbbrMatch = { fg = "#569CD6", bg = "NONE" },
-      CmpItemAbbrMatchFuzzy = { fg = "#569CD6", bg = "NONE" },
+      BlinkCmpMenu = { fg = colors.fg, bg = colors.bg },
+      BlinkCmpMenuBorder = { fg = colors.fg, bg = colors.bg },
+      BlinkCmpLabel = { fg = colors.fg, bg = colors.bg },
+      BlinkCmpSource = { fg = colors.purple, bg = colors.bg },
     }
-
-    vim.api.nvim_set_hl(0, "CmpBorderedWindow_FloatBorder", { fg = colors.cyan })
 
     for group, hl in pairs(highlights) do
       vim.api.nvim_set_hl(0, group, hl)

@@ -3,7 +3,6 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       "rafamadriz/friendly-snippets",
-      "fang2hou/blink-copilot",
       "onsails/lspkind.nvim",
     },
     version = "1.*",
@@ -13,6 +12,8 @@ return {
     opts = {
       keymap = {
         preset = "enter",
+        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback" },
       },
@@ -22,6 +23,7 @@ return {
       },
 
       completion = {
+        list = { selection = { auto_insert = true } },
         accept = {
           auto_brackets = {
             enabled = true,
@@ -29,6 +31,7 @@ return {
         },
         menu = {
           draw = {
+            padding = { 0, 1 },
             components = {
               kind_icon = {
                 text = function(ctx)
@@ -44,7 +47,7 @@ return {
                     })
                   end
 
-                  return icon .. ctx.icon_gap
+                  return " " .. icon .. ctx.icon_gap .. " "
                 end,
 
                 highlight = function(ctx)
@@ -79,18 +82,8 @@ return {
 
       -- Sources configuration
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "copilot" },
+        default = { "lsp", "path", "snippets", "buffer" },
         providers = {
-          copilot = {
-            name = "copilot",
-            module = "blink-copilot",
-            async = true,
-            score_offset = 100,
-            opts = {
-              max_completions = 3,
-            },
-          },
-
           lsp = {
             score_offset = 90,
           },
@@ -110,6 +103,8 @@ return {
         enabled = true,
         keymap = {
           preset = "cmdline",
+          ["<C-j>"] = { "select_next", "fallback" },
+          ["<C-k>"] = { "select_prev", "fallback" },
           ["<Right>"] = false,
           ["<Left>"] = false,
         },
