@@ -1,1 +1,5 @@
 plugin/packer_compiled.lua
+.claude/commands
+.specify
+specs/001-blink-cmp-migration
+CLAUDE.md
