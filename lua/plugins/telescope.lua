@@ -77,17 +77,6 @@ return {
           },
         },
         extensions = {
-          aerial = {
-            format_symbol = function(symbol_path, filetype)
-              if filetype == "json" or filetype == "yaml" then
-                return table.concat(symbol_path, ".")
-              else
-                return symbol_path[#symbol_path]
-              end
-            end,
-            show_columns = "both",
-          },
-
           fzf = {
             fuzzy = true,
             override_generic_sorter = false,
@@ -103,7 +92,6 @@ return {
       })
 
       telescope.load_extension("fzf")
-      telescope.load_extension("aerial")
       telescope.load_extension("frecency")
       telescope.load_extension("egrepify")
     end,

@@ -84,7 +84,6 @@ map("n", "<leader>f", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>ff", "<cmd>Telescope find_files {hidden=true, no_ignore=true}<cr>")
 map("n", "<leader>fg", "<cmd>Telescope egrepify<CR>")
 
-map("n", "<leader>fa", "<cmd>Telescope aerial<cr>")
 map("n", "<leader>fl", "<cmd>Telescope lazy<cr>")
 map("n", "<leader>ft", "<cmd>TodoTelescope<cr>")
 
