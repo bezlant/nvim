@@ -7,7 +7,6 @@ return {
 
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
-
   opts = {
     file_types = {
       "markdown",

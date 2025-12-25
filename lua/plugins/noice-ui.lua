@@ -1,27 +1,8 @@
 return {
   {
-    "rcarriga/nvim-notify",
-    opts = {
-      timeout = 3000,
-      fps = 60,
-      stages = "static",
-      icons = {
-        ERROR = " ",
-        WARN = " ",
-        INFO = " ",
-        DEBUG = " ",
-        TRACE = "✎ ",
-      },
-    },
-  },
-
-  {
     "folke/noice.nvim",
     event = "VeryLazy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
+    dependencies = { "MunifTanjim/nui.nvim" },
 
     opts = {
       messages = { enabled = true },
@@ -29,8 +10,7 @@ return {
       lsp = {
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = false,
-          ["cmp.entry.get_documentation"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
         },
         progress = {
           enabled = false,
