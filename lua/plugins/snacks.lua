@@ -18,6 +18,26 @@ return {
         enabled = true,
         timeout = 3000,
       },
+      lazygit = {
+        enabled = true,
+        configure = false,
+        config = {
+          os = { editPreset = "nvim-remote" },
+        },
+        win = {
+          backdrop = false,
+          border = "rounded",
+        },
+      },
+    },
+    keys = {
+      {
+        "<leader>g",
+        function()
+          Snacks.lazygit()
+        end,
+        desc = "LazyGit",
+      },
     },
   },
 }
