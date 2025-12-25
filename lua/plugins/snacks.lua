@@ -29,6 +29,18 @@ return {
           border = "rounded",
         },
       },
+      -- Replaces indent-blankline.nvim
+      indent = {
+        enabled = true,
+        char = "│",
+        scope = {
+          enabled = true,
+        },
+      },
+      -- Replaces mini.bufremove
+      bufdelete = {
+        enabled = true,
+      },
     },
     keys = {
       {

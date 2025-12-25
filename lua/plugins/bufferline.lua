@@ -1,15 +1,9 @@
 return {
   {
-    "echasnovski/mini.bufremove",
-    opts = {},
-  },
-
-  {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      "echasnovski/mini.bufremove",
     },
 
     config = function()
@@ -27,10 +21,10 @@ return {
           style_preset = require("bufferline").style_preset.no_italic,
           numbers = "ordinal",
           close_command = function(n)
-            require("mini.bufremove").delete(n, false)
+            Snacks.bufdelete(n)
           end,
           right_mouse_command = function(n)
-            require("mini.bufremove").delete(n, false)
+            Snacks.bufdelete(n)
           end,
         },
         highlights = {
