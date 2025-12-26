@@ -1,24 +1,17 @@
 return {
   cmd = { "lua-language-server" },
   filetypes = { "lua" },
-  root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", ".git" },
+  root_markers = { ".luacheckrc", ".stylua.toml", "stylua.toml", ".git" },
 
   settings = {
     Lua = {
-      runtime = {
-        version = "LuaJIT",
-        path = vim.split(package.path, ";"),
-      },
+      runtime = { version = "LuaJIT" },
       diagnostics = {
-        globals = { "vim", "bit", "packer_plugins" },
+        globals = { "vim", "Snacks" },
       },
+      -- Do NOT set workspace.library - lazydev.nvim handles this
       workspace = {
-        library = {
-          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-          [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-        },
-        maxPreload = 100000,
-        preloadFileSize = 10000,
+        checkThirdParty = false,
       },
       telemetry = { enable = false },
       format = { enable = false },

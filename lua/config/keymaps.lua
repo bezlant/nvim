@@ -1,4 +1,11 @@
+---@type vim.keymap.set.Opts
 local silent = { silent = true }
+
+---@alias KeymapMode "n"|"i"|"v"|"x"|"c"|"o"|"t"|"s"|string[]
+
+---@param mode KeymapMode
+---@param lhs string
+---@param rhs string|function
 local map = function(mode, lhs, rhs)
   vim.keymap.set(mode, lhs, rhs, silent)
 end

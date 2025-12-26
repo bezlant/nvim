@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "Mofiqul/dracula.nvim",
   dependencies = { "echasnovski/mini.hipatterns" },

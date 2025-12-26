@@ -1,5 +1,6 @@
 local icons = require("config.constants").icons
 
+---@type LazySpec
 return {
   "folke/trouble.nvim",
   cmd = { "TroubleToggle", "Trouble" },

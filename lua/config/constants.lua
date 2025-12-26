@@ -1,4 +1,7 @@
+---@class config.Constants
+---@field icons table<string, string>
 local M = {
+  ---@type table<string, string>
   icons = {
     abc = "  ",
     array = "  ",

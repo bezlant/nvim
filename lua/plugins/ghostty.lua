@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   dir = (vim.env.GHOSTTY_RESOURCES_DIR or "") .. "/../vim/vimfiles",
   lazy = false, -- Ensures it loads for Ghostty config detection
