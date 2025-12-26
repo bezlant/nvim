@@ -1,4 +1,8 @@
-vim.lsp.config.tailwindcss = {
+return {
+  cmd = { "tailwindcss-language-server", "--stdio" },
+  filetypes = { "html", "mdx", "javascript", "typescript", "javascriptreact", "typescriptreact", "vue", "svelte" },
+  root_markers = { "tailwind.config.js", "tailwind.config.cjs", "tailwind.config.mjs", "tailwind.config.ts", "package.json", ".git" },
+
   capabilities = (function()
     local capabilities = require("blink.cmp").get_lsp_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -9,12 +13,6 @@ vim.lsp.config.tailwindcss = {
     }
     return capabilities
   end)(),
-
-  on_attach = function(client, bufnr)
-    -- Empty on_attach maintained from original config
-  end,
-
-  filetypes = { "html", "mdx", "javascript", "typescript", "javascriptreact", "typescriptreact", "vue", "svelte" },
 
   init_options = {
     userLanguages = {

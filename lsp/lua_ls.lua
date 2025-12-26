@@ -1,4 +1,8 @@
-vim.lsp.config.lua_ls = {
+return {
+  cmd = { "lua-language-server" },
+  filetypes = { "lua" },
+  root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", ".git" },
+
   settings = {
     Lua = {
       runtime = {
@@ -6,7 +10,7 @@ vim.lsp.config.lua_ls = {
         path = vim.split(package.path, ";"),
       },
       diagnostics = {
-        globals = { "vim", "bit", "packer_plugins", "EcoVim" },
+        globals = { "vim", "bit", "packer_plugins" },
       },
       workspace = {
         library = {
@@ -17,14 +21,13 @@ vim.lsp.config.lua_ls = {
         preloadFileSize = 10000,
       },
       telemetry = { enable = false },
-      format = { enable = false }, -- let other formatters handle this
+      format = { enable = false },
       completion = { callSnippet = "Replace" },
       hint = { enable = true },
     },
   },
 
   on_attach = function(client)
-    -- delegate formatting to a dedicated formatter (stylua, null-ls, etc.)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
   end,

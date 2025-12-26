@@ -52,7 +52,25 @@ vim.lsp.config("*", {
 -- Deprioritize in favor of treesitter
 vim.highlight.priorities.semantic_tokens = 95
 
-require("config.lsp.servers")
+-- Enable all LSP servers (native Neovim 0.11+ API)
+-- Server configs are in ~/.config/nvim/lsp/*.lua
+vim.lsp.enable({
+  "bashls",
+  "cssls",
+  "cssmodules_ls",
+  "eslint",
+  "gopls",
+  "html",
+  "jsonls",
+  "lua_ls",
+  "marksman",
+  "stylelint_lsp",
+  "tailwindcss",
+  "taplo",
+  "vtsls",
+  "vuels",
+  "yamlls",
+})
 
 -- UFO setup for folding
 require("ufo").setup({
