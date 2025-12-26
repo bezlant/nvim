@@ -1,3 +1,4 @@
+---@type table<string, boolean|number|string>
 local options = {
   autoindent = true,
   backspace = "indent,eol,start",
@@ -54,6 +55,7 @@ local options = {
   winborder = "rounded",
 }
 
+---@type table<string, boolean|number|string>
 local globals = {
   tmux_navigator_no_mappings = 1,
   mapleader = " ",

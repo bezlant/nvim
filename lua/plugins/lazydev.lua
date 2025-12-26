@@ -1,15 +1,16 @@
+---@type LazySpec
 return {
-  {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
-    opts = {
-      library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = "luvit-meta/library", words = { "vim%.uv" } },
-      },
+  "folke/lazydev.nvim",
+  enabled = true,
+  ft = "lua",
+  opts = {
+    library = {
+      -- Load luvit types when vim.uv is found
+      { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      -- Load snacks types when Snacks is used
+      { path = "snacks.nvim", words = { "Snacks" } },
+      -- Always load lazy.nvim types (we're in a lazy.nvim config)
+      "lazy.nvim",
     },
   },
-  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
-  -- Note: blink.cmp automatically integrates with lazydev via LSP
 }

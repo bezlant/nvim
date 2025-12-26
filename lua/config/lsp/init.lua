@@ -1,7 +1,7 @@
 local ufo_utils = require("utils.nvim-ufo")
 local ufo_config_handler = ufo_utils.handler
 
--- Diagnostic config
+---@type config.Constants
 local constants = require("config.constants")
 
 vim.diagnostic.config({
@@ -42,7 +42,8 @@ vim.lsp.config("*", {
   end)(),
 
   -- global on_attach: run for every server; prefer buffer-local setup here
-  on_attach = function(client, bufnr)
+  ---@param bufnr integer
+  on_attach = function(_, bufnr)
     -- Example: enable inlay hints if server supports it
     pcall(vim.lsp.inlay_hint.enable, true, { bufnr = bufnr })
     -- set up any global LspAttach behavior in an autocommand if needed
@@ -54,7 +55,8 @@ vim.highlight.priorities.semantic_tokens = 95
 
 -- Enable all LSP servers (native Neovim 0.11+ API)
 -- Server configs are in ~/.config/nvim/lsp/*.lua
-vim.lsp.enable({
+---@type string[]
+local servers = {
   "bashls",
   "cssls",
   "cssmodules_ls",
@@ -70,7 +72,9 @@ vim.lsp.enable({
   "vtsls",
   "vuels",
   "yamlls",
-})
+}
+
+vim.lsp.enable(servers)
 
 -- UFO setup for folding
 require("ufo").setup({
