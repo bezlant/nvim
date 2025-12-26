@@ -1,5 +1,7 @@
-vim.lsp.config.vuels = {
+return {
+  cmd = { "vue-language-server", "--stdio" },
   filetypes = { "vue" },
+  root_markers = { "package.json", "vue.config.js", ".git" },
 
   init_options = {
     config = {

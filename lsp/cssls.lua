@@ -1,4 +1,8 @@
-vim.lsp.config.cssls = {
+return {
+  cmd = { "vscode-css-language-server", "--stdio" },
+  filetypes = { "css", "scss", "less" },
+  root_markers = { "package.json", ".git" },
+
   settings = {
     css = {
       lint = {
@@ -14,7 +18,6 @@ vim.lsp.config.cssls = {
   },
 
   on_attach = function(client)
-    -- enable formatting capabilities if you want the server to provide formatting
     client.server_capabilities.documentFormattingProvider = true
     client.server_capabilities.documentRangeFormattingProvider = true
   end,
