@@ -1,15 +1,18 @@
 return {
   {
-    "neovim/nvim-lspconfig",
+    "mason-org/mason.nvim",
     lazy = false,
-    dependencies = {
-      "mason-org/mason-lspconfig.nvim",
-      "mason-org/mason.nvim",
-    },
     config = function()
       require("mason").setup()
+    end,
+  },
 
+  {
+    "mason-org/mason-lspconfig.nvim",
+    lazy = false,
+    config = function()
       require("mason-lspconfig").setup({
+        automatic_enable = true,
         ensure_installed = {
           "bashls",
           "cssls",

@@ -1,4 +1,3 @@
--- Configure tailwindcss with Neovim 0.11 API
 vim.lsp.config.tailwindcss = {
   capabilities = (function()
     local capabilities = require("blink.cmp").get_lsp_capabilities()

@@ -1,10 +1,11 @@
 return {
   {
     "yioneko/nvim-vtsls",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "neovim/nvim-lspconfig",
+    ft = {
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
     },
   },
 
