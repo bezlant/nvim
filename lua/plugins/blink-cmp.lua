@@ -16,6 +16,8 @@ return {
         ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback" },
+        ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-d>"] = { "scroll_documentation_down", "fallback" },
       },
 
       appearance = {
@@ -23,13 +25,16 @@ return {
       },
 
       completion = {
-        list = { selection = { auto_insert = true } },
+        list = {
+          selection = { auto_insert = true },
+        },
         accept = {
           auto_brackets = {
             enabled = true,
           },
         },
         menu = {
+          border = "rounded",
           draw = {
             padding = { 0, 1 },
             components = {
@@ -64,7 +69,7 @@ return {
             },
 
             columns = {
-              { "kind_icon", "label", gap = 1 },
+              { "kind_icon", "label", "label_description", gap = 1 },
               { "source_name" },
             },
             treesitter = { "lsp" },
@@ -73,6 +78,9 @@ return {
         documentation = {
           auto_show = true,
           auto_show_delay_ms = 200,
+          window = {
+            border = "rounded",
+          },
         },
 
         ghost_text = {
@@ -80,21 +88,69 @@ return {
         },
       },
 
+      -- Signature help (function parameters)
+      signature = {
+        enabled = true,
+        window = {
+          border = "rounded",
+        },
+      },
+
+      -- Fuzzy matching configuration
+      fuzzy = {
+        sorts = {
+          "exact",
+          "score",
+          "sort_text",
+        },
+      },
+
       -- Sources configuration
       sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
+        -- Dynamic source selection based on context
+        default = function()
+          local success, node = pcall(vim.treesitter.get_node)
+          if success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
+            return { "buffer" }
+          end
+          return { "lsp", "path", "snippets", "buffer" }
+        end,
+
         providers = {
           lsp = {
             score_offset = 90,
+            -- Don't fallback to buffer when LSP has results
+            fallbacks = {},
           },
 
           buffer = {
-            min_keyword_length = 5,
-            max_items = 10,
+            min_keyword_length = 4,
+            max_items = 8,
+            -- Get completions from all open buffers
+            opts = {
+              get_bufnrs = function()
+                return vim.tbl_filter(function(bufnr)
+                  return vim.bo[bufnr].buftype == ""
+                end, vim.api.nvim_list_bufs())
+              end,
+            },
+          },
+
+          path = {
+            -- Complete paths relative to cwd (useful for imports)
+            opts = {
+              get_cwd = function(_)
+                return vim.fn.getcwd()
+              end,
+            },
           },
 
           snippets = {
             score_offset = -10,
+            -- Only show snippets on manual trigger, not after trigger chars like '.'
+            should_show_items = function(ctx)
+              return ctx.trigger.initial_kind ~= "trigger_character"
+            end,
           },
         },
       },
