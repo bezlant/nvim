@@ -117,7 +117,6 @@ local M = {
     struct = "  ",
     table = "  ",
     tag = "  ",
-    telescope = "  ",
     terminal = "  ",
     text = "  ",
     threeDots = " 󰇘 ",

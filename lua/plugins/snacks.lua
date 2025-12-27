@@ -12,6 +12,39 @@ return {
       picker = {
         enabled = true,
         ui_select = true,
+        matcher = {
+          fuzzy = true,
+          smartcase = true,
+          ignorecase = true,
+          frecency = true,
+        },
+        layout = {
+          preset = "default",
+          layout = {
+            backdrop = false,
+          },
+        },
+        sources = {
+          files = {
+            hidden = false,
+            ignored = false,
+          },
+          grep = {
+            live = true,
+          },
+        },
+        win = {
+          input = {
+            keys = {
+              ["<C-j>"] = { "list_down", mode = { "i", "n" } },
+              ["<C-k>"] = { "list_up", mode = { "i", "n" } },
+              ["<C-d>"] = { "list_scroll_down", mode = { "i", "n" } },
+              ["<C-u>"] = { "list_scroll_up", mode = { "i", "n" } },
+              ["<C-q>"] = { "qflist", mode = { "i", "n" } },
+              ["<C-t>"] = { "trouble_open", mode = { "i", "n" } },
+            },
+          },
+        },
       },
       notifier = {
         style = "fancy",
