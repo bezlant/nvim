@@ -9,6 +9,7 @@ return {
       input = {
         enabled = true,
       },
+
       picker = {
         enabled = true,
         ui_select = true,
@@ -46,11 +47,13 @@ return {
           },
         },
       },
+
       notifier = {
         style = "fancy",
         enabled = true,
         timeout = 3000,
       },
+
       lazygit = {
         enabled = true,
         configure = false,
@@ -62,7 +65,7 @@ return {
           border = "rounded",
         },
       },
-      -- Replaces indent-blankline.nvim
+
       indent = {
         enabled = true,
         char = "│",
@@ -70,7 +73,7 @@ return {
           enabled = true,
         },
       },
-      -- Replaces mini.bufremove
+
       bufdelete = {
         enabled = true,
       },
