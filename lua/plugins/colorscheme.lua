@@ -20,6 +20,7 @@ return {
       BlinkCmpMenu = { fg = colors.fg, bg = colors.bg },
       BlinkCmpMenuBorder = { fg = colors.fg, bg = colors.bg },
       BlinkCmpLabel = { fg = colors.fg, bg = colors.bg },
+      BlinkCmpLabelMatch = { fg = colors.cyan, bg = colors.bg },
       BlinkCmpSource = { fg = colors.purple, bg = colors.bg },
     }
 
