@@ -1,6 +1,5 @@
 return {
   {
-    { import = "plugins.git" },
     { import = "plugins.languages" },
   },
 
