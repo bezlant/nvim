@@ -26,6 +26,9 @@ return {
 
   {
     "stevearc/oil.nvim",
+    keys = {
+      { "-", "<CMD>Oil<CR>", desc = "Oil File Browser" },
+    },
     config = true,
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },

@@ -79,13 +79,37 @@ return {
       },
     },
     keys = {
-      {
-        "<leader>g",
-        function()
-          Snacks.lazygit()
-        end,
-        desc = "LazyGit",
-      },
+      -- Lazygit
+      { "<leader>g", function() Snacks.lazygit() end, desc = "LazyGit" },
+
+      -- Picker: Files
+      { "<C-f>", function() Snacks.picker.smart() end, desc = "Smart Find" },
+      { "<leader>f", function() Snacks.picker.files() end, desc = "Find Files" },
+      { "<leader>ff", function() Snacks.picker.files({ hidden = true, ignored = true }) end, desc = "Find Files (all)" },
+      { "<leader>fr", function() Snacks.picker.resume() end, desc = "Resume Picker" },
+
+      -- Picker: Grep
+      { "<leader>fg", function() Snacks.picker.grep() end, desc = "Grep" },
+
+      -- Picker: Git
+      { "<leader>fs", function() Snacks.picker.git_status() end, desc = "Git Status" },
+      { "<leader>fc", function() Snacks.picker.git_log() end, desc = "Git Commits" },
+
+      -- Picker: Buffers & Registers
+      { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      { "<leader>fy", function() Snacks.picker.registers() end, desc = "Registers" },
+
+      -- Picker: Help & Exploration
+      { "<leader>fh", function() Snacks.picker.help() end, desc = "Help" },
+      { "<leader>fk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+      { "<leader>fl", function() require("utils.pickers").lazy_plugins() end, desc = "Lazy Plugins" },
+
+      -- Picker: LSP
+      { "gr", function() Snacks.picker.lsp_references() end, desc = "LSP References" },
+      { "gi", function() Snacks.picker.lsp_implementations() end, desc = "LSP Implementations" },
+
+      -- Picker: Diagnostics
+      { "<leader>tw", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
     },
   },
 }

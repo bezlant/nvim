@@ -26,7 +26,11 @@ return {
     rulesCustomizations = {},
     run = "onSave",
     useESLintClass = false,
+    useFlatConfig = nil, -- auto-detect; set to true for eslint.config.js or false for .eslintrc.*
     validate = "on",
     workingDirectory = { mode = "location" },
+    experimental = {
+      useFlatConfig = nil, -- some versions need this in experimental
+    },
   },
 }
