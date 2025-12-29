@@ -104,10 +104,6 @@ return {
       { "<leader>fk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
       { "<leader>fl", function() require("utils.pickers").lazy_plugins() end, desc = "Lazy Plugins" },
 
-      -- Picker: LSP
-      { "gr", function() Snacks.picker.lsp_references() end, desc = "LSP References" },
-      { "gi", function() Snacks.picker.lsp_implementations() end, desc = "LSP Implementations" },
-
       -- Picker: Diagnostics
       { "<leader>tw", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
     },
