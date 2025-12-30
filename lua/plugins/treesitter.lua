@@ -26,24 +26,14 @@ return {
     config = function()
       require("ts-install").setup({
         auto_install = true,
+        -- Core parsers to have ready immediately (others auto-install on first open)
         ensure_install = {
-          "bash",
-          "css",
-          "gitcommit",
-          "html",
-          "javascript",
-          "json",
-          "json5",
           "lua",
-          "markdown",
-          "markdown_inline",
-          "regex",
-          "tsx",
-          "typescript",
+          "luadoc",
           "vim",
           "vimdoc",
-          "vue",
-          "yaml",
+          "markdown",
+          "markdown_inline",
         },
       })
     end,
@@ -148,6 +138,16 @@ return {
         ts_swap.swap_previous("@parameter.inner", "textobjects")
       end, { desc = "Swap previous parameter" })
     end,
+  },
+
+  -- Incremental selection (Tab to expand, Shift-Tab to shrink)
+  {
+    "daliusd/incr.nvim",
+    event = "VeryLazy",
+    opts = {
+      incr_key = "<Tab>",
+      decr_key = "<S-Tab>",
+    },
   },
 
   -- Treesitter context (shows function/class context at top)

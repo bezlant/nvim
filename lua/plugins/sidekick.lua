@@ -37,18 +37,6 @@ return {
       -- File watching - auto-reload buffers when Claude edits them
       watch = true,
     },
-
-    -- Prompts library
-    prompts = {
-      explain = "Explain {this}",
-      fix = "Can you fix {this}?",
-      document = "Add documentation to {function}",
-      tests = "Write tests for {this}",
-      optimize = "How can {this} be optimized?",
-      review = "Review {file} for issues or improvements",
-      refactor = "Refactor {this} to be more readable",
-      diagnostics = "Help fix these diagnostics:\n{diagnostics}",
-    },
   },
 
   keys = {
