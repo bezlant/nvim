@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   "folke/sidekick.nvim",
+  enabled = true,
   event = "VeryLazy",
   ---@module "sidekick"
   ---@type sidekick.Config
