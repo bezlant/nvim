@@ -18,7 +18,14 @@ map("n", "H", "<cmd>bprevious<cr>zz")
 map("n", "L", "<cmd>bnext<cr>zz")
 map("n", "<leader>bd", "<cmd>bdelete! %<CR>")
 map("n", "<leader>ba", "<cmd>bufdo :bdelete<CR>")
-map("n", "<leader>bo", "<cmd>%bd|e#|bd#<CR>")
+map("n", "<leader>bo", function()
+  local current = vim.api.nvim_get_current_buf()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if buf ~= current and vim.bo[buf].buflisted then
+      pcall(vim.api.nvim_buf_delete, buf, {})
+    end
+  end
+end)
 
 -- Duplicate line and comment original
 map("n", "yc", "yy<cmd>normal gcc<CR>p")
