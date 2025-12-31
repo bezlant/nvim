@@ -2,6 +2,7 @@
 return {
   "gbprod/yanky.nvim",
   keys = {
+    { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank" },
     { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put After" },
     { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put Before" },
     { "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }, desc = "GPut After" },
