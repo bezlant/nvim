@@ -7,9 +7,6 @@ return {
   { "nvim-tree/nvim-web-devicons" },
 
   { "tpope/vim-repeat", lazy = false },
-  { "tpope/vim-speeddating", lazy = false },
-  { "AndrewRadev/switch.vim", lazy = false },
-
   { "christoomey/vim-tmux-navigator" },
 
   {
