@@ -178,15 +178,6 @@ return {
     },
   },
 
-  -- Context-aware commentstring
-  {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    lazy = true,
-    opts = {
-      enable_autocmd = false,
-    },
-  },
-
   -- Auto close/rename HTML tags
   {
     "windwp/nvim-ts-autotag",
