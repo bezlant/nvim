@@ -1,8 +1,7 @@
 ---@type LazySpec
 return {
   "folke/todo-comments.nvim",
-  lazy = false,
-  event = "BufEnter",
+  event = "BufReadPost",
   opts = {
     signs = true,
     keywords = {
@@ -20,19 +19,18 @@ return {
   },
   keys = {
     {
-      "n",
       "]t",
       function()
         require("todo-comments").jump_next()
       end,
+      desc = "Next TODO",
     },
-
     {
-      "n",
       "[t",
       function()
         require("todo-comments").jump_prev()
       end,
+      desc = "Prev TODO",
     },
   },
 }
