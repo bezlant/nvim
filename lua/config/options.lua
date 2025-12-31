@@ -1,66 +1,69 @@
 ---@type table<string, boolean|number|string>
 local options = {
-  autoindent = true,
-  backspace = "indent,eol,start",
-  backup = false,
+  -- UI
   cmdheight = 0,
-  completeopt = "menu,menuone,noselect",
-  conceallevel = 2,
   cursorline = true,
-  emoji = false,
-  encoding = "utf-8",
-  errorbells = false,
-  expandtab = true,
-  fileencoding = "utf-8",
+  number = true,
+  numberwidth = 2,
+  relativenumber = true,
+  showmode = false,
+  showtabline = 1,
+  signcolumn = "yes",
+  pumheight = 10,
+  winborder = "rounded",
+
+  -- Folding (see plugins/folding.lua for method/expr/text)
   foldcolumn = "0",
   foldenable = true,
   foldlevel = 99,
   foldlevelstart = 99,
-  foldnestmax = 0,
-  hlsearch = true,
+
+  -- Search
   ignorecase = true,
+  smartcase = true,
   inccommand = "split",
-  incsearch = true,
   infercase = true,
-  linebreak = true,
-  mouse = "a",
-  number = true,
-  numberwidth = 2,
-  pumheight = 10,
-  relativenumber = true,
+
+  -- Indentation
+  expandtab = true,
+  shiftwidth = 2,
+  tabstop = 4,
+  smartindent = true,
+
+  -- Scrolling (centered cursor)
   scrolloff = 999,
   sidescrolloff = 999,
-  sidescroll = 999,
-  sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal",
-  shiftwidth = 2,
-  showmode = false,
-  showtabline = 1,
-  signcolumn = "yes",
-  smartcase = true,
-  smartindent = true,
-  smarttab = true,
+
+  -- Splits
   splitbelow = true,
   splitright = true,
+
+  -- Files
   swapfile = false,
-  tabstop = 4,
-  termguicolors = true,
-  timeoutlen = 350,
   undofile = true,
+  writebackup = false,
+  fileencoding = "utf-8",
+
+  -- Wrapping
+  wrap = true,
+  linebreak = true,
+  textwidth = 80,
+
+  -- Misc
+  completeopt = "menu,menuone,noselect",
+  conceallevel = 2,
+  timeoutlen = 350,
   updatetime = 50,
   virtualedit = "block",
   wildignore = "*node_modules/**",
-  wrap = true,
-  textwidth = 80,
-  writebackup = false,
-  winborder = "rounded",
+  sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal",
 }
 
 ---@type table<string, boolean|number|string>
 local globals = {
-  tmux_navigator_no_mappings = 1,
   mapleader = " ",
+  tmux_navigator_no_mappings = 1,
   speeddating_no_mappings = 1,
-  skip_ts_context_commentstring_module = true,
 }
 
 vim.opt.shortmess:append("c")
@@ -78,3 +81,4 @@ end
 for key, value in pairs(globals) do
   vim.g[key] = value
 end
+

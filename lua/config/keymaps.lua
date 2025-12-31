@@ -80,12 +80,7 @@ Snacks.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, {
   lsp = { method = "textDocument/codeAction" },
 })
 
-Snacks.keymap.set("n", "K", function()
-  local winid = require("ufo").peekFoldedLinesUnderCursor()
-  if not winid then
-    vim.lsp.buf.hover()
-  end
-end, {
+Snacks.keymap.set("n", "K", vim.lsp.buf.hover, {
   desc = "Hover",
   lsp = { method = "textDocument/hover" },
 })

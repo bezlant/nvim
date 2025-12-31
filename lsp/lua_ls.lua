@@ -8,6 +8,7 @@ return {
       runtime = { version = "LuaJIT" },
       diagnostics = {
         globals = { "vim", "Snacks" },
+        unusedLocalExclude = { "_*" },
       },
       -- Do NOT set workspace.library - lazydev.nvim handles this
       workspace = {

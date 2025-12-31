@@ -1,6 +1,3 @@
-local ufo_utils = require("utils.nvim-ufo")
-local ufo_config_handler = ufo_utils.handler
-
 ---@type config.Constants
 local constants = require("config.constants")
 
@@ -75,10 +72,3 @@ local servers = {
 }
 
 vim.lsp.enable(servers)
-
--- UFO setup for folding
-require("ufo").setup({
-  fold_virt_text_handler = ufo_config_handler,
-  close_fold_kinds_for_ft = { default = { "imports" } },
-  open_fold_hl_timeout = 0,
-})
