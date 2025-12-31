@@ -12,8 +12,13 @@ return {
     config = function()
       -- Enable highlighting for all filetypes with a parser
       vim.api.nvim_create_autocmd("FileType", {
-        callback = function()
-          pcall(vim.treesitter.start)
+        callback = function(args)
+          local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+
+          -- Only start treesitter if parser is actually installed
+          if lang and pcall(vim.treesitter.language.add, lang) then
+            pcall(vim.treesitter.start, args.buf)
+          end
         end,
       })
     end,
