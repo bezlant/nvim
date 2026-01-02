@@ -37,13 +37,6 @@ map("n", "0", "^")
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
--- Clipboard
-map({ "n", "v" }, "<leader>Y", '"+Y')
-map({ "n", "v" }, "<leader>y", '"+y')
-map({ "n", "v" }, "<leader>yp", ":let @+=@%<cr>")
-map({ "n", "v" }, "<leader>p", '"+p')
-map({ "n", "v" }, "<leader>P", '"+P')
-
 -- Search and replace word under cursor
 map("n", "<leader>x", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
