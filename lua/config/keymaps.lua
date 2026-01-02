@@ -4,12 +4,6 @@ local function map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
--- Pane navigation (tmux)
-map("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
-map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
-map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
-map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
-
 -- Quick escape
 map("i", "jk", "<ESC>")
 

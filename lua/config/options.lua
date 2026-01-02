@@ -59,20 +59,16 @@ local options = {
   sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal",
 }
 
----@type table<string, boolean|number|string>
 local globals = {
   mapleader = " ",
-  tmux_navigator_no_mappings = 1,
-  speeddating_no_mappings = 1,
 }
 
 vim.opt.shortmess:append("c")
-vim.opt.fillchars:append("stl: ")
-vim.opt.fillchars:append("eob: ")
-vim.opt.fillchars:append("fold: ")
-vim.opt.fillchars:append("foldopen: ")
-vim.opt.fillchars:append("foldsep: ")
-vim.opt.fillchars:append("foldclose:")
+vim.opt.fillchars:append({
+  stl = " ", -- inactive statusline
+  eob = " ", -- hide ~ at end of buffer
+  fold = " ", -- cleaner fold text
+})
 
 for opt, value in pairs(options) do
   vim.o[opt] = value
@@ -81,4 +77,3 @@ end
 for key, value in pairs(globals) do
   vim.g[key] = value
 end
-
