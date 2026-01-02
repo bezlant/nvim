@@ -1,6 +1,3 @@
----@type config.Constants
-local constants = require("config.constants")
-
 vim.diagnostic.config({
   severity_sort = true,
   signs = {
@@ -13,46 +10,27 @@ vim.diagnostic.config({
   },
   underline = false,
   update_in_insert = false,
-  virtual_text = { prefix = constants.icons.circle },
+  virtual_text = { prefix = "  " },
 })
 
--- Global defaults for all LSP servers (new native API)
+-- Global defaults for all LSP servers
 vim.lsp.config("*", {
   -- global capabilities: blink.cmp extends native LSP capabilities
   capabilities = (function()
     local caps = require("blink.cmp").get_lsp_capabilities()
+    -- Enable LSP-based folding (for native folds)
     caps.textDocument.foldingRange = {
       dynamicRegistration = false,
       lineFoldingOnly = true,
     }
-
-    caps.textDocument.semanticTokens = {
-      dynamicRegistration = false,
-      formats = { "relative" },
-      multilineTokenSupport = true,
-      overlappingTokenSupport = true,
-      requests = { range = true, full = { delta = true } },
-      tokenModifiers = {},
-      tokenTypes = {},
-    }
     return caps
   end)(),
 
-  -- global on_attach: run for every server; prefer buffer-local setup here
-  ---@param bufnr integer
-  on_attach = function(_, bufnr)
-    -- Example: enable inlay hints if server supports it
-    pcall(vim.lsp.inlay_hint.enable, true, { bufnr = bufnr })
-    -- set up any global LspAttach behavior in an autocommand if needed
+  on_attach = function(_client, bufnr)
+    pcall(vim.lsp.inlay_hint.enable, false, { bufnr = bufnr })
   end,
 })
 
--- Deprioritize in favor of treesitter
-vim.highlight.priorities.semantic_tokens = 95
-
--- Enable all LSP servers (native Neovim 0.11+ API)
--- Server configs are in ~/.config/nvim/lsp/*.lua
----@type string[]
 local servers = {
   "bashls",
   "cssls",
