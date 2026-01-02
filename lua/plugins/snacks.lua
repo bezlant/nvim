@@ -6,9 +6,10 @@ return {
     ---@module 'snacks'
     ---@type snacks.Config
     opts = {
-      input = {
-        enabled = true,
-      },
+      bigfile = { enabled = true },
+      bufdelete = { enabled = true },
+      input = { enabled = true },
+      image = { enabled = true },
 
       picker = {
         enabled = true,
@@ -60,10 +61,6 @@ return {
         scope = {
           enabled = true,
         },
-      },
-
-      bufdelete = {
-        enabled = true,
       },
     },
     keys = {
