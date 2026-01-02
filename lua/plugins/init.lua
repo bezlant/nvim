@@ -21,25 +21,6 @@ return {
   },
 
   {
-    "stevearc/oil.nvim",
-    keys = {
-      { "-", "<CMD>Oil<CR>", desc = "Oil File Browser" },
-    },
-    opts = {
-      keymaps = {
-        -- Disable defaults that conflict with tmux navigator
-        ["<C-h>"] = false,
-        ["<C-l>"] = false,
-        -- Keep useful oil keymaps
-        ["<C-r>"] = "actions.refresh",
-        ["<C-s>"] = { "actions.select", opts = { vertical = true } },
-        ["<C-v>"] = { "actions.select", opts = { horizontal = true } },
-      },
-    },
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-  },
-
-  {
     "wakatime/vim-wakatime",
     lazy = false,
   },
