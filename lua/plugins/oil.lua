@@ -15,6 +15,33 @@ return {
       ["<C-r>"] = "actions.refresh",
       ["<C-s>"] = { "actions.select", opts = { vertical = true } },
       ["<C-v>"] = { "actions.select", opts = { horizontal = true } },
+      -- Yank file path to system clipboard
+      ["gy"] = {
+        callback = function()
+          local oil = require("oil")
+          local entry = oil.get_cursor_entry()
+          local dir = oil.get_current_dir()
+          if entry and dir then
+            local path = vim.fn.fnamemodify(dir .. entry.name, ":.")
+            vim.fn.setreg("+", path)
+            vim.notify("Copied: " .. path)
+          end
+        end,
+        desc = "Yank relative path to clipboard",
+      },
+      ["gY"] = {
+        callback = function()
+          local oil = require("oil")
+          local entry = oil.get_cursor_entry()
+          local dir = oil.get_current_dir()
+          if entry and dir then
+            local path = dir .. entry.name
+            vim.fn.setreg("+", path)
+            vim.notify("Copied: " .. path)
+          end
+        end,
+        desc = "Yank absolute path to clipboard",
+      },
     },
 
     view_options = {
