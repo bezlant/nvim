@@ -58,6 +58,7 @@ local servers = {
   "cssls",
   "cssmodules_ls",
   "eslint",
+  "fish_lsp",
   "gopls",
   "html",
   "jsonls",

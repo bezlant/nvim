@@ -3,6 +3,9 @@ return {
   {
     "mason-org/mason.nvim",
     lazy = false,
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
     config = function()
       require("mason").setup({
         ui = {
@@ -10,7 +13,6 @@ return {
           backdrop = 100,
         },
       })
-      -- Load LSP config after Mason is ready
       require("config.lsp")
     end,
   },
