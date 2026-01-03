@@ -14,7 +14,7 @@ return {
           ["vim.lsp.util.stylize_markdown"] = true,
         },
         progress = {
-          enabled = true,
+          enabled = false,
           throttle = 1000 / 30, -- 30fps
         },
         hover = {
