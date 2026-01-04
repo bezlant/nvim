@@ -18,7 +18,7 @@ return {
           throttle = 1000 / 30, -- 30fps
         },
         hover = {
-          enabled = false,
+          enabled = true,
         },
       },
 
