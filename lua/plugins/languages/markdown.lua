@@ -6,8 +6,7 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   ft = { "markdown" },
-  opts = {},
-  config = function(_, opts)
+  config = function()
     local colors = require("dracula").colors()
     local hl = vim.api.nvim_set_hl
 
@@ -58,6 +57,8 @@ return {
     hl(0, "RenderMarkdownWarn", { fg = colors.orange })
     hl(0, "RenderMarkdownError", { fg = colors.red })
 
-    require("render-markdown").setup(opts)
+    require("render-markdown").setup({
+      completions = { lsp = { enabled = true } },
+    })
   end,
 }
