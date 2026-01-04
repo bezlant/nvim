@@ -27,11 +27,12 @@ return {
   -- Parser installation and management
   {
     "lewis6991/ts-install.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     lazy = false,
     config = function()
       require("ts-install").setup({
         auto_install = true,
-        -- Core parsers to have ready immediately (others auto-install on first open)
+
         ensure_install = {
           "lua",
           "luadoc",
