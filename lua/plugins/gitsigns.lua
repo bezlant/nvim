@@ -32,15 +32,18 @@ return {
       end, { desc = "Prev change" })
 
       -- Actions
-      map("n", "<leader>ghs", gs.stage_hunk, { desc = "Stage hunk" })
-      map("n", "<leader>ghr", gs.reset_hunk, { desc = "Reset hunk" })
-      map("v", "<leader>ghs", function()
+      map("n", "<leader>hs", gs.stage_hunk, { desc = "Stage hunk" })
+      map("n", "<leader>hr", gs.reset_hunk, { desc = "Reset hunk" })
+
+      map("v", "<leader>hs", function()
         gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
       end, { desc = "Stage hunk" })
-      map("v", "<leader>ghr", function()
+      map("v", "<leader>hr", function()
         gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
       end, { desc = "Reset hunk" })
-      map("n", "<leader>ghb", gs.toggle_current_line_blame, { desc = "Toggle blame" })
+
+      map("n", "<leader>hb", gs.toggle_current_line_blame, { desc = "Toggle blame" })
+      map("n", "<leader>hd", gs.toggle_deleted, { desc = "Toggle deleted lines" })
     end,
   },
 }
