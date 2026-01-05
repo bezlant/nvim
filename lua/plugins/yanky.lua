@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   "gbprod/yanky.nvim",
+  dependencies = { "folke/snacks.nvim" },
   keys = {
     { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank" },
     { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put After" },
@@ -9,16 +10,28 @@ return {
     { "gP", "<Plug>(YankyGPutBefore)", mode = { "n", "x" }, desc = "GPut Before" },
     { "<C-p>", "<Plug>(YankyPreviousEntry)", desc = "Prev Yank" },
     { "<C-n>", "<Plug>(YankyNextEntry)", desc = "Next Yank" },
+
     -- Clipboard yanks (triggers Yanky load)
     { "<leader>y", '"+<Plug>(YankyYank)', mode = { "n", "x" }, desc = "Yank to clipboard" },
     { "<leader>Y", '"+<Plug>(YankyYank)$', mode = "n", desc = "Yank line to clipboard" },
     { "<leader>p", '"+<Plug>(YankyPutAfter)', mode = { "n", "x" }, desc = "Paste from clipboard" },
     { "<leader>P", '"+<Plug>(YankyPutBefore)', mode = { "n", "x" }, desc = "Paste before from clipboard" },
+
     {
       "yc",
       "<Plug>(YankyYank)y<cmd>normal gcc<CR><Plug>(YankyPutAfter)",
       mode = "n",
       desc = "Duplicate and comment",
+    },
+
+    {
+      "<leader>fy",
+      function()
+        ---@diagnostic disable-next-line: undefined-field
+        Snacks.picker.yanky()
+      end,
+      mode = { "n", "x" },
+      desc = "Open Yank History",
     },
   },
   opts = {

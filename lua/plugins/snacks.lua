@@ -136,13 +136,6 @@ return {
         end,
         desc = "Buffers",
       },
-      {
-        "<leader>fy",
-        function()
-          Snacks.picker.registers()
-        end,
-        desc = "Registers",
-      },
 
       -- Picker: Help & Exploration
       {
