@@ -19,8 +19,6 @@ map("n", "<leader>bo", function()
   end
 end, { desc = "Delete other buffers" })
 
-map("n", "yc", "yy<cmd>normal gcc<CR>p", { desc = "Duplicate and comment" })
-
 map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
 
 map("n", "<esc><esc>", "<cmd>noh<CR>", { desc = "Clear highlights" })

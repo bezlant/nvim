@@ -14,6 +14,12 @@ return {
     { "<leader>Y", '"+<Plug>(YankyYank)$', mode = "n", desc = "Yank line to clipboard" },
     { "<leader>p", '"+<Plug>(YankyPutAfter)', mode = { "n", "x" }, desc = "Paste from clipboard" },
     { "<leader>P", '"+<Plug>(YankyPutBefore)', mode = { "n", "x" }, desc = "Paste before from clipboard" },
+    {
+      "yc",
+      "<Plug>(YankyYank)y<cmd>normal gcc<CR><Plug>(YankyPutAfter)",
+      mode = "n",
+      desc = "Duplicate and comment",
+    },
   },
   opts = {
     highlight = {
