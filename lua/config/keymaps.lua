@@ -4,14 +4,12 @@ local function map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
--- Quick escape
-map("i", "jk", "<ESC>")
+map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
 
--- Buffers
-map("n", "H", "<cmd>bprevious<cr>zz")
-map("n", "L", "<cmd>bnext<cr>zz")
-map("n", "<leader>bd", "<cmd>bdelete! %<CR>")
-map("n", "<leader>ba", "<cmd>bufdo :bdelete<CR>")
+map("n", "H", "<cmd>bprevious<cr>zz", { desc = "Previous buffer" })
+map("n", "L", "<cmd>bnext<cr>zz", { desc = "Next buffer" })
+map("n", "<leader>bd", "<cmd>bdelete! %<CR>", { desc = "Delete buffer" })
+map("n", "<leader>ba", "<cmd>bufdo :bdelete<CR>", { desc = "Delete all buffers" })
 map("n", "<leader>bo", function()
   local current = vim.api.nvim_get_current_buf()
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
@@ -19,46 +17,40 @@ map("n", "<leader>bo", function()
       pcall(vim.api.nvim_buf_delete, buf, {})
     end
   end
-end)
+end, { desc = "Delete other buffers" })
 
--- Duplicate line and comment original
-map("n", "yc", "yy<cmd>normal gcc<CR>p")
+map("n", "yc", "yy<cmd>normal gcc<CR>p", { desc = "Duplicate and comment" })
 
--- Save
-map("n", "<leader>w", "<cmd>w<CR>")
+map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
 
--- Highlights off
-map("n", "<esc><esc>", "<cmd>noh<CR>")
+map("n", "<esc><esc>", "<cmd>noh<CR>", { desc = "Clear highlights" })
 
--- Jump to first non-blank character
-map("n", "0", "^")
+map("n", "0", "^", { desc = "First non-blank" })
 
--- Scrolling (centered)
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
+map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
 
--- Search and replace word under cursor
-map("n", "<leader>x", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+map(
+  "n",
+  "<leader>x",
+  ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
+  { desc = "Search and replace word under cursor" }
+)
 
--- Search (centered)
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
+map("n", "n", "nzzzv", { desc = "Next search result" })
+map("n", "N", "Nzzzv", { desc = "Previous search result" })
 
--- Todo-comments
-map("n", "<leader>ft", "<cmd>TodoQuickFix<cr>")
+map("n", "<leader>ft", "<cmd>TodoQuickFix<cr>", { desc = "Find TODOs" })
 
--- Lazy
-map("n", "<leader>L", "<cmd>:Lazy<cr>")
+map("n", "<leader>L", "<cmd>:Lazy<cr>", { desc = "Lazy plugin manager" })
 
--- Diagnostics (always available)
 map("n", "]g", function()
   vim.diagnostic.jump({ count = 1, float = { border = "rounded", max_width = 100 } })
-end)
+end, { desc = "Next diagnostic" })
 map("n", "[g", function()
   vim.diagnostic.jump({ count = -1, float = { border = "rounded", max_width = 100 } })
-end)
+end, { desc = "Previous diagnostic" })
 
--- LSP keymaps (capability-aware via Snacks.keymap)
 Snacks.keymap.set("n", "gd", vim.lsp.buf.definition, {
   desc = "Go to Definition",
   lsp = { method = "textDocument/definition" },
