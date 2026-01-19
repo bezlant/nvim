@@ -1,6 +1,7 @@
 local M = {
   mason = {
     "bashls",
+    "basedpyright",
     "cssls",
     "cssmodules_ls",
     "eslint",
@@ -9,6 +10,7 @@ local M = {
     "jsonls",
     "lua_ls",
     "marksman",
+    "ruff",
     "stylelint_lsp",
     "tailwindcss",
     "taplo",

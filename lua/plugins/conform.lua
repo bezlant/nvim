@@ -17,6 +17,7 @@ return {
       markdown = { "prettierd" },
       html = { "prettierd" },
       css = { "prettierd" },
+      python = { "ruff_format", "ruff_organize_imports" },
     },
     format_on_save = {
       lsp_format = "fallback",

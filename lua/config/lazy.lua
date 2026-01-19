@@ -40,6 +40,8 @@ require("lazy").setup({
         "tohtml",
         "tutor",
         "zipPlugin",
+        "netrw",
+        "netrwPlugin",
       },
     },
   },
