@@ -9,7 +9,17 @@ return {
       bigfile = { enabled = true },
       bufdelete = { enabled = true },
       input = { enabled = true },
-      image = { enabled = true },
+      image = {
+        enabled = true,
+        doc = {
+          inline = true,
+          float = false,
+          conceal = function(lang, type)
+            vim.print(lang, type)
+            return type == "math" or type == "chart" or lang == "mermaid"
+          end,
+        },
+      },
 
       picker = {
         enabled = true,

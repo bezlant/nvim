@@ -41,4 +41,16 @@ return {
     "tzachar/highlight-undo.nvim",
     keys = { { "u" }, { "<C-r>" } },
   },
+
+  {
+    -- "bezlant/unused.nvim",
+    dir = "~/Projects/unused.nvim",
+    dev = true,
+    dependencies = { "folke/snacks.nvim" },
+    priority = 10000,
+    lazy = false,
+    config = true,
+  },
+
+  { "meznaric/key-analyzer.nvim", opts = {} },
 }
