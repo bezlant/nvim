@@ -15,8 +15,8 @@ vim.diagnostic.config({
 
 -- Global defaults for all LSP servers
 vim.lsp.config("*", {
-  -- global caps: blink.cmp extends native LSP caps
-  caps = (function()
+  -- blink.cmp extends native LSP capabilities
+  capabilities = (function()
     local caps = require("blink.cmp").get_lsp_capabilities()
 
     -- Enable LSP-based folding (for native folds)
@@ -34,6 +34,6 @@ vim.lsp.config("*", {
 
 local servers = require("config.lsp.servers")
 
-local all_servers = vim.list_extend(vim.list_extend({}, servers.mason), servers.external)
+local all_servers = vim.list_extend(vim.deepcopy(servers.mason), servers.external)
 
 vim.lsp.enable(all_servers)

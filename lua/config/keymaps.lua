@@ -25,8 +25,8 @@ map("n", "<esc><esc>", "<cmd>noh<CR>", { desc = "Clear highlights" })
 
 map("n", "0", "^", { desc = "First non-blank" })
 
-map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
-map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
+map("n", "<C-d>", "<C-d>", { desc = "Scroll down" })
+map("n", "<C-u>", "<C-u>", { desc = "Scroll up" })
 
 map(
   "n",

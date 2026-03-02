@@ -15,7 +15,6 @@ return {
           inline = true,
           float = false,
           conceal = function(lang, type)
-            vim.print(lang, type)
             return type == "math" or type == "chart" or lang == "mermaid"
           end,
         },

@@ -27,7 +27,7 @@ local options = {
   -- Indentation
   expandtab = true,
   shiftwidth = 2,
-  tabstop = 4,
+  tabstop = 2,
   smartindent = true,
 
   -- Scrolling (centered cursor)

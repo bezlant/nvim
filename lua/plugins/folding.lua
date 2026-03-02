@@ -64,14 +64,16 @@ return {
   virtual = true,
   lazy = false,
   init = function()
+    _G._folding = _G._folding or {}
+
     -- Safe foldexpr wrapper (prevents errors when parser not ready)
-    _G.foldexpr = function()
+    _G._folding.expr = function()
       local ok, result = pcall(vim.treesitter.foldexpr)
       return ok and result or "0"
     end
 
     -- Foldtext function
-    _G.foldtext = function()
+    _G._folding.text = function()
       local line = vim.fn.getline(vim.v.foldstart)
       local count = vim.v.foldend - vim.v.foldstart
       return {
@@ -82,8 +84,8 @@ return {
 
     -- Set fold options
     vim.o.foldmethod = "expr"
-    vim.o.foldexpr = "v:lua.foldexpr()"
-    vim.o.foldtext = "v:lua.foldtext()"
+    vim.o.foldexpr = "v:lua._folding.expr()"
+    vim.o.foldtext = "v:lua._folding.text()"
   end,
   config = function()
     -- Auto-fold imports

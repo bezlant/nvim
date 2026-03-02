@@ -28,7 +28,7 @@ end
 ---@type LazySpec
 return {
   "nvim-lualine/lualine.nvim",
-  event = { "VimEnter", "InsertEnter", "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
+  event = "VeryLazy",
   opts = {
     options = {
       globalstatus = true,
@@ -42,10 +42,12 @@ return {
       lualine_a = { "mode" },
       lualine_b = {
         {
-          ---@diagnostic disable-next-line: undefined-field
-          require("noice").api.status.mode.get,
-          ---@diagnostic disable-next-line: undefined-field
-          cond = require("noice").api.status.mode.has,
+          function()
+            return require("noice").api.status.mode.get()
+          end,
+          cond = function()
+            return package.loaded["noice"] and require("noice").api.status.mode.has()
+          end,
           color = { fg = "#ff9e64" },
         },
       },

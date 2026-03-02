@@ -4,11 +4,13 @@ vim.api.nvim_create_autocmd(
   { command = [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]] }
 )
 
--- Disable diagnostics in node_modules (0 is current buffer only)
-vim.api.nvim_create_autocmd(
-  { "BufRead", "BufNewFile" },
-  { pattern = "*/node_modules/*", command = "lua vim.diagnostic.disable(0)" }
-)
+-- Disable diagnostics in node_modules
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*/node_modules/*",
+  callback = function()
+    vim.diagnostic.enable(false, { bufnr = 0 })
+  end,
+})
 
 -- Autoread buffer on an external change
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, { command = "checktime" })
@@ -35,9 +37,3 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
--- autoupdate plugins
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    require("lazy").update({ show = false })
-  end,
-})
