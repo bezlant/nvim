@@ -15,11 +15,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 -- Autoread buffer on an external change
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, { command = "checktime" })
 
--- Show `` in specific files
-vim.api.nvim_create_autocmd(
-  { "BufRead", "BufNewFile" },
-  { pattern = { "*.txt", "*.md", "*.json" }, command = "setlocal conceallevel=0" }
-)
 
 -- Easily close useless buffers
 vim.api.nvim_create_autocmd("FileType", {
@@ -34,6 +29,27 @@ vim.api.nvim_create_autocmd("FileType", { pattern = { "man" }, command = [[ nnor
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     vim.opt.formatoptions:remove({ "c", "r", "o" })
+  end,
+})
+
+-- Nudge iCloud sync after saving files in the Obsidian vault
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = vim.fn.expand("~") .. "/Library/Mobile Documents/iCloud~md~obsidian/**",
+  callback = function(args)
+    local dir = vim.fn.fnamemodify(args.file, ":h")
+    vim.fn.jobstart({ "touch", args.file, dir }, { detach = true })
+  end,
+})
+
+-- Open Oil when launched with no args
+vim.api.nvim_create_autocmd("VimEnter", {
+  once = true,
+  callback = function()
+    if vim.fn.argc() == 0 then
+      vim.schedule(function()
+        vim.cmd("edit " .. vim.fn.fnameescape(vim.fn.getcwd()) .. "/")
+      end)
+    end
   end,
 })
 

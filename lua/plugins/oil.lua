@@ -2,11 +2,14 @@
 return {
   "stevearc/oil.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  lazy = false,
   keys = {
     { "-", "<CMD>Oil<CR>", desc = "Oil File Browser" },
   },
 
   opts = {
+    default_file_explorer = true,
+    delete_to_trash = true,
     keymaps = {
       -- Disable defaults that conflict with tmux navigator
       ["<C-h>"] = false,

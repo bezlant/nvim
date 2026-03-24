@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "MeanderingProgrammer/render-markdown.nvim",
-  dir = "~/Projects/render-markdown.nvim",
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     "nvim-tree/nvim-web-devicons",
@@ -59,13 +58,9 @@ return {
     hl(0, "RenderMarkdownError", { fg = colors.red })
 
     require("render-markdown").setup({
-      completions = {
-        lsp = { enabled = true },
-      },
+      completions = { lsp = { enabled = true } },
 
-      code = {
-        ignore = { "mermaid" },
-      },
+      code = { disable = { "mermaid" } },
     })
   end,
 }

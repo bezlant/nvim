@@ -32,18 +32,6 @@ require("lazy").setup({
     cache = {
       enabled = true,
     },
-    rtp = {
-      disabled_plugins = {
-        "gzip",
-        "rplugin",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-        "netrw",
-        "netrwPlugin",
-      },
-    },
   },
 
   ui = {

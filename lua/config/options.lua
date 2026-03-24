@@ -51,7 +51,7 @@ local options = {
 
   -- Misc
   completeopt = "menu,menuone,noselect",
-  conceallevel = 2,
+  conceallevel = 0,
   timeoutlen = 350,
   updatetime = 50,
   virtualedit = "block",
