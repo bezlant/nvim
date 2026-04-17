@@ -3,7 +3,6 @@ return {
     { import = "plugins.languages" },
   },
 
-  { "nvim-lua/plenary.nvim" },
   { "nvim-tree/nvim-web-devicons" },
 
   { "tpope/vim-repeat", lazy = false },
@@ -52,5 +51,4 @@ return {
     config = true,
   },
 
-  { "meznaric/key-analyzer.nvim", opts = {} },
 }

@@ -37,6 +37,7 @@ local options = {
   -- Splits
   splitbelow = true,
   splitright = true,
+  splitkeep = "screen",
 
   -- Files
   swapfile = false,
@@ -47,6 +48,7 @@ local options = {
   -- Wrapping
   wrap = true,
   linebreak = true,
+  breakindent = true,
   textwidth = 80,
 
   -- Misc
@@ -61,6 +63,10 @@ local options = {
 
 local globals = {
   mapleader = " ",
+  loaded_node_provider = 0,
+  loaded_python3_provider = 0,
+  loaded_perl_provider = 0,
+  loaded_ruby_provider = 0,
 }
 
 vim.opt.shortmess:append("c")
