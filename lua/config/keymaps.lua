@@ -25,16 +25,27 @@ map("n", "<esc><esc>", "<cmd>noh<CR>", { desc = "Clear highlights" })
 
 map("n", "0", "^", { desc = "First non-blank" })
 
+map("n", "U", "<C-r>", { desc = "Redo" })
+map("n", "Q", "@@", { desc = "Repeat last macro" })
+map("n", "X", "<cmd>keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>", { desc = "Split line" })
+
 map("n", "<C-d>", "<C-d>", { desc = "Scroll down" })
 map("n", "<C-u>", "<C-u>", { desc = "Scroll up" })
 
--- Move through wrapped lines naturally, but respect counts for jumps
-map({ "n", "x" }, "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true, desc = "Move down" })
-map({ "n", "x" }, "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true, desc = "Move up" })
+-- Move through wrapped lines naturally, store large jumps in jumplist
+map({ "n", "x" }, "j", [[(v:count > 1 ? "m'" . v:count : "g") . "j"]], { expr = true, desc = "Move down" })
+map({ "n", "x" }, "k", [[(v:count > 1 ? "m'" . v:count : "g") . "k"]], { expr = true, desc = "Move up" })
 
 -- Stay in visual mode after indenting
 map("x", "<", "<gv", { desc = "Indent left" })
 map("x", ">", ">gv", { desc = "Indent right" })
+
+-- Apply repeat and macros over visual selections
+map("x", ".", ":normal .<cr>", { desc = "Repeat in visual" })
+map("x", "@", [[:<c-u>echo "@".getcmdline() | execute ":'<,'>normal @" . nr2char(getchar())<cr>]], { desc = "Macro in visual" })
+
+-- Command mode home
+map("c", "<C-a>", "<Home>", { silent = false, desc = "Go to start of line" })
 
 map(
   "n",

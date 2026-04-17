@@ -52,6 +52,13 @@ local options = {
   textwidth = 80,
 
   -- Misc
+  confirm = true,
+  exrc = true,
+  grepprg = "rg --ignore-case --vimgrep",
+  grepformat = "%f:%l:%c:%m,%f:%l:%m",
+  mousescroll = "ver:3,hor:0",
+  pumborder = "rounded",
+  showbreak = "↳ ",
   completeopt = "menu,menuone,noselect",
   conceallevel = 0,
   timeoutlen = 350,
@@ -69,7 +76,9 @@ local globals = {
   loaded_ruby_provider = 0,
 }
 
-vim.opt.shortmess:append("c")
+vim.opt.shortmess:append({ c = true, I = true, W = true, a = true, F = true })
+vim.opt.suffixesadd:append({ ".js", ".ts", ".tsx", ".md" })
+vim.opt.diffopt:append("vertical,context:99")
 vim.opt.fillchars:append({
   stl = " ", -- inactive statusline
   eob = " ", -- hide ~ at end of buffer
