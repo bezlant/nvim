@@ -71,6 +71,10 @@ return {
           enabled = true,
         },
       },
+
+      words = {
+        enabled = true,
+      },
     },
     keys = {
       -- Lazygit

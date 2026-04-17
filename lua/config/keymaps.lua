@@ -28,6 +28,14 @@ map("n", "0", "^", { desc = "First non-blank" })
 map("n", "<C-d>", "<C-d>", { desc = "Scroll down" })
 map("n", "<C-u>", "<C-u>", { desc = "Scroll up" })
 
+-- Move through wrapped lines naturally, but respect counts for jumps
+map({ "n", "x" }, "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true, desc = "Move down" })
+map({ "n", "x" }, "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true, desc = "Move up" })
+
+-- Stay in visual mode after indenting
+map("x", "<", "<gv", { desc = "Indent left" })
+map("x", ">", ">gv", { desc = "Indent right" })
+
 map(
   "n",
   "<leader>x",
