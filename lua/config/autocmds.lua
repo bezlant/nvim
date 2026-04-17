@@ -74,6 +74,16 @@ vim.api.nvim_create_autocmd("BufRead", {
   end,
 })
 
+-- Enable spell check for prose filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup,
+  pattern = { "markdown", "text", "gitcommit" },
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = { "en_us" }
+  end,
+})
+
 -- Open Oil when launched with no args
 vim.api.nvim_create_autocmd("VimEnter", {
   group = augroup,
