@@ -75,8 +75,25 @@ return {
       words = {
         enabled = true,
       },
+
+      quickfile = {
+        enabled = true,
+      },
+
+      zen = {
+        enabled = true,
+      },
     },
     keys = {
+      -- Zen
+      {
+        "<leader>z",
+        function()
+          Snacks.zen()
+        end,
+        desc = "Zen Mode",
+      },
+
       -- Lazygit
       {
         "<leader>g",

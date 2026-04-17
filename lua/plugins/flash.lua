@@ -3,6 +3,10 @@ return {
   "folke/flash.nvim",
   event = "VeryLazy",
   opts = {
+    jump = {
+      autojump = true,
+      nohlsearch = true,
+    },
     modes = {
       char = {
         highlight = { backdrop = false },
