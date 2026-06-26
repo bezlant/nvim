@@ -1,5 +1,6 @@
 plugin/packer_compiled.lua
 .claude/commands
+.claude/settings.local.json
 .specify
 specs
 CLAUDE.md
